@@ -13,7 +13,7 @@ mongoose.connect('mongodb://127.0.0.1/jagerddb');
 
 require('./models/User'); // Utilisateur ou boutique, peut être besoin de mettre en place l'héritage
 //require('./models/Boutique');
-require('./models/Event');
+require('./models/Event'); //j'aodre les endives #creation d'event 
 
 var app = express();
 
