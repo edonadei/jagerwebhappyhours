@@ -3,8 +3,11 @@ var position;
 var distance;
 var magasin;
 
+var coordinates = document.getElementById('coords').innerHTML;
+console.log(coordinates);
 
-var b = new L.LatLng(49.246568, 1.4192000000000462);
+//var b = new L.LatLng(49.246568, 1.4192000000000462);
+var b = new L.LatLng(coordinates);
 
 function init() {
    map = new L.Map('map');
