@@ -10,6 +10,11 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/new', (req,res) => {
+    var events = new Event();
+    res.render('Events/edit.html', {events: events});
+});
+
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id).then(events => {
             res.render('Events/show.html', {events: events});
