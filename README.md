@@ -1,5 +1,14 @@
 # Synopsis - Jäger
 
+## Notice d'installation
+
+- Installer Node.Js pour votre OS 
+- Installer MongoDB pour votre OS
+- Cloner/Télécharger le repo
+- Lancer Launch mongoDB.bat
+- Lancer en invite de commandes app.js
+- Dans votre navigateur, accédez à l'application à l'url locale: http://localhost:8080/ 
+
 ## Analyser
 
 **Problématique:** Les boutiques ont toutes des périodes &quot;creuses&quot; leur faisant perdre du chiffre, car les frais salariaux et administratifs restent les mêmes selon chaque heure de la journée, alors que les rentrées non. Cela correspond souvent aux périodes moins fréquentées (matinées, jour de la semaine,etc… ). Mais aussi simplement pour faire un coup de pub à son activité.
