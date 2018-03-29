@@ -8,8 +8,10 @@ var upload = multer({
     dest: __dirname + '/uploads'
 });
 
+var config = require('./config/config');
+
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://127.0.0.1/jagerddb');
+mongoose.connect('mongodb://'+config.IP_MONGO+'/jagerddb');
 
 require('./models/User'); // Utilisateur ou boutique, peut être besoin de mettre en place l'héritage
 //require('./models/Boutique');
