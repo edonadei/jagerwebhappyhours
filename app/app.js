@@ -9,18 +9,7 @@ var upload = multer({
 });
 
 mongoose.Promise = global.Promise;
-//mongoose.connect('mongodb://127.0.0.1/jagerddb');
-
-//var MongoClient = require('mongodb').MongoClient;
-
-//var uri = 'mongodb://Goqedu:Jetadore5432.@cluster0-shard-00-00-dosgr.mongodb.net:27017,cluster0-shard-00-01-dosgr.mongodb.net:27017,cluster0-shard-00-02-dosgr.mongodb.net:27017/admin?replicaSet=Cluster0-shard-0&ssl=true';
-var uri = 'mongodb://Goqedu:Jetadore5432.@cluster0-shard-00-00-dosgr.mongodb.net:27017,'+
-'cluster0-shard-00-01-dosgr.mongodb.net:27017,'+
-'cluster0-shard-00-02-dosgr.mongodb.net:27017/admin?'+
-'replicaSet=Cluster0-shard-0&ssl=true';
-mongoose.connect(uri);
-var db = mongoose.connection;
-
+mongoose.connect('mongodb://127.0.0.1/jagerddb');
 
 require('./models/User'); // Utilisateur ou boutique, peut être besoin de mettre en place l'héritage
 //require('./models/Boutique');
