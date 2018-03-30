@@ -1,88 +1,128 @@
-{% extends "layout.html" %} 
-
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 
 <!-- Index form -->
-<div class="container-fluid background-index d-flex align-items-center">
+<div class="container-fluid background-index d-flex align-items-center mb-5">
     <form class="form-inline offset-md-3 col-md-6" action="/action_page.php">
         <div class="input-group mb-3 w-100">
-            <input type="text" class="form-control" placeholder="Où êtes vous?" aria-label="Recipient's username" aria-describedby="basic-addon2">
+            <input type="text" class="form-control" placeholder="Que recherchez-vous?" aria-label="Recipient's username" aria-describedby="basic-addon2">
             <div class="input-group-append">
-                <button class="btn btn-success" type="button">Button</button>
+                <button class="btn btn-primary" type="button">Go!</button>
             </div>
         </div>
     </form>
 </div>
 
 
+
 <div class="container-fluid ">
     <div class="row">
-    {% for e in events %}
-    <a href ="{{e.id}}">
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        {% for e in events %}
+        <a href="{{e.id}}" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                </a>
                     <h4 class="card-title">{{e.name}}</h4>
                     <p class="card-text">{{e.description}}</p>
-                    <a href="{{e.id}}" class="btn btn-primary">See Profile</a>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    
-    {% endfor %}
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        </a>
+        {% endfor %}
+        <a href="annonces.html" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                    <h4 class="card-title">PA</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title">Franprix</h4>
+                    <p class="card-text">Un menu petit déjeuné avec un bon jus d'orange bio accompagé de sa petite viennoiserie</p>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        </a>
+        <a href="annonces.html" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title">Franprix</h4>
+                    <p class="card-text">Un menu petit déjeuné avec un bon jus d'orange bio accompagé de sa petite viennoiserie</p>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        </a>
+        <a href="annonces.html" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title">Franprix</h4>
+                    <p class="card-text">Un menu petit déjeuné avec un bon jus d'orange bio accompagé de sa petite viennoiserie</p>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        </a>
+        <a href="annonces.html" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title">Franprix</h4>
+                    <p class="card-text">Un menu petit déjeuné avec un bon jus d'orange bio accompagé de sa petite viennoiserie</p>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="container-fluid col-12 col-sm-6 col-md-4 mb-4">
+        </a>
+        <a href="annonces.html" style="text-decoration:none" class="underline_none text-dark container-fluid col-12 col-sm-6 col-md-4 mb-4">
             <div class="card p-0">
                 <img class="card-img-top" src="images/bg3.jpg" alt="Card image" style="width:100%">
                 <div class="card-body">
-                    <h4 class="card-title">John Doe</h4>
-                    <p class="card-text">Some example text some example text. John Doe is an architect and engineer</p>
-                    <a href="#" class="btn btn-primary">See Profile</a>
+                    <h4 class="card-title">Franprix</h4>
+                    <p class="card-text">Un menu petit déjeuné avec un bon jus d'orange bio accompagé de sa petite viennoiserie</p>
+                    <div class="row justify-content-between">
+                        <div class="m-0 container-fluid col-5">
+                            <span>Villejuif</span>
+                        </div>
+                        <div class="m-0 container-fluid col-7 text-right">
+                            <span class="text-light border border-primary bg-primary rounded p-2"> 10 - 30% </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
+        </a>
+        
     </div>
 </div>
+
 
 {% endblock %}

@@ -1,0 +1,143 @@
+    <!-- Container Form -->
+    <div class="container col-12 col-md-9 col-lg-6 mt-5 mb-5">
+        <!-- Default page -->
+        <div id="section_default" class="container-fluid">
+            <div class="height-500 d-flex flex-column align-items-center justify-content-center">
+                <button onclick="sectionInscription('client')" class="btn btn-dark btn-lg btn-block mb-2">Particulier</button>
+                <button onclick="sectionInscription('pro')" class="btn btn-light btn-lg btn-block mt-2">Professionnel</button>
+            </div>
+        </div>
+        <!-- Client Form -->
+        <div id="section_client" class="container-fluid">
+            <!-- Boutton return -->
+            <div class="container-fluid p-0 mb-2">
+                <button onclick="sectionInscription('return')" class="p-0 m-0 btn btn-link text-dark">
+                    <img class="mr-2" src="images/ic_arrow_back_black_24dp.png" alt="return_row">retour</button>
+            </div>
+            <!-- Container FORM -->
+            <div class="modal-content p-2">
+                <!-- Header Form -->
+                <div class="modal-header">
+                    <h6 class="modal-title text-secondary">Inscrivez-vous</h4>
+                </div>
+                <!-- Body form-->
+                <div class="modal-body">
+                    <form action="#" method="POST">
+                        <div class="form-group">
+                            <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control pl-5 mail_icon" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="pwd" placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-lg btn-block">Inscription</button>
+                    </form>
+                </div>
+
+                <!-- form footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <span>Vous êtes un professionnel?
+                        <a href="inscription.html?type=pro" class="text-info">Inscription</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div id="section_pro" class="container-fluid">
+            <!-- Boutton return -->
+            <div class="container-fluid p-0 mb-2">
+                <button onclick="sectionInscription('return')" id="button_step-sup" class="p-0 m-0 btn btn-link text-dark">
+                    <img class="mr-2" src="images/ic_arrow_back_black_24dp.png" alt="return_row">retour</button>
+            </div>
+            <div class="container-fluid p-0">
+                <div class="modal-content p-2">
+                    <!-- Modal Header -->
+                    <div class="modal-header">
+                        <div class="container-fluid p-0 d-flex justify-content-between align-items-center">
+                            <h4 class="modal-title">Inscription</h4>
+                            <span id="nbr_step"></span>
+                        </div>
+
+                    </div>
+                    <div class="modal-body">
+                        <form action="#" method="POST">
+                            <!-- Première étape -->
+                            <div class="container-fluid p-0" id="step_0">
+                                <div class="form-group">
+                                    <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                                </div>
+                                <div class="form-group">
+                                    <input type="email" class="pl-5 form-control mail_icon" placeholder="Email">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="pl-5 form-control mdp_icon" placeholder="Mot de passe">
+                                </div>
+                                <div class="form-group">
+                                    <input type="password" class="pl-5 form-control mdp_icon" placeholder="Confirmation">
+                                </div>
+                                <div class="p-0 container-fluid d-flex align-items-center justify-content-end">
+                                    <button type="button" onclick="allfunctionstep(1,3)" class="btn btn-dark btn ">Suivant</button>
+                                </div>
+                            </div>
+                            <!-- Deuxième étape -->
+                            <div class="container-fluid p-0" id="step_1">
+                                <div class="form-group">
+                                    <input type="text" class="form-control pl-5 nom_icon store_icon" id="nom" placeholder="Nom de l'entreprise">
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control pl-5 location_icon" id="nom" placeholder="Adresse">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-6">
+                                        <input type="text" class="form-control" id="inputCity" placeholder="Ville">
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <input type="number" class="form-control" id="inputZip" placeholder="Code postal">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="nom" placeholder="Pays">
+                                </div>
+                                <div class="p-0 container-fluid d-flex align-items-center justify-content-between">
+                                    <button type="button" onclick="allfunctionstep(0,3)" class="btn btn-light btn ">Précédent</button>
+                                    <button type="button" onclick="allfunctionstep(2,3)" class="btn btn-dark btn ">Suivant</button>
+                                </div>
+                            </div>
+                            <!-- Toisième étape -->
+                            <div class="container-fluid p-0" id="step_2">
+                                <div class="form-group">
+                                    <textarea name="descrition" rows="10" placeholder="Description..." class="w-100 p-2"></textarea>
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo 1: </label>
+                                    <input name="pic1" type="file" class="form-control-file">
+                                </div>
+                                <div class="form-group">
+                                    <label>Photo 2: </label>
+                                    <input name="pic2" type="file" class="form-control-file">
+                                </div>
+                                <div class="p-0 container-fluid d-flex align-items-center justify-content-between">
+                                    <button type="button" onclick="allfunctionstep(1,3)" class="btn btn-light btn ">Précédent</button>
+                                    <button type="submit" class="btn btn-dark btn ">Envoyer</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        allfunctionstep(0, 3);
+        sectionInscription();
+    </script>
+</body>
+</html>
