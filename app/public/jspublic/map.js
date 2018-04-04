@@ -4,6 +4,7 @@ var distance;
 var magasin;
 
 var coordinates = document.getElementById('coords').innerHTML;
+console.log(coordinates);
 var coordinatesarray = coordinates.split(',');
 
 console.log(parseFloat(coordinatesarray[0]));

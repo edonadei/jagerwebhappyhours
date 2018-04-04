@@ -1,4 +1,6 @@
 node_modules
+dbpath
+LaunchmongoDB.bat
 
 config/*
 !config/*.default
