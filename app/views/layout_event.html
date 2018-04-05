@@ -8,6 +8,12 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+    <!-- Slick CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+
+
     <!-- Polices Google -->
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <!-- chargement de leaflet -->
@@ -214,6 +220,16 @@
     </footer>
     <!--/.Footer-->
     
+    
+   
+    
+
+     <!-- JavaScript -->
+    <!-- Bootstrap -->
+
+   <!-- JavaScript -->
+    <!-- Bootstrap -->
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -223,7 +239,48 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places&callback=initAutocomplete"
         async defer></script>
     <script src="/jspublic/map.js"></script>
+    <!-- Slick -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script type="text/javascript">
+        /* SLICK option*/
+        $(document).on('ready', function () {
+            $(".slick_gallery").slick({
+                dots: true,
+                arrows: false,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
     <script src="/jspublic/myscript.js"></script>
+    <script type="text/javascript">
+        /* Chrono */
+        var deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
+        initializeClock('clockdiv', deadline);
+        initializeClock('clockdiv2', deadline);
+
+        /* Size annonce */
+        var description = document.getElementById('description');
+        var annonce = document.getElementById('annonce');
+        addsize(description, annonce);
+        window.onresize = function () {
+            addsize(description, annonce);
+        }
+    </script>
 </body>
 
 </html>
