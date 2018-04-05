@@ -1,0 +1,140 @@
+{% extends "layout_event.html" %}
+
+{% block content %}
+    
+    <!-- Gallery SLick-->
+<section class="slick_gallery height-400 p-0">
+    <div class="height-400">
+        <img src="images/bg.jpg" class="img_slider" alt="">
+    </div>
+
+    <div class="height-400">
+        <img src="images/bg3.jpg" class="img_slider" alt="">
+    </div>
+
+    <div class="height-400">
+        <img src="images/bg2.JPG" class="img_slider" alt="">
+    </div>
+
+</section>
+<!-- Annonce -->
+<div class="container-fluid col-12" id="annonce">
+    <!--Fixed right -->
+    <div class="d-none d-lg-block container sticky-top col-4 pt-5 mr-lg-3 p-2 float-right">
+        <div class="border p-3">
+            <div class="col-12 border p-0 pb-3 border-top-0 border-right-0 border-left-0">
+                <span class="display-4">{{events.promonumber}}</span>
+            </div>
+            <div class="col-12 p-0 pb-4 border border-top-0 border-right-0 border-left-0">
+                <h4 class="mt-3">Elle va bientôt s'enfuir: </h4>
+                <div class="container-fluid d-flex align-items-center" id="clockdiv">
+                    <div class="row display-4">
+
+                        <span class="hours"></span>
+                        <span>&nbsp;:&nbsp;</span>
+                        <span class="minutes"></span>
+                        <span>&nbsp;:&nbsp;</span>
+                        <span class="seconds"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+                <button type="button" class="btn btn-danger btn-lg w-100">
+                    Marquage de la cible
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Fixed Bottom -->
+    <div class="d-lg-none container-fluid fixed-bottom height-150 border bg-white">
+        <div class="d-flex justify-content-between h-100">
+            <div class="col-7 pr-5 p-0 d-flex flex-column justify-content-around">
+                <div>
+                    <span class="text_size_18">30 - 40%</span>
+                </div>
+                <div>
+                    <h4 class="text_size_18 m-0">Elle va bientôt s'enfuir: </h4>
+                    <div class="container-fluid d-flex align-items-center" id="clockdiv2">
+                        <div class="row text_size_18">
+                            <span class="hours"></span>
+                            <span>&nbsp;:&nbsp;</span>
+                            <span class="minutes"></span>
+                            <span>&nbsp;:&nbsp;</span>
+                            <span class="seconds"></span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-5 d-flex align-items-center h-100 p-0">
+                <button type="button" class="btn btn-danger w-100">
+                    Marquage
+                    <br>de la cible
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- Description -->
+    <div class="container col-12 col-lg-7 mt-5 float-lg-left" id="description">
+        <!-- Header -->
+        <div class="container col-12">
+            <h1>{{events.name}}</h1>
+            <div>
+                <strong class="font-weight-normal">Villejuif</strong>
+            </div>
+        </div>
+        <!-- Little information -->
+        <div class="container col-12 m-3">
+            <div class="row">
+                <div class="mr-3">
+                    <span>Type: </span>
+                    <span>
+                        <img src="images/ic_shopping_basket.png" alt="shopping_basket">
+                    </span>
+                </div>
+                <div class="mr-3">
+                    <span>Accessibilité: </span>
+                    <span>
+                        <img src="images/ic_directions_bus.png" alt="bus">
+                    </span>
+                    <span>
+                        <img src="images/ic_directions_subway.png" alt="subway">
+                    </span>
+                    <span>
+                        <img src="images/ic_local_parking.png" alt="parking">
+                    </span>
+                </div>
+            </div>
+        </div>
+        <!-- Main description -->
+        <div class="container col-12 mb-3">
+            <p>{{events.description}}</p>
+        </div>
+        <!-- Offers -->
+        <div class="container col-12 mb-3">
+            <h4>Pars à la chasse: </h4>
+            <p>
+                Aufgemerkt! Pantoffelheld und Dänenfilm grämen dufte Himmelfahrtskommando. Das gebeutelt Gamaschen. Das hanebüchen Kaiserwetter.
+                Gesinde und Fracksausen jauchzen geflissentlich Ganove. Das frivol Übeltäter foppen. Die Drückeberger bauchpinseln
+                das gemach Kittchen. Der garstig Ganove. Der stramm Pranger bohnern. Das blümerant Kaffeekränzchen lustwandeln.
+                Die frivol Stümper piesacken. Himmelfahrtskommando und Himmelfahrtskommando duellieren halsstarrig Sülze.
+                Der gebeutelt Schindluder lustwandeln. Lecko mio!
+            </p>
+        </div>
+        <!-- Localisation -->
+        <div id="coords">{{events.coordinates}}</div>
+        <div class="container col-12 mb-3">
+            <h4 class="mb-4">Localisation</h4>
+            <div class="col-12 p-0">
+                <img src="images/ic_place_black_24dp.png" alt="place">
+                <span>17-19 Boulevard Paul Vaillant Couturier, 94800 Villejuif, France</span>
+            </div>
+            <div class="col-12 p-0">
+                <div class="col-sm-3"></div>
+                <div class="col-sm-6"><div id="map" ></div>
+                <input type="button" class="btn btn-default" value="Me localiser" onClick="javascript:getLocationLeaflet();"></div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

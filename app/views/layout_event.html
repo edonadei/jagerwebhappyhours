@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+
+    <!-- Slick CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+
+
+    <!-- Polices Google -->
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
+    <!-- chargement de leaflet -->
+
+    <link rel="stylesheet" href="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.css" />
+    <script src="https://npmcdn.com/leaflet@0.7.7/dist/leaflet.js"></script>
+
+
+    <link rel="stylesheet" href="/csscustom/style.css">
+
+    <!-- rajouter le css dans le custum -->
+
+    <!-- Add icon library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <title>Jäger</title>
+
+</head>
+
+<body onLoad="javascript:init();">
+    <!--NAVBAR-->
+    <!-- Navbar Grey with black text -->
+
+    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+        <a href="/">
+            <img class="img-fluid height-40" src="images/logo.png" alt="Logo Jäger">
+        </a>
+        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <img src="images/menu.png" alt="menu" class="img-fluid height-40">
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                <li class="nav-item ">
+                    <a class="nav-link" href="/">Accueil</a>
+                </li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#inscription" class="nav-link" href="#">Inscription</a>
+                    </li>
+                </li>
+                <li class="nav-item">
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#myModal" class="nav-link" href="#">Connexion</a>
+                    </li>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- The Modal Inscription -->
+    <div class="modal fade" id="inscription">
+        <div class="modal-dialog">
+            <div class="modal-content p-2">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h6 class="modal-title text-secondary">Inscrivez-vous</h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="#">
+                        <div class="form-group">
+                            <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-control pl-5 mail_icon" id="email" placeholder="Email">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="pwd" placeholder="Mot de passe">
+                        </div>
+                        <button type="submit" class="btn btn-dark btn-lg btn-block">Inscription</button>
+                    </form>
+                </div>
+
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex justify-content-center">
+                    <span>Vous êtes un professionnel?
+                        <a href="inscription.html?type=pro" class="text-info">Inscription</a>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The Modal -->
+    <div class="modal fade" id="myModal">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <!-- Modal Header -->
+                <div class="modal-header">
+                    <h4 class="modal-title">Connexion</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+
+                <!-- Modal body -->
+                <div class="modal-body">
+                    <form action="/action_page.php">
+                        <div class="form-group">
+                            <label for="email">Email address:</label>
+                            <input type="email" class="form-control" id="email">
+                        </div>
+                        <div class="form-group">
+                            <label for="pwd">Password:</label>
+                            <input type="password" class="form-control" id="pwd">
+                        </div>
+                        <div class="form-check">
+                            <label class="form-check-label mb-3">
+                                <input class="form-check-input" type="checkbox"> Remember me
+                            </label>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    {% block content %}{% endblock %}
+
+
+    <!--Footer-->
+    <footer class="col-12">
+        <!--Footer Links-->
+        <div class="container-fluid mb-4">
+            <div class="row mt-4 mb-5">
+                <!--Column-->
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <p>Best Happy Hours near you.</p>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
+                    </div>
+                    <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
+                        <a href="#">Me géolocaliser</a>
+                        <a href="#">Accueil</a>
+                        <a href="#">Qui sommes-nous?</a>
+                    </div>
+                </div>
+
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
+                    </div>
+                    <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
+                        <a href="#">Mon compte</a>
+                        <a href="inscription.html">Inscription</a>
+                        <a href="#">Aide</a>
+                    </div>
+                </div>
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start  pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Contact</h4>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <span>contact@jäger.com</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!--Social buttons-->
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <a class="btn-floating btn-sm btn-fb mx-1">
+                <i class="fa fa-facebook"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-tw mx-1">
+                <i class="fa fa-twitter"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-gplus mx-1">
+                <i class="fa fa-google"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-li mx-1">
+                <i class="fa fa-linkedin"> </i>
+            </a>
+        </div>
+
+        <!--/.Social buttons-->
+
+        <!-- Copyright-->
+        <div class="footer-copyright py-3 text-center">
+            © 2018 Copyright:
+            <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
+                <strong> jäger.com</strong>
+            </a>
+        </div>
+        <!--/.Copyright -->
+
+    </footer>
+    <!--/.Footer-->
+    
+    
+   
+    
+
+     <!-- JavaScript -->
+    <!-- Bootstrap -->
+
+   <!-- JavaScript -->
+    <!-- Bootstrap -->
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places&callback=initAutocomplete"
+        async defer></script>
+    <script src="/jspublic/map.js"></script>
+    <!-- Slick -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script type="text/javascript">
+        /* SLICK option*/
+        $(document).on('ready', function () {
+            $(".slick_gallery").slick({
+                dots: true,
+                arrows: false,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
+
+    <script src="/jspublic/myscript.js"></script>
+    <script type="text/javascript">
+        /* Chrono */
+        var deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
+        initializeClock('clockdiv', deadline);
+        initializeClock('clockdiv2', deadline);
+
+        /* Size annonce */
+        var description = document.getElementById('description');
+        var annonce = document.getElementById('annonce');
+        addsize(description, annonce);
+        window.onresize = function () {
+            addsize(description, annonce);
+        }
+    </script>
+</body>
+
+</html>
