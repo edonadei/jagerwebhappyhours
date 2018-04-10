@@ -1,3 +1,53 @@
+window.addEventListener('load',init);
+
+var deadline,description,annonce;
+
+function init() {
+    if (!document.getElementById('coords')){
+        return;
+      }
+
+      console.log("on test");
+
+      /* Chrono */
+    deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
+    initializeClock('clockdiv', deadline);
+    initializeClock('clockdiv2', deadline);
+
+    /* Size annonce */
+    description = document.getElementById('description');
+    annonce = document.getElementById('annonce');
+    addsize(description, annonce);
+    window.onresize = function () {
+        addsize(description, annonce);
+    }
+}
+
+
+
+/* SLICK option*/
+$(document).on('ready', function () {
+    $(".slick_gallery").slick({
+        dots: true,
+        arrows: false,
+        infinite: true,
+        slidesToShow: 2,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 4500,
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    });
+});
+
+
 /*  Horloge */
 function getTimeRemaining(endtime) {
     var t = Date.parse(endtime) - Date.parse(new Date());
@@ -147,3 +197,4 @@ function sectionInscription(value) {
         }
     }
 }
+

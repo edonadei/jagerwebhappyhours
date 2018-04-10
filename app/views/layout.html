@@ -8,6 +8,11 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+
+    <!-- Slick CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+   
     <!-- Polices Google -->
     <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
     <!-- chargement de leaflet -->
@@ -18,8 +23,11 @@
 
     <link rel="stylesheet" href="/csscustom/style.css">
 
-    <!-- rajouter le css dans le custum -->
+    <!-- Clockpicker 
 
+    <link rel="stylesheet" href="/jspublic/clockpicker/bootstrap-clockpicker.min.css">
+    <link rel="stylesheet" href="/jspublic/clockpicker/jquery-clockpicker.min.css">
+    -->
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -28,17 +36,17 @@
 
 </head>
 
-<body onLoad="javascript:init();">
+<body>
     <!--NAVBAR-->
     <!-- Navbar Grey with black text -->
 
     <nav class="navbar navbar-expand-sm bg-light navbar-light">
         <a href="/">
-            <img class="img-fluid height-40" src="images/logo.png" alt="Logo Jäger">
+            <img class="img-fluid height-40" src="/images/logo.png" alt="Logo Jäger">
         </a>
         <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
             aria-expanded="false" aria-label="Toggle navigation">
-            <img src="images/menu.png" alt="menu" class="img-fluid height-40">
+            <img src="/images/menu.png" alt="menu" class="img-fluid height-40">
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
             <ul class="navbar-nav mt-2 mt-lg-0">
@@ -220,52 +228,21 @@
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places&callback=initAutocomplete"
-        async defer></script>
-    <script src="/jspublic/map.js"></script>
-    <script src="/jspublic/myscript.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-    
-    <script type="text/javascript">
-        /* SLICK option*/
-        $(document).on('ready', function () {
-            $(".slick_gallery").slick({
-                dots: true,
-                arrows: false,
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4500,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
-                        }
-                    }
-                ]
-            });
-        });
-    </script>
 
-    <script type="text/javascript">
-        /* Chrono */
-        var deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
-        initializeClock('clockdiv', deadline);
-        initializeClock('clockdiv2', deadline);
+    <script src="/jspublic/map.js"></script>
+    <script src="/jspublic/leaflet.js"></script>
+    <script src="/jspublic/event.js"></script>
+    <script src="/jspublic/form.js"></script>
 
-        /* Size annonce */
-        var description = document.getElementById('description');
-        var annonce = document.getElementById('annonce');
-        addsize(description, annonce);
-        window.onresize = function () {
-            addsize(description, annonce);
-        }
-    </script>
+    <!-- Clock Picker
+    <script src="/jspublic/clockpicker/bootstrap-clockpicker.min.js"></script>
+    <script src="/jspublic/clockpicker/jquery-clockpicker.min.js"></script>
+    -->
 
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places"
+    async defer></script>
 </body>
 
 </html>

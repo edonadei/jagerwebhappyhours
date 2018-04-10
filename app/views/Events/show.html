@@ -23,7 +23,7 @@
     <div class="d-none d-lg-block container sticky-top col-4 pt-5 mr-lg-3 p-2 float-right">
         <div class="border p-3">
             <div class="col-12 border p-0 pb-3 border-top-0 border-right-0 border-left-0">
-                <span class="display-4">{{events.promonumber}}</span>
+                <span class="display-4">{{events.promonumber}} %</span>
             </div>
             <div class="col-12 p-0 pb-4 border border-top-0 border-right-0 border-left-0">
                 <h4 class="mt-3">Elle va bientôt s'enfuir: </h4>
@@ -50,7 +50,7 @@
         <div class="d-flex justify-content-between h-100">
             <div class="col-7 pr-5 p-0 d-flex flex-column justify-content-around">
                 <div>
-                    <span class="text_size_18">30 - 40%</span>
+                    <span class="text_size_18">{{events.promonumber}} %</span>
                 </div>
                 <div>
                     <h4 class="text_size_18 m-0">Elle va bientôt s'enfuir: </h4>
@@ -108,18 +108,12 @@
         </div>
         <!-- Main description -->
         <div class="container col-12 mb-3">
-            <p>{{events.description}}</p>
+            
         </div>
         <!-- Offers -->
         <div class="container col-12 mb-3">
             <h4>Pars à la chasse: </h4>
-            <p>
-                Aufgemerkt! Pantoffelheld und Dänenfilm grämen dufte Himmelfahrtskommando. Das gebeutelt Gamaschen. Das hanebüchen Kaiserwetter.
-                Gesinde und Fracksausen jauchzen geflissentlich Ganove. Das frivol Übeltäter foppen. Die Drückeberger bauchpinseln
-                das gemach Kittchen. Der garstig Ganove. Der stramm Pranger bohnern. Das blümerant Kaffeekränzchen lustwandeln.
-                Die frivol Stümper piesacken. Himmelfahrtskommando und Himmelfahrtskommando duellieren halsstarrig Sülze.
-                Der gebeutelt Schindluder lustwandeln. Lecko mio!
-            </p>
+            <p>{{events.description}}</p>
         </div>
         <!-- Localisation -->
         <div id="coords">{{events.coordinates}}</div>

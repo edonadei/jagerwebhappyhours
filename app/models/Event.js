@@ -3,6 +3,12 @@ var mongoose = require('mongoose');
 var eventSchema = new mongoose.Schema({
     name: String,
     hour: Number,
+    street_number: Number,
+    street_address: String,
+    city: String,
+    state: String,
+    zip_code: String,
+    country: String,
     date:String,
     description: String,
     picture: String,
