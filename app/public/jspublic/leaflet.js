@@ -1,7 +1,9 @@
 window.addEventListener('load',init);
+
 var map;
 var position;
 var distance;
+var magasin;
 
 function init() {
     if (!document.getElementById('coords')){
@@ -10,7 +12,7 @@ function init() {
 
     var coordinates = document.getElementById('coords').innerHTML;
     var coordinatesarray = coordinates.split(',');
-    var magasin = new L.LatLng(parseFloat(coordinatesarray[0]),parseFloat(coordinatesarray[1]));
+    magasin = new L.LatLng(parseFloat(coordinatesarray[0]),parseFloat(coordinatesarray[1]));
     map = new L.Map('map');
     L.tileLayer('https://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=cf25d3ea837f4645b79eb5559281ba3a', {
         attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
@@ -23,7 +25,7 @@ function init() {
 }
 
 function onLocationFound(e) {
-   var location = e.latlng;
+    var location = e.latlng;
    position = L.marker(location,{title: 'Votre position'}).addTo(map);
    var affichage_m = [magasin, location]; //permet d'afficher entre la position et le magasin 
    var bounds = new L.LatLngBounds(affichage_m);

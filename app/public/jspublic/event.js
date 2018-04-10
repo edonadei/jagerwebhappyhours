@@ -7,8 +7,6 @@ function init() {
         return;
       }
 
-      console.log("on test");
-
       /* Chrono */
     deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
     initializeClock('clockdiv', deadline);
