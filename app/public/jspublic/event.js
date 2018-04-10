@@ -3,9 +3,11 @@ window.addEventListener('load',init);
 var deadline,description,annonce;
 
 function init() {
-    if (!document.getElementById('id_step')){
+    if (!document.getElementById('coords')){
         return;
       }
+
+      console.log("on test");
 
       /* Chrono */
     deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);

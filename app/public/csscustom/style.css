@@ -176,6 +176,11 @@
     display:none;
 }
 
+#address
+{
+    display:none;
+}
+
 
 
 #locationField, #controls {

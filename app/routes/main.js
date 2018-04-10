@@ -5,19 +5,18 @@ var User = require('./../models/User');
 
 router.get('/', (req, res) => {
     Event.find({}).then(events => {
-        //console.log(events);
         res.render('Accueil/index.html', {events: events});
     });
 });
 
 router.get('/new', (req,res) => {
     var events = new Event();
-    res.render('Events/edit.html', {events: events});
+    res.render('Events/edit.html', {events: events, endpoint: '/'});
 });
 
 router.get('/edit/:id', (req,res) => {
     Event.findById(req.params.id).then(events => {
-        res.render('Events/edit.html', {events:events});
+        res.render('Events/edit.html', {events:events, endpoint: '/'});
     })
 
 })
@@ -41,13 +40,23 @@ router.post('id?', (req,res) => {
     }).then(events => {
         events.name = req.body.name;
         events.hour = req.body.hour;
-        events.date = req.body.number;
+        /*events.street_number = req.body.street_number;
+        events.street_adress = req.body.street_adress;
+        events.city = req.body.city;
+        events.state = req.body.state;
+        events.zip_code = req.body.zip_code;
+        events.country = req.body.country;
+        */
+        events.date = req.body.date;
         events.description = req.body.description;
-        if (req.file) events.picture = req.file.filename;
         events.promonumber = req.file.promonumber;
         events.coordinates = req.file.coordinates;
 
-        return pokemon.save();
+
+        if (req.file) events.picture = req.file.filename;
+
+
+        return events.save();
 
     }).then(() => {
         res.redirect('/');
