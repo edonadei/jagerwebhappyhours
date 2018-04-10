@@ -32,6 +32,16 @@ app.use('/annonce', require('./routes/browse'));
 
 app.use('/upload', express.static(__dirname + '/uploads'));
 
+// test pour Passport.js
+
+const userRoutes = require('./routes/user-routes');
+//set up routes
+app.use('/user',userRoutes);
+
+
+// fin test
+
+
 nunjucks.configure('views', {
     autoescape: true,
     express: app
