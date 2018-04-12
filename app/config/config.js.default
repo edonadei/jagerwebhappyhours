@@ -1,4 +1,4 @@
 // Var app.js
 module.exports = {
-IP_MONGO : 
+IP_MONGO : "52.47.91.76:27017"
 }
