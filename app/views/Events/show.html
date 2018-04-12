@@ -43,6 +43,10 @@
                     Marquage de la cible
                 </button>
             </div>
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+            <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
+            <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
+            </div>
         </div>
     </div>
     <!-- Fixed Bottom -->
@@ -128,6 +132,8 @@
                 <div class="col-sm-6"><div id="map" ></div>
                 <input type="button" class="btn btn-default" value="Me localiser" onClick="javascript:getLocationLeaflet();"></div>
             </div>
+
+
         </div>
     </div>
 </div>

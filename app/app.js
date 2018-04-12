@@ -6,7 +6,7 @@ var multer = require('multer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongodb = require('mongodb');
-mongoose.connect('mongodb://localhost/loginapp');
+//mongoose.connect('mongodb://localhost/loginapp');
 var db = mongoose.connection;
 
 var upload = multer({
@@ -33,7 +33,6 @@ app.use(express.static('public'));
 
 app.use('/', require('./routes/main'));
 //app.use('/boutiques', require('./routes/boutique')); // Pas sur d'avoir besoin encore
-app.use('/annonce', require('./routes/browse'));
 
 app.use('/upload', express.static(__dirname + '/uploads'));
 
