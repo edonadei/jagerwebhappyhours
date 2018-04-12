@@ -3,6 +3,11 @@ var mongoose = require('mongoose');
 var nunjucks = require('nunjucks');
 var bodyParser = require('body-parser');
 var multer = require('multer');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
+var mongodb = require('mongodb');
+mongoose.connect('mongodb://localhost/loginapp');
+var db = mongoose.connection;
 
 var upload = multer({
     dest: __dirname + '/uploads'
@@ -31,16 +36,6 @@ app.use('/', require('./routes/main'));
 app.use('/annonce', require('./routes/browse'));
 
 app.use('/upload', express.static(__dirname + '/uploads'));
-
-// test pour Passport.js
-
-const userRoutes = require('./routes/user-routes');
-//set up routes
-app.use('/user',userRoutes);
-
-
-// fin test
-
 
 nunjucks.configure('views', {
     autoescape: true,
