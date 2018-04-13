@@ -21,11 +21,11 @@ function init() {
     map.attributionControl.setPrefix(''); 
     map.setView(new L.LatLng(parseFloat(coordinatesarray[0]),parseFloat(coordinatesarray[1])), 15);
     magasin_m = L.marker(magasin).addTo(map);
-    magasin_m.bindPopup('<a href="https://www.google.fr">Decouvrir la page du magasin !</a>');
+   // magasin_m.bindPopup('<a href="javascript:void(0);" onclick="onLocationRouting()">Premier lien </a>');
 }
 
 function onLocationFound(e) {
-    var location = e.latlng;
+   var location = e.latlng;
    position = L.marker(location,{title: 'Votre position'}).addTo(map);
    var affichage_m = [magasin, location]; //permet d'afficher entre la position et le magasin 
    var bounds = new L.LatLngBounds(affichage_m);
@@ -39,7 +39,20 @@ function onLocationFound(e) {
    {
       alert("Ce magasin n'est pas fait pour vous !");
    }
+
+   L.Routing.control({
+    waypoints: [
+      L.latLng(magasin),
+      L.latLng(location)
+    ],
+    language : 'fr'
+  }).addTo(map);
+
 }
+
+
+
+
 
 function onLocationError(e) {
    alert(e.message);
@@ -52,7 +65,6 @@ function getLocationLeaflet() {
 
    map.locate({setView: true, maxZoom: 16});
 }
-
 
 
 /*
