@@ -83,18 +83,18 @@
 
                 <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="#">
+                    <form method="post" action="/">
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
+                            <input type="text" class="form-control pl-5 nom_icon" id="username" name="username" placeholder="Identifiant">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                            <input type="email" class="form-control pl-5 mail_icon" id="email" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control pl-5 mail_icon" id="email" placeholder="Email">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="password" name="password" placeholder="Mot de passe">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control pl-5 mdp_icon" id="pwd" placeholder="Mot de passe">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="password2" name="password2" placeholder="Vérification du mot de passe">
                         </div>
                         <button type="submit" class="btn btn-dark btn-lg btn-block">Inscription</button>
                     </form>

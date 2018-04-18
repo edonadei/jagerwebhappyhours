@@ -21,6 +21,49 @@ router.get('/edit/:id', (req,res) => {
 
 })
 
+// Permet de s'enregistrer
+router.post('/', function(req, res){
+
+	var name = req.body.name;
+	var email = req.body.email;
+	var username = req.body.username;
+	var password = req.body.password;
+	var password2 = req.body.password2;
+
+	// Validation
+	req.checkBody('username', "L'identifiant est requis").notEmpty();
+	req.checkBody('email', "L'email est requis").notEmpty();
+	req.checkBody('email', "L'email n'est pas valide").isEmail();
+	req.checkBody('password', 'Password is required').notEmpty();
+	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+
+	var errors = req.validationErrors();
+
+    if(errors){
+		res.render('Accueil/index.html',{
+			errors:errors
+		});
+	} else {
+
+       var newUser = new User({
+        name: name,
+        email:email,
+        username: username,
+        password: password
+    });
+
+    User.createUser(newUser, function(err, user){
+        if(err) throw err;
+    });
+
+    req.flash('success_msg', 'You are registered and can now login');
+
+    res.redirect('/');
+}
+    
+});
+
+
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id).then(events => {
             res.render('Events/show.html', {events: events});
