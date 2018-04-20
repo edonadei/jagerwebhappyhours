@@ -34,17 +34,19 @@ router.post('/', function(req, res){
 	req.checkBody('username', "L'identifiant est requis").notEmpty();
 	req.checkBody('email', "L'email est requis").notEmpty();
 	req.checkBody('email', "L'email n'est pas valide").isEmail();
-	req.checkBody('password', 'Password is required').notEmpty();
-	req.checkBody('password2', 'Passwords do not match').equals(req.body.password);
+	req.checkBody('password', 'Le mot de passe est requis').notEmpty();
+	req.checkBody('password2', 'Les mots de passe ne correspondent pas').equals(req.body.password);
 
 	var errors = req.validationErrors();
 
     if(errors){
-		res.render('Accueil/index.html',{
-			errors:errors
-		});
-	} else {
 
+        Event.find({}).then(events => {
+            res.render('Accueil/index.html', {events: events, errors:errors});
+        });
+
+	} else {
+        
        var newUser = new User({
         name: name,
         email:email,
@@ -56,9 +58,9 @@ router.post('/', function(req, res){
         if(err) throw err;
     });
 
-    req.flash('success_msg', 'You are registered and can now login');
-
+    req.flash('success_msg', 'Vous êtes enregistré sur Jagër ! Connectez vous !');
     res.redirect('/');
+    
 }
     
 });
