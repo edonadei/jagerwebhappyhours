@@ -38,6 +38,7 @@
                     </div>
                 </div>
             </div>
+            {% if user %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
                 <button type="button" class="btn btn-danger btn-lg w-100">
                     Marquage de la cible
@@ -47,6 +48,13 @@
             <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
             <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
             </div>
+            {% else %}
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+                <button type="button" class="btn btn-dark btn-lg w-100">
+                    Pour profiter de l'offre, veuillez vous authentifier
+                </button>
+            </div>
+            {% endif %}
         </div>
     </div>
     <!-- Fixed Bottom -->

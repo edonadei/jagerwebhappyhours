@@ -1,7 +1,9 @@
+var express = require('express');
 var router = require('express').Router();
-
 var Event = require('./../models/Event');
 var User = require('./../models/User');
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
 router.get('/', (req, res) => {
     Event.find({}).then(events => {
@@ -65,6 +67,49 @@ router.post('/', function(req, res){
     
 });
 
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+},
+    function(email, password, done) {
+     User.getUserByEmail(email, function(err, user){
+         if(err) throw err;
+         if(!email){
+             return done(null, false, {message: 'Utilisateur inconnu'});
+         }
+  
+         User.comparePassword(password, user.password, function(err, isMatch){
+             if(err) throw err;
+             if(isMatch){
+                 return done(null, user);
+             } else {
+                 return done(null, false, {message: 'Mot de passe invalide'});
+             }
+         });
+     });
+    }));
+  
+  passport.serializeUser(function(user, done) {
+    done(null, user.id);
+  });
+
+  passport.deserializeUser(function(id,done){
+      User.getUserById(id, function(err,user){
+          done(err,user);
+      });
+  });
+  
+  router.post('/login',
+  passport.authenticate('local', {successRedirect:'/', failureRedirect:'/',failureFlash: true}),
+  function(req, res) {
+    res.redirect('/');
+  });
+
+router.get('/logout', function(req, res){
+	req.logout();
+	req.flash('success_msg', 'Vous êtes déconnecté');
+	res.redirect('/');
+});
 
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id).then(events => {
@@ -110,5 +155,15 @@ router.post('/:id?', (req,res) => {
         res.redirect('/');
     },err => console.log(err));
 });
+
+function ensureAuthenticated(req,res,next){
+    if(req.isAuthenticated()){
+        return next();
+    } else {
+        req.flash('error_msg',"Vous n'êtes pas connecté");
+        res.redirect('/');
+    }
+}
+
 
 module.exports = router;
