@@ -29,8 +29,43 @@
                 <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
                 </span>
-
             </div>
+
+
+            <table id="address">
+            <tr>
+                <td class="label">Street address</td>
+                <td class="slimField"><input class="field" name="street_number" id="street_number"
+                    disabled="true"></input></td>
+                <td class="wideField" colspan="2"><input class="field" id="route" name="route"
+                    disabled="true"></input></td>
+            </tr>
+            <tr>
+                <td class="label">City</td>
+                <!-- Note: Selection of address components in this example is typical.
+                    You may need to adjust it for the locations relevant to your app. See
+                    https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
+                -->
+                <td class="wideField" colspan="3"><input class="field" id="locality" name="locality"
+                    disabled="true"></input></td>
+            </tr>
+            <tr>
+                <td class="label">State</td>
+                <td class="slimField"><input class="field"
+                    id="administrative_area_level_1" name="administrative_area_level_1" disabled="true"></input></td>
+                <td class="label">Zip code</td>
+                <td class="wideField"><input class="field" id="postal_code" name="postal_code"
+                    disabled="true"></input></td>
+            </tr>
+            <tr>
+                <td class="label">Country</td>
+                <td class="wideField" colspan="3"><input class="field"
+                    id="country" name="country" disabled="true"></input></td>
+            </tr>
+            </table>
+            <!-- Replace the value of the key parameter with your own API key. -->
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&libraries=places&callback=initAutocomplete"
+                    async defer></script>
 
             <div class="form-group">
                 <label for="description">Description</label>
@@ -45,34 +80,5 @@
         </form>
         
 </div>
-
-
-<table id="address">
-  <tr>
-    <td class="label">Street address</td>
-    <td class="slimField"><input class="field" id="street_number" name = "street_number"
-          disabled="true" value="{{events.street_number}}"></input></td>
-    <td class="wideField" colspan="2"><input class="field" id="street_adress" name = "street_adress"
-          disabled="true" value="{{events.street_adress}}"></input></td>
-  </tr>
-  <tr>
-    <td class="label">City</td>
-    <td class="wideField" colspan="3"><input class="field" id="city" name = "city"
-          disabled="true" value="{{events.city}}"></input></td>
-  </tr>
-  <tr>
-    <td class="label">State</td>
-    <td class="slimField"><input class="field"
-          id="state" name = "state" disabled="true" value="{{events.state}}"></input></td>
-    <td class="label">Zip code</td>
-    <td class="wideField"><input class="field" id="zip_code" name = "zip_code"
-          disabled="true" value="{{events.zip_code}}"></input></td>
-  </tr>
-  <tr>
-    <td class="label">Country</td>
-    <td class="wideField" colspan="3"><input class="field"
-          id="country" name = "country" disabled="true" value="{{events.country}}"></input></td>
-  </tr>
-</table>
 
 {% endblock %}
