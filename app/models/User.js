@@ -11,7 +11,13 @@ var userSchema = new mongoose.Schema({
     shop: Boolean,
     password: String,
     picture: String,
-    lastcoordinates: String,
+	lastcoordinates: String,
+	facebook :{
+		id : String,
+		token : String,
+		email : String,
+		name : String
+	}
     // Préférences à rajouter
 });
 User = mongoose.model('User', userSchema);

@@ -6,7 +6,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require ('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-
+var Facebook_Auth = require('./../models/Facebook_Auth');
 
 
 router.get('/', (req, res) => {
@@ -174,14 +174,11 @@ function ensureAuthenticated(req,res,next){
 }
 
 // Login with Facebook
-
-var FACEBOOK_APP_ID = '2001276410122261',
-    FACEBOOK_APP_SECRET = '7082b98f4dfd68555e97ebe5';
     
 passport.use(new FacebookStrategy({
-    clientID: FACEBOOK_APP_ID,
-    clientSecret: FACEBOOK_APP_SECRET,
-    callbackURL: "http://localhost:8080/auth/facebook/callback"
+    clientID :'2001276410122261',
+	clientSecret :'7082b98f4dfd68555e97ebe5',
+	callbackURL: 'http://localhost:8080/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     User.findOrCreate(/*name,email,username,password*/ function(err, user) {
@@ -193,7 +190,7 @@ passport.use(new FacebookStrategy({
 ));
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',  failureRedirect: '/login' 
+  passport.authenticate('facebook', { successRedirect: '/login',  failureRedirect: '/' 
 }));
 
 // login with Google +
