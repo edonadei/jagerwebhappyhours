@@ -6,8 +6,6 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require ('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
-// Attention ligne qui ne sert à rien micka
-// var Facebook_Auth = require('./../models/Facebook_Auth');
 
 
 router.get('/', (req, res) => {
@@ -179,15 +177,32 @@ function ensureAuthenticated(req,res,next){
 passport.use(new FacebookStrategy({
     clientID :'2001276410122261',
 	clientSecret :'7082b98f4dfd68555e97ebe5',
-	callbackURL: 'http://localhost:8080/auth/facebook/callback'
+	callbackURL: 'https://jagerhours.fr/'
   },
   function(accessToken, refreshToken, profile, done) {
-    User.findOrCreate(/*name,email,username,password*/ function(err, user) {
-      if (err) { return done(err); }
-      done(null, user);
-    });
-  }
+    process.nextTick(function(){
+        User.findOne({'facebook.id': profile.id}, function(err, user){
+            if(err)
+                return done(err);
+            if(user)
+                return done(null, user);
+            else {
+                var newUser = new User();
+                newUser.facebook.id = profile.id;
+                newUser.facebook.token = accessToken;
+                newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+                newUser.facebook.email = profile.emails[0].value;
 
+                newUser.save(function(err){
+                    if(err)
+                        throw err;
+                    return done(null, newUser);
+                })
+                console.log(profile);
+            }
+        });
+    });
+}
 ));
 router.get('/auth/facebook', passport.authenticate('facebook'));
 router.get('/auth/facebook/callback',
