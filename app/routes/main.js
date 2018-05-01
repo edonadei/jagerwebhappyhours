@@ -137,7 +137,7 @@ router.post('/:id?', (req,res) => {
         events.hour = req.body.hour;
         
         events.street_number = req.body.street_number;
-        events.street_adress = req.body.route;
+        events.route = req.body.route;
         events.city = req.body.locality;
         events.state = req.body.administrative_area_level_1;
         events.zip_code = req.body.postal_code;

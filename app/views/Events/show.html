@@ -92,7 +92,7 @@
         <div class="container col-12">
             <h1>{{events.name}}</h1>
             <div>
-                <strong class="font-weight-normal">Villejuif</strong>
+                <strong class="font-weight-normal">{{events.city}}</strong>
             </div>
         </div>
         <!-- Little information -->
@@ -133,7 +133,7 @@
             <h4 class="mb-4">Localisation</h4>
             <div class="col-12 p-0">
                 <img src="images/ic_place_black_24dp.png" alt="place">
-                <span>17-19 Boulevard Paul Vaillant Couturier, 94800 Villejuif, France</span>
+                <span>{{events.street_number}} {{events.route}}, {{events.zip_code}} {{events.city}}</span>
             </div>
             <div class="col-12 p-0">
                 <div class="col-sm-3"></div>
