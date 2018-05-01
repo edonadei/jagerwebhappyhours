@@ -28,7 +28,7 @@ router.get('/edit/:id', (req,res) => {
 })
 
 // Permet de s'enregistrer
-router.post('/', function(req, res){
+router.post('/register', function(req, res){
 
 	var name = req.body.name;
 	var email = req.body.email;
@@ -142,11 +142,13 @@ router.post('/:id?', (req,res) => {
         events.hour = req.body.hour;
         
         events.street_number = req.body.street_number;
-        events.street_adress = req.body.street_adress;
-        events.city = req.body.city;
-        events.state = req.body.state;
-        events.zip_code = req.body.zip_code;
+        events.route = req.body.route;
+        events.city = req.body.locality;
+        events.state = req.body.administrative_area_level_1;
+        events.zip_code = req.body.postal_code;
         events.country = req.body.country;
+
+        console.log(req.body);
         
        events.date = req.body.date;
        events.description = req.body.description;
@@ -160,6 +162,7 @@ router.post('/:id?', (req,res) => {
         res.redirect('/');
     },err => console.log(err));
 });
+
 
 function ensureAuthenticated(req,res,next){
     if(req.isAuthenticated()){

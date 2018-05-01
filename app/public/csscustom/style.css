@@ -178,10 +178,8 @@
 
 #address
 {
-    display:none;
+  display:none;
 }
-
-
 
 #locationField, #controls {
         position: relative;

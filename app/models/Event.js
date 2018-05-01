@@ -4,7 +4,7 @@ var eventSchema = new mongoose.Schema({
     name: String,
     hour: String,
     street_number: Number,
-    street_address: String,
+    route: String,
     city: String,
     state: String,
     zip_code: String,
