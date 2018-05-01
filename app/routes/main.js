@@ -214,6 +214,4 @@ router.get('/auth/facebook/callback',
 var GOOGLE_CLIENT_ID= "858473261540-s4iu68nnk2qe6adtstuter5d8v8vnme7.apps.googleusercontent.com",
     GOOGLE_CLIENT_SECRET = "6XUM3bfSXDILlaMlXBz66JH_";
 
-
-
 module.exports = router;

@@ -92,8 +92,8 @@ nunjucks.configure('views', {
     express: app
 });
 
-// Login with Facebook
-
-
 console.log('Jäger lancé sur le port 8080!')
 app.listen(8080);
+
+//console.log('Jäger lancé sur le port '+config.PORT_TO_USE+'!');
+//app.listen(config.PORT_TO_USE);
