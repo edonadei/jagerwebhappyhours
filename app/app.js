@@ -12,6 +12,7 @@ var multer = require('multer');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongodb = require('mongodb');
+var FacebookStrategy = require ('passport-facebook');
 
 var upload = multer({
     dest: __dirname + '/uploads'
@@ -90,6 +91,9 @@ nunjucks.configure('views', {
     autoescape: true,
     express: app
 });
+
+// Login with Facebook
+
 
 console.log('Jäger lancé sur le port 8080!')
 app.listen(8080);
