@@ -4,6 +4,9 @@ var Event = require('./../models/Event');
 var User = require('./../models/User');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var FacebookStrategy = require ('passport-facebook').Strategy;
+var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
+
 
 router.get('/', (req, res) => {
     Event.find({}).then(events => {
@@ -63,9 +66,10 @@ router.post('/register', function(req, res){
     req.flash('success_msg', 'Vous êtes enregistré sur Jagër ! Connectez vous !');
     res.redirect('/');
     
-}
-    
+}  
 });
+
+// local login
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -81,7 +85,7 @@ passport.use(new LocalStrategy({
          User.comparePassword(password, user.password, function(err, isMatch){
              if(err) throw err;
              if(isMatch){
-                 return done(null, user);
+                 return done(null, user); // Log si tout est ok
              } else {
                  return done(null, false, {message: 'Mot de passe invalide'});
              }
@@ -167,6 +171,49 @@ function ensureAuthenticated(req,res,next){
         res.redirect('/');
     }
 }
+
+// Login with Facebook
+    
+passport.use(new FacebookStrategy({
+    clientID :'2001276410122261',
+	clientSecret :'7082b98f4dfd68555e97ebe5',
+	callbackURL: 'https://jagerhours.fr/'
+  },
+  function(accessToken, refreshToken, profile, done) {
+    process.nextTick(function(){
+        User.findOne({'facebook.id': profile.id}, function(err, user){
+            if(err)
+                return done(err);
+            if(user)
+                return done(null, user);
+            else {
+                var newUser = new User();
+                newUser.facebook.id = profile.id;
+                newUser.facebook.token = accessToken;
+                newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+                newUser.facebook.email = profile.emails[0].value;
+
+                newUser.save(function(err){
+                    if(err)
+                        throw err;
+                    return done(null, newUser);
+                })
+                console.log(profile);
+            }
+        });
+    });
+}
+));
+router.get('/auth/facebook', passport.authenticate('facebook'));
+router.get('/auth/facebook/callback',
+  passport.authenticate('facebook', { successRedirect: '/login',  failureRedirect: '/' 
+}));
+
+// login with Google +
+
+var GOOGLE_CLIENT_ID= "858473261540-s4iu68nnk2qe6adtstuter5d8v8vnme7.apps.googleusercontent.com",
+    GOOGLE_CLIENT_SECRET = "6XUM3bfSXDILlaMlXBz66JH_";
+
 
 
 module.exports = router;
