@@ -1,15 +1,75 @@
+/** Back ground **/
 .background-index{
     background-image: url("../images/ok.jpg");
     background-size: cover;
     height: 420px;
 }
 
+.discover-bg{
+    background-image: url("../images/discover-bg.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.white-bg{
+    background-color: white;
+}
+.endl-card{
+    margin-top: 20px;
+}
+
+.endl-connexion{
+    margin-bottom: 0px;
+}
+
+/** Fonts **/
+
+.fonts_20{
+    font-size: 20px;
+}
+
+.fonts-24{
+    font-size: 24px;
+}
+
+/** Height **/
+.height-24{
+    height: 24px;
+}
+
+.height-30{
+    height: 30px;
+}
 .height-40{
     height: 40px;
 }
 
+.mt-50{
+    margin-top: 50px;
+}
+
+.height-50{
+    height: 50px;
+}
+
+.height-70{
+    height: 70px;
+}
+
 .height-150{
     height: 150px;
+}
+
+.height-175{
+    height: 175px;
+}
+
+.height-200{
+    height: 200px;
+}
+
+.height-300{
+    height: 300px;
 }
 
 .height-400{
@@ -37,6 +97,17 @@
 
 .height-2000{
     height: 2000px;
+}
+
+.bg-white{
+    background-color: white;
+}
+
+.text_decoration_none:hover{
+    text-decoration: none;
+}
+.text_decoration_none{
+    text-decoration: none;
 }
 /*** ICON ***/
 /**** FORM ICON ***/
@@ -178,7 +249,7 @@
 
 #address
 {
-  display:none;
+    display:none;
 }
 
 #locationField, #controls {
@@ -219,3 +290,32 @@
         height: 30px;
         margin-bottom: 2px;
       }
+
+/** FEED **/
+
+.announce_feed{
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  }
+  
+  .announce_feed:hover {
+    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+/** MODAL **/
+
+.modal-full {
+    min-width: 100%;
+    margin: 0;
+}
+
+.modal-full .modal-content-full {
+    min-height: 100vh;
+}
+
+/** Image Responsive **/
+.img-responsive{
+    display: block;
+    overflow: hidden;
+    height: 0;
+    padding-bottom: 56.25%;
+}

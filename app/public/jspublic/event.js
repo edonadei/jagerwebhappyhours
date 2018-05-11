@@ -1,9 +1,10 @@
+
 window.addEventListener('load',init);
 
 var deadline,description,annonce;
 
 function init() {
-    if (!document.getElementById('coords')){
+    if (!document.getElementById('clockdiv2')){
         return;
       }
 
@@ -19,31 +20,32 @@ function init() {
     window.onresize = function () {
         addsize(description, annonce);
     }
+
+    /* SLICK option*/
+    $(document).on('ready', function () {
+        $(".slick_gallery").slick({
+            dots: true,
+            arrows: false,
+            infinite: true,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 4500,
+            responsive: [
+                {
+                    breakpoint: 768,
+                    settings: {
+                        slidesToShow: 1,
+                        slidesToScroll: 1
+                    }
+                }
+            ]
+        });
+    });
+
 }
 
 
-
-/* SLICK option*/
-$(document).on('ready', function () {
-    $(".slick_gallery").slick({
-        dots: true,
-        arrows: false,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 4500,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-});
 
 
 /*  Horloge */
@@ -196,3 +198,110 @@ function sectionInscription(value) {
     }
 }
 
+/**Les Filtres du feed */
+
+function nothing_filter(all_filter,check){ //Filtre : block sélectionner
+    var element = document.getElementById(all_filter);
+    if(check){ //True apparait
+        displayBlock(element);
+    }
+    else{ //Sinon dispparait 
+        displayNone(element);
+    }
+    
+}
+
+//Décocher toutes les checkbox sélectionné
+function unckeck_all_checkbox(select_filter){
+    var select_filtre = document.querySelectorAll('#' + select_filter + ' input');
+    for(var i = 0; i < select_filtre.length; i++){
+            select_filtre[i].checked = false;
+    }
+}
+
+//Supprimer tous les filtres
+/*
+    list_filter = les filtres actifs
+    select_filter = la liste des filtre proposé
+    all_filter = ma sélection, div qui contient les filtres
+
+*/
+function delete_all_filter(list_filter, select_filter, all_filter) {
+    var element = document.querySelectorAll('#' + list_filter + ' div'); //List des filtes actifs
+    
+    for(var i = 0; i < element.length; i++){
+        element[i].parentNode.removeChild(element[i]);
+    }
+    
+    nothing_filter(all_filter, false);
+    unckeck_all_checkbox(select_filter);
+    
+}
+
+//Supprimer un filtre
+function delete_filter(filtre) {
+    var parent = filtre.parentNode;
+
+    parent.parentNode.removeChild(parent);
+}
+
+//Déchoche une checkbox
+function unckeck_checkbox(filtre, select_filter){
+    var select_filtre = document.querySelectorAll('#' + select_filter + ' input');
+    for(var i = 0; i < select_filtre.length; i++){
+        if(select_filtre[i].value == filtre.id){
+            select_filtre[i].checked = false;
+        }
+    }
+}
+
+//On regarde s'il y a des filtres actifs
+function check_if_filter(all_filter){
+    if (document.querySelector('#' + all_filter + ' .close') == null) {
+        nothing_filter(all_filter,false);
+    }
+}
+
+//Fonction globale qui permet de supprimer un filtre 
+function delete_filter_check(filtre, select_filter, all_filtre) {
+    var parent = filtre.parentNode.parentNode;
+    var length = parent.childNodes.length;
+    unckeck_checkbox(filtre, select_filter);
+    delete_filter(filtre);
+    check_if_filter(all_filtre);
+}
+
+//Création du filtre en HTML
+function creat_filter(element, select_filter, all_filter){
+    var mainDiv = document.createElement('div');
+        var button = document.createElement('button');
+        var span = document.createElement('span');
+        var spanText = document.createTextNode(element.nextSibling.nextSibling.innerHTML);
+        var buttonText = document.createTextNode('\u00D7');
+        
+        mainDiv.setAttribute('class','mb-1 pl-3 pr-3 p-0');
+        button.setAttribute('id',element.value);
+        button.setAttribute('onclick',"delete_filter_check(this,'"+ select_filter +"','"+ all_filter+"')");
+        button.type ="button";
+        button.setAttribute('class','close');
+
+        button.appendChild(buttonText);
+        span.appendChild(spanText);
+
+        mainDiv.appendChild(button);
+        mainDiv.appendChild(span);
+
+        document.getElementById(all_filter).appendChild(mainDiv);
+}
+
+//Ajout d'un filtre
+function add_filter(element, select_filter, all_filter) {
+    if (element.checked) {
+        nothing_filter(all_filter ,true);
+        creat_filter(element, select_filter, all_filter);  
+    }
+    else {
+        var filtre_uncheck = document.getElementById(element.value);
+        delete_filter_check(filtre_uncheck, select_filter, all_filter);  
+    }
+}
