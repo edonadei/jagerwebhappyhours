@@ -9,6 +9,14 @@ var userSchema = new mongoose.Schema({
     password: String,
     picture: String,
 	lastcoordinates: String,
+	
+	// Possède un certain nombre d'event associés
+	events: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Event'
+        }
+    ],
 	facebook :{
 		id : String,
 		token : String,

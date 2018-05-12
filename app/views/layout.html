@@ -84,7 +84,7 @@
 
                     <form method="post" action="/register">
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="username" name="username" placeholder="Identifiant">
+                            <input type="text" class="form-control pl-5 nom_icon" id="name" name="name" placeholder="Identifiant">
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control pl-5 mail_icon" id="email" name="email" placeholder="Email">
@@ -180,7 +180,7 @@
     <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Bonjour {{user.name}},</strong> vous avez
-        <a href="#" class="alert-link"> 1 bon plan en cours</a>.
+        <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>.
     </div>
     {% endif %}
 
@@ -289,6 +289,9 @@
         <script src="/jspublic/map.js"></script>
         <script src="/jspublic/leaflet.js"></script>
         <script src="/jspublic/event.js"></script>
+
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places"
+            async defer></script>
 </body>
 
 </html>

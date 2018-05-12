@@ -14,6 +14,14 @@ var eventSchema = new mongoose.Schema({
     picture: String,
     promonumber: Number,
     coordinates: String,
+    number_avalaible: Number,
+});
+
+// Relation many to many
+eventSchema.virtual('user', {
+    ref: 'User',
+    localField: '_id',
+    foreignField: 'users'
 });
 
 var Event = mongoose.model('Event', eventSchema);
