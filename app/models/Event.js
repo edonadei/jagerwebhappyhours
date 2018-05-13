@@ -15,6 +15,12 @@ var eventSchema = new mongoose.Schema({
     promonumber: Number,
     coordinates: String,
     number_avalaible: Number,
+    types: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Type'
+        }
+    ]
 });
 
 // Relation many to many

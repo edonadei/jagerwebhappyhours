@@ -29,6 +29,7 @@
 
             <div class="form-group">
                 <label for="hour">Heure</label>
+                <input class="border border-top-0 border-right-0 border-bottom-0 rounded-0" id="timepicker" placeholder="Heure" name="hour" value="{{events.hour}}">
                 <input type="text" class="form-control" value="09:30" class="hour" name="hour" value="{{events.hour}}">
                 <span class="input-group-addon">
                 <span class="glyphicon glyphicon-time"></span>
@@ -78,6 +79,14 @@
             <div class="form-group">
                 <label for="file">Image</label>
                 <input type="file" id="file" name="file">
+            </div>
+            <div class="form-group">
+                {% for type in types %}
+                    <label>
+                        <input type="checkbox" name="types[]" value="{{type._id}}" {% if events.types.indexOf(type._id) != -1 %}checked{% endif %}>
+                        {{type.name}}
+                    </label>
+                {% endfor %}
             </div>
 
             <input type="submit" class="btn btn-primary" value="Enregistrer"/>

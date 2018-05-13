@@ -2,6 +2,7 @@ var express = require('express');
 var router = require('express').Router();
 var Event = require('./../models/Event');
 var User = require('./../models/User');
+var Type = require('./../models/Type');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require ('passport-facebook').Strategy;
@@ -19,11 +20,12 @@ router.get('/new', (req,res) => {
 });
 
 router.get('/edit/:id', (req,res) => {
-    Event.findById(req.params.id).then(events => {
-        res.render('Events/edit.html', {events:events, endpoint: '/' + events._id.toString()});
-    })
-
-})
+    Type.find({}).then(types => {
+        Event.findById(req.params.id).then(events => {
+            res.render('Events/edit.html', {events:events, types:types, endpoint: '/' + events._id.toString()});
+        });
+    });
+});
 
 // Permet de s'enregistrer
 router.post('/register', function(req, res){
@@ -165,6 +167,7 @@ router.post('/:id?', (req,res) => {
         events.description = req.body.description;
         events.promonumber = req.body.promonumber;
         events.number_avalaible = req.body.number_avalaible;
+        events.types = req.body.types;
         //events.coordinates = req.file.coordinates;
         if (req.file) events.picture = req.file.filename;
 
