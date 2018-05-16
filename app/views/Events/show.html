@@ -1,21 +1,18 @@
-{% extends "layout.html" %}
+{% extends "layout.html" %} {% block content %}
 
-{% block content %}
-    
-    <!-- Gallery SLick-->
-<section class="slick_gallery height-400 p-0">
-    <div class="height-400">
+<!-- Gallery SLick-->
+<section class="slick_gallery size_slider p-0">
+    <div>
         <img src="images/bg.jpg" class="img_slider" alt="">
     </div>
 
-    <div class="height-400">
+    <div>
         <img src="images/bg3.jpg" class="img_slider" alt="">
     </div>
 
-    <div class="height-400">
+    <div>
         <img src="images/bg2.JPG" class="img_slider" alt="">
     </div>
-
 </section>
 <!-- Annonce -->
 <div class="container-fluid col-12" id="annonce">
@@ -45,13 +42,13 @@
                 </a>
             </div>
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-            <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
-            <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
+                <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
+                <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
             </div>
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-dark btn-lg w-100">
-                    Pour profiter de l'offre, veuillez vous authentifier
+                <button type="button"  class="btn btn-dark btn-lg height-100 w-100">
+                    Pour profiter de l'offre<br> Veuillez vous authentifier
                 </button>
             </div>
             {% endif %}
@@ -120,7 +117,7 @@
         </div>
         <!-- Main description -->
         <div class="container col-12 mb-3">
-            
+
         </div>
         <!-- Offers -->
         <div class="container col-12 mb-3">
@@ -137,8 +134,10 @@
             </div>
             <div class="col-12 p-0">
                 <div class="col-sm-3"></div>
-                <div class="col-sm-6"><div id="map" ></div>
-                <input type="button" class="btn btn-default" value="Me localiser" onClick="javascript:getLocationLeaflet();"></div>
+                <div class="col-sm-6">
+                    <div id="map"></div>
+                    <input type="button" class="btn btn-default" value="Me localiser" onClick="javascript:getLocationLeaflet();">
+                </div>
             </div>
 
 
