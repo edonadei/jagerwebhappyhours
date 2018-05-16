@@ -92,10 +92,30 @@
     height: 400px;
 }
 
-.img_slider{
-    height: 400px;
-    width: 100%;
-    object-fit: cover;
+/** Media Queries **/
+@media all and (min-width: 1024px){
+
+    .img_slider{
+        height: 350px;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .size_slider{
+     height: 350px;
+    }
+}
+@media all and (max-width: 1024px){
+
+    .img_slider{
+        height: 250px;
+        width: 100%;
+        object-fit: cover;
+    }
+    
+    .size_slider{
+     height: 250px;
+    }
 }
 
 .overflow_hidden{
