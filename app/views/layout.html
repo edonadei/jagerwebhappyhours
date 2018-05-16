@@ -18,6 +18,10 @@
 
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <!-- Slick CSS -->
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -290,32 +294,34 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
         <script type="text/javascript">
-        /* SLICK option*/
-        $(document).on('ready', function () {
-            $(".slick_gallery").slick({
-                dots: true,
-                arrows: false,
-                infinite: true,
-                slidesToShow: 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4500,
-                responsive: [
-                    {
-                        breakpoint: 768,
-                        settings: {
-                            slidesToShow: 1,
-                            slidesToScroll: 1
+            /* SLICK option*/
+            $(document).on('ready', function () {
+                $(".slick_gallery").slick({
+                    dots: true,
+                    arrows: false,
+                    infinite: true,
+                    slidesToShow: 2,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 4500,
+                    responsive: [
+                        {
+                            breakpoint: 768,
+                            settings: {
+                                slidesToShow: 1,
+                                slidesToScroll: 1
+                            }
                         }
-                    }
-                ]
+                    ]
+                });
             });
-        });
-    </script>
-        
+        </script>
+        <script src="/jspublic/map.js"></script>
+        <script src="/jspublic/leaflet.js"></script>
         <script src="/jspublic/event.js"></script>
 
-            
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places"
+            async defer></script>
 </body>
 
 </html>

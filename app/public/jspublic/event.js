@@ -21,28 +21,6 @@ function init() {
         addsize(description, annonce);
     }
 
-    /* SLICK option*/
-$(document).on('ready', function () {
-    $(".slick_gallery").slick({
-        dots: true,
-        arrows: false,
-        infinite: true,
-        slidesToShow: 2,
-        slidesToScroll: 1,
-        autoplay: true,
-        autoplaySpeed: 4500,
-        responsive: [
-            {
-                breakpoint: 768,
-                settings: {
-                    slidesToShow: 1,
-                    slidesToScroll: 1
-                }
-            }
-        ]
-    });
-});
-
 }
 
 /* SLICK option*/

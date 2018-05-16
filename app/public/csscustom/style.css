@@ -1,5 +1,5 @@
-html{
-    width: 100%;
+body{
+    overflow-x: hidden;
 }
 /** Back ground **/
 .background-index{
