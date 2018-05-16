@@ -177,7 +177,7 @@ function ensureAuthenticated(req,res,next){
 passport.use(new FacebookStrategy({
     clientID :'2001276410122261',
 	clientSecret :'7082b98f4dfd68555e97ebe5',
-	callbackURL: 'https://jagerhours.fr/'
+	callbackURL: 'http://localhost:8080/auth/facebook/callback'
   },
   function(accessToken, refreshToken, profile, done) {
     process.nextTick(function(){
