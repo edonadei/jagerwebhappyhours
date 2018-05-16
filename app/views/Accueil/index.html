@@ -1,16 +1,57 @@
 {% extends "layout.html" %} {% block content %}
 
 <!-- Index form -->
-    <div class="container-fluid background-index d-flex align-items-center mb-5">
-        <form class="form-inline offset-md-3 col-md-6" action="/action_page.php">
-            <div class="input-group mb-3 w-100">
-                <input type="text" class="form-control" placeholder="Que recherchez-vous?" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">Go!</button>
+<div class="container-fluid background-index d-flex align-items-center pt-5 pb-5 row p-0 m-0 mb-5">
+    <div class="col-6 col-lg-3 p-0">
+        <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+            <div class="img-square-content">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_my_location_black_48dp.png" alt="target">
                 </div>
             </div>
-        </form>
+        </div>
+        <div class="pt-4 height-80 d-flex justify-content-center">
+            <h4 class="text-light text-center">Chassez</h4>
+        </div>
     </div>
+    <div class="col-6 col-lg-3 p-0">
+        <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+            <div class="img-square-content">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_local_offer_black_48dp.png" alt="offer">
+                </div>
+            </div>
+        </div>
+        <div class="pt-4 height-80 d-flex justify-content-center">
+            <h4 class="text-light text-center">Des offres</h4>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3 p-0">
+        <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+            <div class="img-square-content">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_place_48pt_3x.png" alt="place">
+                </div>
+            </div>
+        </div>
+        <div class="pt-4 height-80 d-flex justify-content-center">
+            <h4 class="text-light text-center">Proches de vous</h4>
+        </div>
+    </div>
+    <div class="col-6 col-lg-3 p-0">
+        <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+            <div class="img-square-content">
+                <div class="d-flex justify-content-center align-items-center h-100">
+                    <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_timer_black_48dp.png" alt="timer">
+                </div>
+            </div>
+        </div>
+        <div class="pt-4 height-80 d-flex justify-content-center">
+            <h4 class="text-light text-center">Avant le chrono</h4>
+        </div>
+    </div>
+</div>
+<!-- /Index -->
 
     <!-- Annonces -->
     <div class="container-fluid ">
