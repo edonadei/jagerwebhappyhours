@@ -98,7 +98,7 @@ passport.use(new LocalStrategy({
     
     passport.use(new FacebookStrategy({
         clientID :'2001276410122261',
-        clientSecret :'7082b98f4dfd68555e97ebe5',
+        clientSecret :'7082b98f4dfd68555e97ebe5bcecbe0d',
         callbackURL: 'https://jagerhours.fr/auth/facebook/callback'
     },
     function(accessToken, refreshToken, profile, done) {
@@ -113,7 +113,7 @@ passport.use(new LocalStrategy({
                     newUser.facebook.id = profile.id;
                     newUser.facebook.token = accessToken;
                     newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-                    newUser.facebook.email = profile.emails[0].value;
+                    //newUser.facebook.email = profile.emails[0].value;
 
                     newUser.save(function(err){
                         if(err)
@@ -229,10 +229,5 @@ function ensureAuthenticated(req,res,next){
         res.redirect('/');
     }
 }
-
-// login with Google +
-
-var GOOGLE_CLIENT_ID= "858473261540-s4iu68nnk2qe6adtstuter5d8v8vnme7.apps.googleusercontent.com",
-    GOOGLE_CLIENT_SECRET = "6XUM3bfSXDILlaMlXBz66JH_";
 
 module.exports = router;
