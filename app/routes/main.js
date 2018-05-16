@@ -161,14 +161,17 @@ router.post('/:id?', (req,res) => {
         events.state = req.body.administrative_area_level_1;
         events.zip_code = req.body.postal_code;
         events.country = req.body.country;
-        
+        events.latitude = req.body.latitude;
+        events.longitude = req.body.longitude;
+
         // Autres informations
-        events.date = req.body.date;
         events.description = req.body.description;
         events.promonumber = req.body.promonumber;
         events.number_avalaible = req.body.number_avalaible;
         events.types = req.body.types;
-        //events.coordinates = req.file.coordinates;
+        events.datedebut = req.body.datedebut;
+        events.datefin = req.body.datefin;
+        
         if (req.file) events.picture = req.file.filename;
 
         return events.save();
