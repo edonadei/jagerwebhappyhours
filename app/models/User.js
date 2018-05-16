@@ -16,7 +16,9 @@ var userSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: 'Event'
         }
-    ],
+	],
+	
+	// Facebook
 	facebook :{
 		id : String,
 		token : String,
