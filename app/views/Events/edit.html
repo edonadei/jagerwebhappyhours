@@ -1,44 +1,42 @@
 {% extends "layout.html" %}
 
 {% block content %}
-<div class="container">
-    <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
-            <div class="form-group">
-                <label for="name">Nom de l'évènement</label>
-                <input type="text" id="name" name="name" class="form-control" value="{{events.name}}">
+
+</form>
+        
+        <form method="POST" action="{{endpoint}}" enctype="multipart/form-data">
+        <div class="container col-12 col-md-9 col-lg-6 mt-5 mb-5">
+                <div class="card text-white bg-dark mb-3">
+                        <div class="card-body">
+                          <h5 class="card-title">Déposer une annonce</h5>
+                          <p class="card-text">Remplissez les informations ci-dessous afin de publier votre annonce.</p>
+                        </div>
+                </div>
+            <div class="form-row">
+                <div class="col-md-8 mb-3">
+                    <label for="validationServer01">Nom de l'enseigne</label>
+                    <input type="text" class="form-control" id="validationServer01" placeholder="Nom de l'enseigne" name="name" value="{{events.name}}" required>
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validationServer02">Places disponibles</label>
+                    <input type="number" id="number_avalaible" name="number_avalaible" class="form-control" value="{{events.number_avalaible}}">
+                </div>
             </div>
-            <div class="form-group">
-                <label for="name">Adresse de l'évènement</label>
+            <div class="form-row">
+                <div class="col-md-12 mb-3">
+                    <label for="validationServer03">Adresse</label>
                     <div id="locationField"> 
                         <input id="autocomplete" onFocus="geolocate()" type="text"></input>
                     </div> 
+                </div>
             </div>
-
-            <div class="form-group">
-                <label for="promonumber">Pourcentage de promotion</label>
-                <input type="number" id="promonumber" name="promonumber" class="form-control" value="{{events.promonumber}}">
-            </div>
-            <div class="form-group">
-                <label for="date">Date</label>
-                <input type="date" id="date" name="date" class="form-control" value="{{events.date}}">
-            </div>
-
-            <div class="form-group">
-                <label for="hour">Heure</label>
-                <input type="text" class="form-control" value="09:30" class="hour" name="hour" value="{{events.hour}}">
-                <span class="input-group-addon">
-                <span class="glyphicon glyphicon-time"></span>
-                </span>
-            </div>
-
-
             <table id="address">
             <tr>
                 <td class="label">Street address</td>
                 <td class="slimField"><input class="field" name="street_number" id="street_number"
-                    disabled="true"></input></td>
+                    ></input></td>
                 <td class="wideField" colspan="2"><input class="field" id="route" name="route"
-                    disabled="true"></input></td>
+                    ></input></td>
             </tr>
             <tr>
                 <td class="label">City</td>
@@ -47,38 +45,77 @@
                     https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
                 -->
                 <td class="wideField" colspan="3"><input class="field" id="locality" name="locality"
-                    disabled="true"></input></td>
+                    ></input></td>
             </tr>
             <tr>
                 <td class="label">State</td>
                 <td class="slimField"><input class="field"
-                    id="administrative_area_level_1" name="administrative_area_level_1" disabled="true"></input></td>
+                    id="administrative_area_level_1" name="administrative_area_level_1"></input></td>
                 <td class="label">Zip code</td>
                 <td class="wideField"><input class="field" id="postal_code" name="postal_code"
-                    disabled="true"></input></td>
+                    ></input></td>
             </tr>
             <tr>
                 <td class="label">Country</td>
                 <td class="wideField" colspan="3"><input class="field"
-                    id="country" name="country" disabled="true"></input></td>
+                    id="country" name="country" ></input></td>
+            </tr>
+            <tr>
+                <td class="label">Latitude</td>
+                <td class="wideField" colspan="3"><input class="field"
+                    name="latitude" id="latitude" ></input></td>
+            </tr>
+            <tr>
+                <td class="label">Longitude</td>
+                <td class="wideField" colspan="3"><input class="field"
+                    name="longitude" id="longitude" ></input></td>
             </tr>
             </table>
-            <!-- Replace the value of the key parameter with your own API key. -->
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkUOdZ5y7hMm0yrcCQoCvLwzdM6M8s5qk&libraries=places&callback=initAutocomplete"
-                    async defer></script>
 
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" id="description" name="description">{{events.description}}</textarea>
+                {% for type in types %}
+                    <label>
+                        <input type="checkbox" name="types[]" value="{{type._id}}" {% if events.types.indexOf(type._id) != -1 %}checked{% endif %}>
+                        {{type.name}}
+                    </label>
+                {% endfor %}
             </div>
             <div class="form-group">
-                <label for="file">Image</label>
-                <input type="file" id="file" name="file">
+                <label for="exampleTextarea">Description de l'enseigne</label>
+                <textarea class="form-control" id="description" name="description" placeholder="Description de l'enseigne" rows="3">{{events.description}}</textarea>
             </div>
-
-            <input type="submit" class="btn btn-primary" value="Enregistrer"/>
-        </form>
-        
-</div>
+            <div class="form-group row">
+                <div class="col-md-4 mb-3">
+                    <label for="validation_date">Début de la promotion</label>
+                    <input class="form-control" type="datetime-local" id="validation_date" name="datedebut" placeholder="Début de l'offre" value ="{{events.datedebut}}">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validation_date">Fin de la promotion</label>
+                    <input class="form-control" type="datetime-local" id="validation_date" name="datefin" placeholder="Fin de l'offre" value="{{events.datefin}}">
+                </div>
+                <div class="col-md-4 mb-3">
+                    <label for="validation_date">Promotion</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">-</span>
+                        </div>
+                        <input type="number" id="promonumber" name="promonumber" class="form-control" value="{{events.promonumber}}">
+                        <div class="input-group-append">
+                            <span class="input-group-text">%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-4 mb-3">
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile">
+                        <label class="custom-file-label" for="validatedCustomFile">Choisir une image</label>
+                    </div>
+                </div>
+            </div>
+            <button class="btn btn-secondary btn-md" type="submit">Publier</button>
+        </div>
+    </form>
 
 {% endblock %}

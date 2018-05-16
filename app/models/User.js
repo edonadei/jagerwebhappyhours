@@ -2,16 +2,21 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcryptjs');
 
 var userSchema = new mongoose.Schema({
-    name: {
-		type: String,
-		index:true
-	},
+    name: String,
     phonenumber: Number,
     email: String,
     shop: Boolean,
     password: String,
     picture: String,
 	lastcoordinates: String,
+	
+	// Possède un certain nombre d'event associés
+	events: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Event'
+        }
+    ],
 	facebook :{
 		id : String,
 		token : String,

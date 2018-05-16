@@ -6,20 +6,20 @@ var distance;
 var magasin;
 
 function init() {
-    if (!document.getElementById('coords')){
+    if (!document.getElementById('longitude')){
         return;
       }
 
-    var coordinates = document.getElementById('coords').innerHTML;
-    var coordinatesarray = coordinates.split(',');
-    magasin = new L.LatLng(parseFloat(coordinatesarray[0]),parseFloat(coordinatesarray[1]));
+    var latitude = document.getElementById('latitude').innerHTML;
+    var longitude = document.getElementById('longitude').innerHTML;
+    magasin = new L.LatLng(parseFloat(latitude),parseFloat(longitude));
     map = new L.Map('map');
     L.tileLayer('https://{s}.tile.thunderforest.com/neighbourhood/{z}/{x}/{y}.png?apikey=cf25d3ea837f4645b79eb5559281ba3a', {
         attribution: '&copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors',
         maxZoom: 18
     }).addTo(map);
     map.attributionControl.setPrefix(''); 
-    map.setView(new L.LatLng(parseFloat(coordinatesarray[0]),parseFloat(coordinatesarray[1])), 15);
+    map.setView(new L.LatLng(parseFloat(latitude),parseFloat(longitude)), 15);
     magasin_m = L.marker(magasin).addTo(map);
    // magasin_m.bindPopup('<a href="javascript:void(0);" onclick="onLocationRouting()">Premier lien </a>');
 }

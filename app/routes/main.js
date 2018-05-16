@@ -2,10 +2,10 @@ var express = require('express');
 var router = require('express').Router();
 var Event = require('./../models/Event');
 var User = require('./../models/User');
+var Type = require('./../models/Type');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require ('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google-oauth').OAuth2Strategy;
 
 
 router.get('/', (req, res) => {
@@ -20,11 +20,12 @@ router.get('/new', (req,res) => {
 });
 
 router.get('/edit/:id', (req,res) => {
-    Event.findById(req.params.id).then(events => {
-        res.render('Events/edit.html', {events:events, endpoint: '/' + events._id.toString()});
-    })
-
-})
+    Type.find({}).then(types => {
+        Event.findById(req.params.id).then(events => {
+            res.render('Events/edit.html', {events:events, types:types, endpoint: '/' + events._id.toString()});
+        });
+    });
+});
 
 // Permet de s'enregistrer
 router.post('/register', function(req, res){
@@ -36,7 +37,7 @@ router.post('/register', function(req, res){
 	var password2 = req.body.password2;
 
 	// Validation
-	req.checkBody('username', "L'identifiant est requis").notEmpty();
+	req.checkBody('name', "L'identifiant est requis").notEmpty();
 	req.checkBody('email', "L'email est requis").notEmpty();
 	req.checkBody('email', "L'email n'est pas valide").isEmail();
 	req.checkBody('password', 'Le mot de passe est requis').notEmpty();
@@ -122,6 +123,19 @@ router.get('/:id', (req, res) => {
         err => res.status(500).send(err));
 });
 
+// Incrémentation du compteur d'annonce et ajout d'annonce à l'utilisateur
+router.get('/:id/registerevent', (req,res) =>{
+        Event.update({ _id: req.params.id}, { $inc: { number_avalaible: -1 }}, () => {
+            Event.findById(req.params.id).then((event) => {
+                // Autre manière d'accéder à l'user
+                //console.log(req.user._id);
+                User.update({_id:req.session.passport.user},{$push: {events:event}}, (error,document) => {
+                    res.redirect("/"+req.params.id);
+                })
+            })
+    })
+})
+
 router.get('/delete/:id', (req, res) => {
     Event.findOneAndRemove({_id: req.params.id}).then(() => {
         res.redirect('/');
@@ -140,19 +154,24 @@ router.post('/:id?', (req,res) => {
         events.name = req.body.name;
         events.hour = req.body.hour;
         
+        // Addresse
         events.street_number = req.body.street_number;
         events.route = req.body.route;
         events.city = req.body.locality;
         events.state = req.body.administrative_area_level_1;
         events.zip_code = req.body.postal_code;
         events.country = req.body.country;
+        events.latitude = req.body.latitude;
+        events.longitude = req.body.longitude;
 
-        console.log(req.body);
+        // Autres informations
+        events.description = req.body.description;
+        events.promonumber = req.body.promonumber;
+        events.number_avalaible = req.body.number_avalaible;
+        events.types = req.body.types;
+        events.datedebut = req.body.datedebut;
+        events.datefin = req.body.datefin;
         
-       events.date = req.body.date;
-       events.description = req.body.description;
-       events.promonumber = req.body.promonumber;
-        //events.coordinates = req.file.coordinates;
         if (req.file) events.picture = req.file.filename;
 
         return events.save();
@@ -204,9 +223,11 @@ passport.use(new FacebookStrategy({
     });
 }
 ));
+
 router.get('/auth/facebook', passport.authenticate('facebook'));
+
 router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/login',  failureRedirect: '/' 
+  passport.authenticate('facebook', { successRedirect: '/',  failureRedirect: '/' 
 }));
 
 // login with Google +

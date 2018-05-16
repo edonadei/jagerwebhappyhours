@@ -1,53 +1,45 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jäger</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
+    <link rel="stylesheet" href="/csscustom/style.css">
 
     <!-- Slick CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
-   
-    <!-- Polices Google -->
-    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500">
-    
+
     <!-- chargement de leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js"></script>
     <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
-
-    <link rel="stylesheet" href="/csscustom/style.css">
-
-    <!-- Clockpicker 
-
-    <link rel="stylesheet" href="/jspublic/clockpicker/bootstrap-clockpicker.min.css">
-    <link rel="stylesheet" href="/jspublic/clockpicker/jquery-clockpicker.min.css">
-    -->
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-    <title>Jäger</title>
-
+    <!-- Slick CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
 </head>
 
 <body>
     <!--NAVBAR-->
     <!-- Navbar Grey with black text -->
 
-    <nav class="navbar navbar-expand-sm bg-light navbar-light">
+    <nav class="navbar navbar-expand-md bg-light navbar-light min-height-64">
         <a href="/">
             <img class="img-fluid height-40" src="/images/logo.png" alt="Logo Jäger">
         </a>
-        <button class="navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
-            aria-expanded="false" aria-label="Toggle navigation">
-            <img src="/images/menu.png" alt="menu" class="img-fluid height-40">
+        <button class="border-0 navbar-toggler hidden-lg-up" type="button" data-toggle="collapse" data-target="#collapsibleNavId"
+            aria-controls="collapsibleNavId" aria-expanded="false" aria-label="Toggle navigation">
+            <img src="images/menu.png" alt="menu" class="img-fluid height-40">
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavId">
             <ul class="navbar-nav mt-2 mt-lg-0">
@@ -60,34 +52,52 @@
                 </li>
                 {% else %}
                 <li class="nav-item">
-                    <a data-toggle="modal" data-target="#inscription" class="nav-link" href="#">Inscription</a>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#inscription" class="nav-link" href="#">Inscription</a>
+                    </li>
                 </li>
                 <li class="nav-item">
-                    <a data-toggle="modal" data-target="#myModal" class="nav-link" href="#">Connexion</a>
+                    <li class="nav-item">
+                        <a data-toggle="modal" data-target="#connexion" class="nav-link" href="#">Connexion</a>
+                    </li>
                 </li>
                 {% endif %}
+                <!-- Dropdown -->
+
             </ul>
         </div>
     </nav>
 
     <!-- The Modal Inscription -->
     <div class="modal fade" id="inscription">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content p-2">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h6 class="modal-title text-secondary">Inscrivez-vous</h4>
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h6 class="modal-title text-secondary">Inscrivez-vous</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
-
+                <!-- Affichage des erreurs -->
                 {% for err in errors %}
-                <div class="alert alert-danger">{{err.msg}}</div>
+                <div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button> {{err.msg}}</div>
                 {% endfor %}
+
                 <!-- Modal body -->
                 <div class="modal-body">
+                    <a href="/auth/facebook" class="mb-3 d-block">
+                        <div class="container-fluid d-flex justify-content-between align-items-center height-50 rounded" style="background-color: #415f9b;">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img class="img-fluid height-30" src="images/logo-fb.png" alt="logo facebook">
+                            </div>
+                            <div class=" w-100 d-flex align-items-center justify-content-center">
+                                <span style="color: white">S'inscrire avec Facebook</span>
+                            </div>
+                        </div>
+                    </a>
+
                     <form method="post" action="/register">
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="username" name="username" placeholder="Identifiant">
+                            <input type="text" class="form-control pl-5 nom_icon" id="name" name="name" placeholder="Identifiant">
                         </div>
                         <div class="form-group">
                             <input type="email" class="form-control pl-5 mail_icon" id="email" name="email" placeholder="Email">
@@ -103,60 +113,81 @@
                 </div>
 
                 <!-- Modal footer -->
-                <div class="modal-footer d-flex justify-content-center">
-                    <span>Vous êtes un professionnel?
-                        <a href="inscription.html?type=pro" class="text-info">Inscription</a>
-                    </span>
+                <div class="modal-footer d-flex flex-column align-items-center">
+                    <div>
+                        <span>Vous êtes un professionnel?
+                            <a href="inscription.html?type=pro" class="text-info">Inscription</a>
+                        </span>
+                    </div>
                 </div>
-
             </div>
         </div>
     </div>
 
+
     <!-- The Modal -->
-    <div class="modal fade" id="myModal">
+    <div class="modal fade" id="connexion">
         <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+            <div class="modal-content p-2">
                 <!-- Modal Header -->
                 <div class="modal-header">
-                    <h4 class="modal-title">Connexion</h4>
+                    <h6 class="modal-title text-secondary">Connexion</h6>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
+                    <a href="/auth/facebook" class="mb-3 d-block">
+                        <div class="container-fluid d-flex justify-content-between align-items-center height-50 rounded" style="background-color: #415f9b;">
+                            <div class="d-flex align-items-center justify-content-center">
+                                <img class="img-fluid height-30 mr-3" src="images/logo-fb.png" alt="logo facebook">
+                            </div>
+                            <div class=" w-100 d-flex align-items-center justify-content-center">
+                                <span style="color: white">Se connecter avec Facebook</span>
+                            </div>
+                        </div>
+                    </a>
                     <form method="post" action="/login">
                         <div class="form-group">
-                            <label for="email">Adresse email:</label>
-                            <input type="email" class="form-control" name="email" id="email">
+                            <input type="email" class="form-control mail_icon pl-5" name="email" id="email" placeholder="Adresse e-mail">
                         </div>
                         <div class="form-group">
-                            <label for="pwd">Mot de passe:</label>
-                            <input type="password" class="form-control" name="password" id="password">
+                            <input type="password" class="form-control mdp_icon pl-5" name="password" id="password" placeholder="Mot de passe">
                         </div>
-                        <button type="submit" class="btn btn-primary">Connexion</button>
+                        <button type="submit" class="btn btn-block btn-dark btn-primary">Connexion</button>
                     </form>
+                </div>
+                <!-- Modal footer -->
+                <div class="modal-footer d-flex flex-column align-items-center">
+                    <div>
+                        <span>Vous n'êtes pas inscrit?
+                            <a href="#" class="text-info">Inscription</a>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-   <div class="row">
-        <div class="col-lg-12">
-          {% if success_msg|length %}
-            <div class="alert alert-success">{{success_msg}}</div>
-          {% endif %}
+    <!-- Alertes utilisateurs -->
 
-          {% if error_msg|length %}
-            <div class="alert alert-danger">{{error_msg}}</div>
-          {% endif %}
+    {% if success_msg|length %}
+    <div class="sticky-top alert alert-success alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{success_msg}}</div>
+    {% endif %} {% if error_msg|length %}
+    <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{error_msg}}</div>
+    {% endif %} {% if error|length %}
+    <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{error}}</div>
+    {% endif %} {% block content %}{% endblock %} {% if user %}
 
-          {% if error|length %}
-            <div class="alert alert-danger">{{error}}</div>
-          {% endif %}
-        </div>
-
-    {% block content %}{% endblock %}
+    <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <strong>Bonjour {{user.name}},</strong> vous avez
+        <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
+    </div>
+    {% endif %}
 
 
     <!--Footer-->
@@ -164,7 +195,7 @@
         <!--Footer Links-->
         <div class="container-fluid mb-4">
             <div class="row mt-4 mb-5">
-                <!--Column-->
+                <!--First column-->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
                         <h4>Jäger</h4>
@@ -172,7 +203,11 @@
                     <div class="d-flex justify-content-center justify-content-md-start">
                         <p>Best Happy Hours near you.</p>
                     </div>
+
                 </div>
+                <!--/.First column-->
+
+                <!--Second column-->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
                         <h4>Jäger</h4>
@@ -183,7 +218,9 @@
                         <a href="#">Qui sommes-nous?</a>
                     </div>
                 </div>
+                <!--/.Second column-->
 
+                <!--Third column-->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
                         <h4>Jäger</h4>
@@ -194,6 +231,9 @@
                         <a href="#">Aide</a>
                     </div>
                 </div>
+                <!--/.Third column-->
+
+                <!--Fourth column-->
                 <div class="col-12 col-md-3 mb-4">
                     <div class="container-fluid d-flex justify-content-center justify-content-md-start  pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
                         <h4>Contact</h4>
@@ -202,25 +242,26 @@
                         <span>contact@jäger.com</span>
                     </div>
                 </div>
+                <!--/.Fourth column-->
 
             </div>
         </div>
+        <!--/.Footer Links-->
 
         <!--Social buttons-->
         <div class="col-12 d-flex justify-content-center align-items-center">
-            <a class="btn-floating btn-sm btn-fb mx-1" href="/auth/facebook">
+            <a class="btn-floating btn-sm btn-fb mx-1">
                 <i class="fa fa-facebook"> </i>
             </a>
             <a class="btn-floating btn-sm btn-tw mx-1">
                 <i class="fa fa-twitter"> </i>
             </a>
-            <a class="btn-floating btn-sm btn-gplus mx-1" href="/auth/google">
+            <a class="btn-floating btn-sm btn-gplus mx-1">
                 <i class="fa fa-google"> </i>
             </a>
             <a class="btn-floating btn-sm btn-li mx-1">
                 <i class="fa fa-linkedin"> </i>
             </a>
-
         </div>
 
         <!--/.Social buttons-->
@@ -228,36 +269,54 @@
         <!-- Copyright-->
         <div class="footer-copyright py-3 text-center">
             © 2018 Copyright:
-            <a href="https://mdbootstrap.com/material-design-for-bootstrap/">
+            <a href="index.html">
                 <strong> jäger.com</strong>
             </a>
         </div>
         <!--/.Copyright -->
-
     </footer>
     <!--/.Footer-->
-    
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
         crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
         crossorigin="anonymous"></script>
+    <!-- Slick -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-
+    <script type="text/javascript">
+        /* SLICK option*/
+        $(document).on('ready', function () {
+            $(".slick_gallery").slick({
+                dots: true,
+                arrows: false,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
+                        }
+                    }
+                ]
+            });
+        });
+    </script>
     <script src="/jspublic/map.js"></script>
     <script src="/jspublic/leaflet.js"></script>
     <script src="/jspublic/event.js"></script>
-    <script src="/jspublic/form.js"></script>
 
-    <!-- Clock Picker
-    <script src="/jspublic/clockpicker/bootstrap-clockpicker.min.js"></script>
-    <script src="/jspublic/clockpicker/jquery-clockpicker.min.js"></script>
-    -->
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places"
-    async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places" async
+        defer></script>
 </body>
 
 </html>
