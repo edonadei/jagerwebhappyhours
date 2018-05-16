@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -19,9 +19,9 @@
     <!-- Add icon library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-        <!-- Slick CSS -->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+    <!-- Slick CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -61,7 +61,7 @@
 
             </ul>
         </div>
-    </nav> 
+    </nav>
 
     <!-- The Modal Inscription -->
     <div class="modal fade" id="inscription">
@@ -74,7 +74,7 @@
                 </div>
                 <!-- Affichage des erreurs -->
                 {% for err in errors %}
-                <div class="alert alert-danger">{{err.msg}}</div>
+                <div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button> {{err.msg}}</div>
                 {% endfor %}
 
                 <!-- Modal body -->
@@ -138,7 +138,7 @@
                                 <img class="img-fluid height-30 mr-3" src="images/logo-fb.png" alt="logo facebook">
                             </div>
                             <div class=" w-100 d-flex align-items-center justify-content-center">
-                                <span class="ml-3" style="color: white">Se connecter avec Facebook</span>
+                                <span style="color: white">Se connecter avec Facebook</span>
                             </div>
                         </div>
                     </a>
@@ -165,165 +165,153 @@
     </div>
 
     <!-- Alertes utilisateurs -->
-    <div class="row">
-        <div class="col-lg-12">
-          {% if success_msg|length %}
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <div class="alert alert-success">{{success_msg}}</div>
-          {% endif %}
 
-          {% if error_msg|length %}
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <div class="alert alert-danger">{{error_msg}}</div>
-          {% endif %}
+    {% if success_msg|length %}
+    <div class="sticky-top alert alert-success alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{success_msg}}</div>
+    {% endif %} {% if error_msg|length %}
+    <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{error_msg}}</div>
+    {% endif %} {% if error|length %}
+    <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
+        <button type="button" class="close" data-dismiss="alert">&times;</button> {{error}}</div>
+    {% endif %} {% block content %}{% endblock %} {% if user %}
 
-          {% if error|length %}
-            <button type="button" class="close" data-dismiss="alert">&times;</button>
-            <div class="alert alert-danger">{{error}}</div>
-          {% endif %}
-        </div>
-    </div>
-
-    {% if user %}
     <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Bonjour {{user.name}},</strong> vous avez
-        <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>.
+        <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
     </div>
     {% endif %}
 
-    {% block content %}{% endblock %}
 
-
-        <!--Footer-->
-        <footer class="col-12">
-            <!--Footer Links-->
-            <div class="container-fluid mb-4">
-                <div class="row mt-4 mb-5">
-                    <!--First column-->
-                    <div class="col-12 col-md-3 mb-4">
-                        <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
-                            <h4>Jäger</h4>
-                        </div>
-                        <div class="d-flex justify-content-center justify-content-md-start">
-                            <p>Best Happy Hours near you.</p>
-                        </div>
-
+    <!--Footer-->
+    <footer class="col-12">
+        <!--Footer Links-->
+        <div class="container-fluid mb-4">
+            <div class="row mt-4 mb-5">
+                <!--First column-->
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
                     </div>
-                    <!--/.First column-->
-
-                    <!--Second column-->
-                    <div class="col-12 col-md-3 mb-4">
-                        <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
-                            <h4>Jäger</h4>
-                        </div>
-                        <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
-                            <a href="#">Me géolocaliser</a>
-                            <a href="#">Accueil</a>
-                            <a href="#">Qui sommes-nous?</a>
-                        </div>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <p>Best Happy Hours near you.</p>
                     </div>
-                    <!--/.Second column-->
-
-                    <!--Third column-->
-                    <div class="col-12 col-md-3 mb-4">
-                        <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
-                            <h4>Jäger</h4>
-                        </div>
-                        <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
-                            <a href="#">Mon compte</a>
-                            <a href="inscription.html">Inscription</a>
-                            <a href="#">Aide</a>
-                        </div>
-                    </div>
-                    <!--/.Third column-->
-
-                    <!--Fourth column-->
-                    <div class="col-12 col-md-3 mb-4">
-                        <div class="container-fluid d-flex justify-content-center justify-content-md-start  pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
-                            <h4>Contact</h4>
-                        </div>
-                        <div class="d-flex justify-content-center justify-content-md-start">
-                            <span>contact@jäger.com</span>
-                        </div>
-                    </div>
-                    <!--/.Fourth column-->
 
                 </div>
+                <!--/.First column-->
+
+                <!--Second column-->
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
+                    </div>
+                    <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
+                        <a href="#">Me géolocaliser</a>
+                        <a href="#">Accueil</a>
+                        <a href="#">Qui sommes-nous?</a>
+                    </div>
+                </div>
+                <!--/.Second column-->
+
+                <!--Third column-->
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Jäger</h4>
+                    </div>
+                    <div class="container-fluid d-flex flex-column align-items-center align-items-md-start">
+                        <a href="#">Mon compte</a>
+                        <a href="inscription.html">Inscription</a>
+                        <a href="#">Aide</a>
+                    </div>
+                </div>
+                <!--/.Third column-->
+
+                <!--Fourth column-->
+                <div class="col-12 col-md-3 mb-4">
+                    <div class="container-fluid d-flex justify-content-center justify-content-md-start  pb-2 p-0 mb-4 border border-top-0 border-right-0 border-left-0">
+                        <h4>Contact</h4>
+                    </div>
+                    <div class="d-flex justify-content-center justify-content-md-start">
+                        <span>contact@jäger.com</span>
+                    </div>
+                </div>
+                <!--/.Fourth column-->
+
             </div>
-            <!--/.Footer Links-->
+        </div>
+        <!--/.Footer Links-->
 
-            <!--Social buttons-->
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                <a class="btn-floating btn-sm btn-fb mx-1">
-                    <i class="fa fa-facebook"> </i>
-                </a>
-                <a class="btn-floating btn-sm btn-tw mx-1">
-                    <i class="fa fa-twitter"> </i>
-                </a>
-                <a class="btn-floating btn-sm btn-gplus mx-1">
-                    <i class="fa fa-google"> </i>
-                </a>
-                <a class="btn-floating btn-sm btn-li mx-1">
-                    <i class="fa fa-linkedin"> </i>
-                </a>
-            </div>
+        <!--Social buttons-->
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            <a class="btn-floating btn-sm btn-fb mx-1">
+                <i class="fa fa-facebook"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-tw mx-1">
+                <i class="fa fa-twitter"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-gplus mx-1">
+                <i class="fa fa-google"> </i>
+            </a>
+            <a class="btn-floating btn-sm btn-li mx-1">
+                <i class="fa fa-linkedin"> </i>
+            </a>
+        </div>
 
-            <!--/.Social buttons-->
+        <!--/.Social buttons-->
 
-            <!-- Copyright-->
-            <div class="footer-copyright py-3 text-center">
-                © 2018 Copyright:
-                <a href="index.html">
-                    <strong> jäger.com</strong>
-                </a>
-            </div>
-            <!--/.Copyright -->
-        </footer>
-        <!--/.Footer-->
+        <!-- Copyright-->
+        <div class="footer-copyright py-3 text-center">
+            © 2018 Copyright:
+            <a href="index.html">
+                <strong> jäger.com</strong>
+            </a>
+        </div>
+        <!--/.Copyright -->
+    </footer>
+    <!--/.Footer-->
 
-        <!-- Optional JavaScript -->
-        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-        <!-- Slick -->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
-        <script type="text/javascript">
-            /* SLICK option*/
-            $(document).on('ready', function () {
-                $(".slick_gallery").slick({
-                    dots: true,
-                    arrows: false,
-                    infinite: true,
-                    slidesToShow: 2,
-                    slidesToScroll: 1,
-                    autoplay: true,
-                    autoplaySpeed: 4500,
-                    responsive: [
-                        {
-                            breakpoint: 768,
-                            settings: {
-                                slidesToShow: 1,
-                                slidesToScroll: 1
-                            }
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Slick -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+    <script type="text/javascript">
+        /* SLICK option*/
+        $(document).on('ready', function () {
+            $(".slick_gallery").slick({
+                dots: true,
+                arrows: false,
+                infinite: true,
+                slidesToShow: 2,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 4500,
+                responsive: [
+                    {
+                        breakpoint: 768,
+                        settings: {
+                            slidesToShow: 1,
+                            slidesToScroll: 1
                         }
-                    ]
-                });
+                    }
+                ]
             });
-        </script>
-        <script src="/jspublic/map.js"></script>
-        <script src="/jspublic/leaflet.js"></script>
-        <script src="/jspublic/event.js"></script>
+        });
+    </script>
+    <script src="/jspublic/map.js"></script>
+    <script src="/jspublic/leaflet.js"></script>
+    <script src="/jspublic/event.js"></script>
 
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places"
-            async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places" async
+        defer></script>
 </body>
 
 </html>
-
-
