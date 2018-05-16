@@ -288,6 +288,16 @@
     display:none;
 }
 
+#latitude
+{
+    display:none;
+}
+
+#longitude
+{
+    display:none;
+}
+
 #locationField, #controls {
         position: relative;
         width: 100%;
