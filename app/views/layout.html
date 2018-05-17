@@ -180,7 +180,9 @@
     {% endif %} {% if error|length %}
     <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
         <button type="button" class="close" data-dismiss="alert">&times;</button> {{error}}</div>
-    {% endif %} {% block content %}{% endblock %} {% if user %}
+    {% endif %} 
+    
+    {% if user %}
 
     <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -188,6 +190,8 @@
         <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
     </div>
     {% endif %}
+    
+    {% block  content %}{% endblock %} 
 
 
     <!--Footer-->
@@ -288,6 +292,7 @@
     <!-- Slick -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.js"></script>
+
     <script type="text/javascript">
         /* SLICK option*/
         $(document).on('ready', function () {
@@ -311,6 +316,7 @@
             });
         });
     </script>
+
     <script src="/jspublic/map.js"></script>
     <script src="/jspublic/leaflet.js"></script>
     <script src="/jspublic/event.js"></script>
