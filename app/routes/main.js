@@ -11,8 +11,14 @@ var FacebookStrategy = require ('passport-facebook').Strategy;
 router.get('/', (req, res) => {
     Event.find({}).then(events => {
         res.render('Accueil/index.html', {events: events});
+        // DEBUG
+        //console.log(events);
     });
 });
+
+router.get('/located', (req,res) => {
+        res.render('Accueil/index.html', {eventsbylocation: eventsbylocation, eventsbytime:eventsbytime});
+})
 
 router.get('/new', (req,res) => {
     var events = new Event();

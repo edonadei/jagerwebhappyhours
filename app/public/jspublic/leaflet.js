@@ -9,7 +9,6 @@ function init() {
     if (!document.getElementById('longitude')){
         return;
       }
-
     var latitude = document.getElementById('latitude').innerHTML;
     var longitude = document.getElementById('longitude').innerHTML;
     magasin = new L.LatLng(parseFloat(latitude),parseFloat(longitude));
@@ -27,6 +26,7 @@ function init() {
 function onLocationFound(e) {
    var location = e.latlng;
    position = L.marker(location,{title: 'Votre position'}).addTo(map);
+
    var affichage_m = [magasin, location]; //permet d'afficher entre la position et le magasin 
    var bounds = new L.LatLngBounds(affichage_m);
    map.fitBounds(bounds);
@@ -49,10 +49,6 @@ function onLocationFound(e) {
   }).addTo(map);
 
 }
-
-
-
-
 
 function onLocationError(e) {
    alert(e.message);
