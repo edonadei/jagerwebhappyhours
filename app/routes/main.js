@@ -94,6 +94,45 @@ passport.use(new LocalStrategy({
      });
     }));
   
+// Login with Facebook
+    
+    passport.use(new FacebookStrategy({
+        clientID :'2001276410122261',
+        clientSecret :'7082b98f4dfd68555e97ebe5bcecbe0d',
+        callbackURL: 'https://jagerhours.fr/auth/facebook/callback'
+    },
+    function(accessToken, refreshToken, profile, done) {
+        process.nextTick(function(){
+            User.findOne({'facebook.id': profile.id}, function(err, user){
+                if(err)
+                    return done(err);
+                if(user)
+                    return done(null, user);
+                else {
+                    var newUser = new User();
+                    newUser.facebook.id = profile.id;
+                    newUser.facebook.token = accessToken;
+                    newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
+                    //newUser.facebook.email = profile.emails[0].value;
+
+                    newUser.save(function(err){
+                        if(err)
+                            throw err;
+                        return done(null, newUser);
+                    })
+                    console.log(profile);
+                }
+            });
+        });
+    }
+    ));
+
+    router.get('/auth/facebook', passport.authenticate('facebook'));
+
+    router.get('/auth/facebook/callback',
+    passport.authenticate('facebook', { successRedirect: '/',  failureRedirect: '/' 
+    }));
+    
   passport.serializeUser(function(user, done) {
     done(null, user.id);
   });
@@ -190,45 +229,5 @@ function ensureAuthenticated(req,res,next){
         res.redirect('/');
     }
 }
-
-// Login with Facebook
-    
-passport.use(new FacebookStrategy({
-    clientID :'2001276410122261',
-	clientSecret :'7082b98f4dfd68555e97ebe5',
-	callbackURL: 'https://jagerhours.fr/'
-  },
-  function(accessToken, refreshToken, profile, done) {
-    process.nextTick(function(){
-        User.findOne({'facebook.id': profile.id}, function(err, user){
-            if(err)
-                return done(err);
-            if(user)
-                return done(null, user);
-            else {
-                var newUser = new User();
-                newUser.facebook.id = profile.id;
-                newUser.facebook.token = accessToken;
-                newUser.facebook.name = profile.name.givenName + ' ' + profile.name.familyName;
-                newUser.facebook.email = profile.emails[0].value;
-
-                newUser.save(function(err){
-                    if(err)
-                        throw err;
-                    return done(null, newUser);
-                })
-                console.log(profile);
-            }
-        });
-    });
-}
-));
-
-router.get('/auth/facebook', passport.authenticate('facebook'));
-
-router.get('/auth/facebook/callback',
-  passport.authenticate('facebook', { successRedirect: '/',  failureRedirect: '/' 
-}));
-
 
 module.exports = router;
