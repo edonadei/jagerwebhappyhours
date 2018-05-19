@@ -13,10 +13,22 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongodb = require('mongodb');
 var FacebookStrategy = require ('passport-facebook');
+var crypto = require("crypto");
+var mime = require("mime");
 
-var upload = multer({
-    dest: __dirname + '/uploads'
+var storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './public/uploads/')
+  },
+  filename: function (req, file, cb) {
+    crypto.pseudoRandomBytes(16, function (err, raw) {
+      cb(null, raw.toString('hex') + Date.now() + '.' + mime.getExtension(file.mimetype));
+    });
+  }
 });
+var upload = multer({ storage: storage });
+
+
 
 // Fichier config prod/dev
 var config = require('./config/config');
