@@ -1,0 +1,293 @@
+{% extends "layout.html" %} {% block content %}
+    <!-- Search -->
+    <div class="bg-white height-70 pt-2 pb-2 border-bottom d-none d-xl-flex align-items-center">
+        <form class="col-10 p-0 offset-1 d-flex align-items-center justify-content-between">
+            <input class="form-control col-4 border-top-0 border-right-0 border-bottom-0 rounded-0" type="text" placeholder="Lieu, restaurant...">
+            <input class="border border-top-0 border-right-0 border-bottom-0 rounded-0" id="datepicker" placeholder="Date" />
+            <input class="border border-top-0 border-right-0 border-bottom-0 rounded-0" id="timepicker" placeholder="Heure" />
+            <button type="submit" class="col-2 btn btn-block btn-dark btn-primary">Rechercher</button>
+        </form>
+    </div>
+
+    <!-- Feed -->
+    <!-- Filtre fixed bottom -->
+    <button data-toggle="modal" data-target="#filter_modal" class="d-lg-none btn btn-link text_decoration_none container-fluid fixed-bottom height-70 border-top bg-white">
+        <div class="d-flex flex-column justify-content-center align-items-center">
+            <span class="fonts_24">Filtres</span>
+        </div>
+    </button>
+    <!-- Modal Search and Filtre responsive -->
+    <div class="modal" id="filter_modal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-full" role="document">
+            <div class="modal-content modal-content-full">
+                <div class="modal-header border-0">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs offset-1 col-10 p-0 border-0">
+                        <li class="nav-item col-6 p-0 text-center border-right">
+                            <a class="nav-link active border-0" data-toggle="tab" href="#search_section">Recherche</a>
+                        </li>
+                        <li class="nav-item col-6 p-0 text-center">
+                            <a class="nav-link border-0" data-toggle="tab" href="#filter_section">Filtres</a>
+                        </li>
+                    </ul>
+                    <button type="button" class="close pt-4" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-4" id="result">
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <!-- Search Section -->
+                        <div class="tab-pane active container" id="search_section">
+                            <form class="col-12 p-0">
+                                <div class="container-fluid p-0">
+                                    <div class="border border-top-0 border-right-0 border-left-0 mb-4">
+                                        <input class="form-control col-12 border-0" type="text" placeholder="Lieu, restaurant...">
+                                    </div>
+                                    <div class="border border-top-0 border-right-0 border-left-0 mb-4">
+                                        <input class="col-12 border-0" id="datepicker-responsive" placeholder="Date">
+                                    </div>
+                                    <div class="border border-top-0 border-right-0 border-left-0 mb-4">
+                                        <input class="col-12 border-0" id="timepicker-responsive" placeholder="Heure">
+                                    </div>
+                                </div>
+                                <div class="fixed-bottom pb-4 pl-5 pr-5">
+                                    <button type="submit" class="col-12 btn btn-block btn-dark btn-primary">Rechercher</button>
+                                </div>
+                            </form>
+                        </div>
+                        <!-- Filter Section -->
+                        <div class="tab-pane col-12 p-0 container" id="filter_section">
+                            <!-- Filtre -->
+                            <div class="col-12 p-0">
+                                <div class="border pb-3">
+                                    <!-- Filtre actif -->
+                                    <div id="all_filter_responsive" class="container-fluid p-0 mb-3">
+                                        <div class="container d-flex border-bottom pt-2 pb-2">
+                                            <div class="offset-2 col-8 d-flex justify-content-center">
+                                                <h5> Ma sélection</h5>
+                                            </div>
+                                            <div class="offset-1">
+                                                <boutton onclick="delete_all_filter('list_filter_responsive','select_filter_responsive','all_filter_responsive')" class="btn btn-link p-0 m-0">
+                                                    <img src="images/ic_delete_black_24dp.png" alt="Delete">
+                                                </boutton>
+                                            </div>
+                                        </div>
+                                        <div id="list_filter_responsive" class="container-fluid pt-2 pl-3 pr-3">
+
+                                        </div>
+                                    </div>
+                                    <!-- /Filtre actif -->
+                                    <!-- Selection Filtre -->
+                                    <div id="select_filter_responsive" class="container-fluid p-0">
+                                        <div class="col-12 d-none d-lg-flex justify-content-center pt-2 pb-2">
+                                            <h5>Affiner la recherche</h5>
+                                        </div>
+                                        <div class="container-fluid p-0 pb-2">
+                                            <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
+                                                <span>Lieu:</span>
+                                            </div>
+                                            <div class="col-12 pl-3 pr-3">
+                                                <input type="checkbox" value="Paris" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
+                                                <span>Paris</span>
+                                            </div>
+                                            <div class="col-12 pl-3 pr-3">
+                                                <input type="checkbox" value="Arcueil" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
+                                                <span>Arcueil</span>
+                                            </div>
+                                            <div class="col-12 pl-3 pr-3">
+                                                <input type="checkbox" value="Villejuif" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
+                                                <span>Villejuif</span>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                    </div>
+                                    <!--Section filtre -->
+                                </div>
+                                <!-- /Filtre -->
+                            </div>
+                            <!-- /Filtre -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Laptop -->
+    <div class="container mt-5 p-0 col-12 offset-lg-1 col-lg-10 d-flex">
+        <!-- Filtre -->
+        <div class="col-lg-3 p-0 d-none d-lg-block" id="filter_part">
+            <div class="border pb-3">
+                <!-- Filtre actif -->
+                <div id="all_filter" class="container-fluid p-0 mb-3">
+                    <div class="container d-flex border-bottom pt-2 pb-2">
+                        <div class="offset-2 col-8 d-flex justify-content-center">
+                            <h5> Ma sélection</h5>
+                        </div>
+                        <div class="offset-1">
+                            <boutton onclick="delete_all_filter('list_filter','select_filter','all_filter')" class="btn btn-link p-0 m-0">
+                                <img src="images/ic_delete_black_24dp.png" alt="Delete">
+                            </boutton>
+                        </div>
+                    </div>
+                    <div id="list_filter" class="container-fluid pt-2 pl-3 pr-3">
+
+                    </div>
+                </div>
+                <!-- /Filtre actif -->
+                <!-- Selection Filtre -->
+                <div id="select_filter" class="container-fluid p-0">
+                    <div class="col-12 d-none d-lg-flex justify-content-center pt-2 pb-2">
+                        <h5>Affiner la recherche</h5>
+                    </div>
+                    <div class="container-fluid p-0 pb-2">
+                        <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
+                            <span>Promotion:</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="5%" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Promotion: 5%</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="10%" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Promotion: 10%</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="20%" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Promotion: 20%</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="30%" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Promotion: 30%</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="40%" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Promotion: 40%</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid p-0 pb-2">
+                        <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
+                            <span>Lieu:</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Paris" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Paris</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Arcueil" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Arcueil</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Villejuif" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Villejuif</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid p-0 pb-2">
+                        <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
+                            <span>Type:</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Restaurant" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Restaurant</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Auberge" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Auberge</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Fast-food" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Fast-food</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Crous" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Crous</span>
+                        </div>
+                    </div>
+                    <div class="container-fluid p-0 pb-2">
+                        <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
+                            <span>Prix:</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Elevé" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Elevé</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Modéré" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Modéré</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Faible" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Faible</span>
+                        </div>
+                        <div class="col-12 pl-3 pr-3">
+                            <input type="checkbox" value="Discount" onchange="add_filter(this,'select_filter','all_filter')">
+                            <span>Discount</span>
+                        </div>
+                    </div>
+                </div>
+                <!--Section filtre -->
+            </div>
+            <!-- /Filtre -->
+        </div>
+
+        <!-- Feed Announce -->
+        <div class="col-12 col-lg-9  p-0 pl-lg-5">
+            <!-- Container Announce -->
+            <div class="container-fluid p-0">
+                <!-- Announce Box -->
+                <a href="#" class="container-fluid pl-3 pr-3 announce_feed d-flex align-items-center height-175 text_decoration_none">
+                    <div class="col-12 p-0 d-flex">
+                        <div class="col-3 col-lg-4 p-0 height-150 overflow_hidden d-flex justify-content-center align-items-center">
+                            <div class="img-responsive">
+                                <img src="images/bg.jpg" class="img-fluid" alt="bg">
+                            </div>
+                        </div>
+                        <div class="col-9 col-lg-8 p-0 height-150 d-block d-lg-flex flex-lg-row">
+                            <div class="col-12 col-lg-9 p-0 pl-3 pr-3 d-flex flex-column justify-content-lg-between">
+                                <div class="p-0">
+                                    <h5 class="text-dark">Franck Provost</h5>
+                                </div>
+                                <div class="p-0">
+                                    <span class="text-secondary d-block">17-19 Boulevard Paul Vaillant Couturier, 94800 Villejuif, France</span>
+                                </div>
+                                <div class="p-0">
+                                    <span class="text-secondary">Prix moyen: 20,90€</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-3 p-0 pl-3 pr-3 pl-lg-0 pr-lg-0  d-lg-flex justify-content-lg-center align-items-lg-center">
+                                <span class="text-danger d-none d-lg-block display-4">-40%</span>
+                                <span class="text-danger d-block d-lg-none fonts_20">-40%</span>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+                <!-- /Announce Box -->
+            </div>
+            <!-- Pagination -->
+            <div class="container-fluid d-flex justify-content-center pt-3 pb-3 p-0">
+                <ul class="pagination">
+                    <li class="page-item">
+                        <a class="page-link text-dark" href="#">Previous</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-dark" href="#">1</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-dark" href="#">2</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-dark" href="#">3</a>
+                    </li>
+                    <li class="page-item">
+                        <a class="page-link text-dark" href="#">Next</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    {% endblock %}

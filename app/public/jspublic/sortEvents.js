@@ -7,16 +7,14 @@ var magasin;
 
 function init() {
     
-    if (!document.getElementsByClassName('index')){
+    if (!document.getElementById('indexprincipal')){
         return;
       }
-      location = e.LatLng;
-      console.log(location);
-      sortEventsByLocations(location,events);
+      
       //sortEventsByTime(currenttime,events);
 }
 
-function sortEventsByLocations(location,events) 
+function sortEventsByLocations2(location,events) 
 {
   var eventsbylocations, magasin;
   for (var i = 0; i < events.length; i++) {
@@ -43,6 +41,32 @@ function sortEventsByLocations(location,events)
       }
     } 
     alert(eventsbylocations);
+}
+
+function onLocationFound(e){
+var location = e.latlng;
+      position = L.marker(location,{title: 'Votre position'}).addTo(map);
+      console.log(events);
+      location = e.LatLng;
+      console.log(location);
+      sortEventsByLocations(location,events);
+}
+
+function sortEventsByLocations(location,events) 
+{
+  var eventsbylocations, magasin;
+  for (var i = 0; i < events.length; i++) {
+    magasin = new L.LatLng(parseFloat((events[i].latitude)),parseFloat((events[i].longitude)));
+    distance = location.distanceTo(magasin)/1000;
+    events[i].dist = distance;
+    eventsbylocations.push(events[i]);
+  }
+
+  eventsbylocations.sort(function(a, b) {
+    return a - b;
+  });
+
+ alert(eventsbylocations);
 }
 
 function sortEventsByTime(currenttime,events) 

@@ -24,6 +24,10 @@ router.get('/located', (req,res) => {
         res.render('Accueil/index.html', {eventsbylocation: eventsbylocation, eventsbytime:eventsbytime});
 })
 
+router.get('/feed', (req,res) => {
+    res.render('Events/feed.html');
+})
+
 router.get('/new', (req,res) => {
     var events = new Event();
     res.render('Events/edit.html', {events: events, endpoint: '/'});
