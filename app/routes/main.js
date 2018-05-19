@@ -89,7 +89,7 @@ passport.use(new LocalStrategy({
     function(email, password, done) {
      User.getUserByEmail(email, function(err, user){
          if(err) throw err;
-         if(!email){
+         if(!user){
              return done(null, false, {message: 'Utilisateur inconnu'});
          }
   
