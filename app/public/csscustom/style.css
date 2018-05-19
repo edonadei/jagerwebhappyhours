@@ -1,4 +1,13 @@
 /** Back ground **/
+.bg-black{
+    background-color: black;
+}
+
+.bg-trait{
+    background-image: url("../images/trait.png");
+    background-size: cover;
+    align-items: center;
+}
 .background-index{
     background-image: url("../images/bg_index.jpg");
     background-size: cover;
@@ -10,6 +19,40 @@
     background-image: url("../images/discover-bg.jpg");
     background-size: cover;
     background-position: center;
+}
+
+
+.discover-bg-particulier{
+    background-image: url("../images/discover-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 150px;
+}
+
+.discover-bg-pro{
+    background-image: url("../images/discover-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 150px;
+}
+
+.discover-bg-concept{
+    background-image: url("../images/discover-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+}
+
+
+.discover-bg-fonctionnement{
+    background-image: url("../images/discover-bg.jpg");
+    background-size: cover;
+    background-position: center;
+    min-height: 50vh;
+}
+
+.white-bg{
+    background-color: white;
 }
 
 .white-bg{
