@@ -1,17 +1,24 @@
 window.addEventListener('load',init);
 
-var map;
-var position;
-var distance;
-var magasin;
+var map, position, distance, magasin, eventscontent, events, datetime;
+var currentdate = new Date(); 
 
 function init() {
     
-    if (!document.getElementById('indexprincipal')){
+    if (!document.getElementById('stringify')){
         return;
       }
-      
-      //sortEventsByTime(currenttime,events);
+      // On récupère l'objet évènement en Json
+      eventscontent = document.getElementById('stringify').innerHTML;
+      // On le retransforme en object javascript
+      events = JSON.parse(eventscontent)
+      // On récupère la date actuelle
+      datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
 }
 
 function sortEventsByLocations2(location,events) 
@@ -43,16 +50,14 @@ function sortEventsByLocations2(location,events)
     alert(eventsbylocations);
 }
 
-function onLocationFound(e){
+function onLocationFound(e,events){
 var location = e.latlng;
       position = L.marker(location,{title: 'Votre position'}).addTo(map);
-      console.log(events);
       location = e.LatLng;
-      console.log(location);
       sortEventsByLocations(location,events);
 }
 
-function sortEventsByLocations(location,events) 
+function sortEventsByLocations(location,eventscontentobject) 
 {
   var eventsbylocations, magasin;
   for (var i = 0; i < events.length; i++) {

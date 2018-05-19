@@ -3,6 +3,7 @@
 <!-- Index form -->
 <!-- Utile pour init JS -->
 <div id="indexprincipal"></div>
+<div id="stringify">{{eventsjson}}</div>
 <div class="container-fluid background-index pt-5 pb-5 p-0 m-0 mb-5">
     <div class="col-12 row d-flex align-items-center h-100 p-0 m-0">
         <div class="col-6 col-lg-3 p-0">
@@ -127,7 +128,7 @@
     <div class="container-fluid mb-3">
         <div class="p-0 m-0 pb-3 d-flex justify-content-between">
             <h4 class="pl-2 pr-4">Offres proches de vous</h4>
-            <button type="button"  class="mr-2 btn btn-sm btn-danger">
+            <button type="button"  class="mr-2 btn btn-sm btn-danger" onClick="javascript:getLocationLeaflet();">
                 Donnez votre position
             </button>
         </div>
