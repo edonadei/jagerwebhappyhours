@@ -16,6 +16,10 @@ router.get('/', (req, res) => {
     });
 });
 
+router.get('/discover', (req, res) => {
+        res.render('Presentation/discover.html');
+});
+
 router.get('/located', (req,res) => {
         res.render('Accueil/index.html', {eventsbylocation: eventsbylocation, eventsbytime:eventsbytime});
 })
