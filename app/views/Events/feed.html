@@ -1,10 +1,10 @@
 {% extends "layout.html" %} {% block content %}
     <!-- Search -->
-    <div class="bg-white height-70 pt-2 pb-2 border-bottom d-none d-xl-flex align-items-center">
+    <div class="bg-white height-70 pt-2 pb-2 border-bottom d-none d-lg-flex align-items-center">
         <form class="col-10 p-0 offset-1 d-flex align-items-center justify-content-between">
             <input class="form-control col-4 border-top-0 border-right-0 border-bottom-0 rounded-0" type="text" placeholder="Lieu, restaurant...">
-            <input class="border border-top-0 border-right-0 border-bottom-0 rounded-0" id="datepicker" placeholder="Date" />
-            <input class="border border-top-0 border-right-0 border-bottom-0 rounded-0" id="timepicker" placeholder="Heure" />
+            <input class="pl-2 border border-top-0 border-right-0 border-bottom-0 rounded-0" id="datepicker" placeholder="Date" />
+            <input class="pl-2 border border-top-0 border-right-0 border-bottom-0 rounded-0" id="timepicker" placeholder="Heure" />
             <button type="submit" class="col-2 btn btn-block btn-dark btn-primary">Rechercher</button>
         </form>
     </div>
@@ -59,56 +59,8 @@
                         <!-- Filter Section -->
                         <div class="tab-pane col-12 p-0 container" id="filter_section">
                             <!-- Filtre -->
-                            <div class="col-12 p-0">
-                                <div class="border pb-3">
-                                    <!-- Filtre actif -->
-                                    <div id="all_filter_responsive" class="container-fluid p-0 mb-3">
-                                        <div class="container d-flex border-bottom pt-2 pb-2">
-                                            <div class="offset-2 col-8 d-flex justify-content-center">
-                                                <h5> Ma sélection</h5>
-                                            </div>
-                                            <div class="offset-1">
-                                                <boutton onclick="delete_all_filter('list_filter_responsive','select_filter_responsive','all_filter_responsive')" class="btn btn-link p-0 m-0">
-                                                    <img src="images/ic_delete_black_24dp.png" alt="Delete">
-                                                </boutton>
-                                            </div>
-                                        </div>
-                                        <div id="list_filter_responsive" class="container-fluid pt-2 pl-3 pr-3">
-
-                                        </div>
-                                    </div>
-                                    <!-- /Filtre actif -->
-                                    <!-- Selection Filtre -->
-                                    <div id="select_filter_responsive" class="container-fluid p-0">
-                                        <div class="col-12 d-none d-lg-flex justify-content-center pt-2 pb-2">
-                                            <h5>Affiner la recherche</h5>
-                                        </div>
-                                        <div class="container-fluid p-0 pb-2">
-                                            <div class="bg-light col-12 d-flex justify-content-center pt-2 pb-2 border-bottom border-top mb-2">
-                                                <span>Lieu:</span>
-                                            </div>
-                                            <div class="col-12 pl-3 pr-3">
-                                                <input type="checkbox" value="Paris" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
-                                                <span>Paris</span>
-                                            </div>
-                                            <div class="col-12 pl-3 pr-3">
-                                                <input type="checkbox" value="Arcueil" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
-                                                <span>Arcueil</span>
-                                            </div>
-                                            <div class="col-12 pl-3 pr-3">
-                                                <input type="checkbox" value="Villejuif" onchange="add_filter(this,'select_filter_responsive','all_filter_responsive')">
-                                                <span>Villejuif</span>
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                    </div>
-                                    <!--Section filtre -->
-                                </div>
-                                <!-- /Filtre -->
+                            <div class="col-12 p-0 d-flex justify-content-center align-items-center">
+                                <span class="display-4 text-muted">Prochainement...</span> 
                             </div>
                             <!-- /Filtre -->
                         </div>

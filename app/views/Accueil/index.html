@@ -1,5 +1,4 @@
-{% extends "layout.html" %}
-{% block content %}
+{% extends "layout.html" %} {% block content %}
 <!-- Index form -->
 <!-- Utile pour init JS -->
 <div id="indexprincipal"></div>
@@ -7,49 +6,57 @@
 <div class="container-fluid background-index pt-5 pb-5 p-0 m-0 mb-5">
     <div class="col-12 row d-flex align-items-center h-100 p-0 m-0">
         <div class="col-6 col-lg-3 p-0">
-            <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
-                <div class="img-square-content">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_my_location_black_48dp.png" alt="target">
+            <a href="#" style="text-decoration:none">
+                <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+                    <div class="img-square-content">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_my_location_black_48dp.png" alt="target">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="pt-4 height-80 d-flex justify-content-center">
                 <h4 class="text-light text-center">Chassez</h4>
             </div>
         </div>
         <div class="col-6 col-lg-3 p-0">
-            <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
-                <div class="img-square-content">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_local_offer_black_48dp.png" alt="offer">
+            <a href="#" style="text-decoration:none">
+                <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+                    <div class="img-square-content">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_local_offer_black_48dp.png" alt="offer">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="pt-4 height-80 d-flex justify-content-center">
                 <h4 class="text-light text-center">Des offres</h4>
             </div>
         </div>
         <div class="col-6 col-lg-3 p-0">
-            <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
-                <div class="img-square-content">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_place_48pt_3x.png" alt="place">
+            <a href="#" style="text-decoration:none">
+                <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+                    <div class="img-square-content">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_place_48pt_3x.png" alt="place">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="pt-4 height-80 d-flex justify-content-center">
                 <h4 class="text-light text-center">Proches de vous</h4>
             </div>
         </div>
         <div class="col-6 col-lg-3 p-0">
-            <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
-                <div class="img-square-content">
-                    <div class="d-flex justify-content-center align-items-center h-100">
-                        <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_timer_black_48dp.png" alt="timer">
+            <a href="#" style="text-decoration:none">
+                <div class="col-4 offset-4 col-lg-6 offset-lg-3 p-0 img-square rounded-circle bg-white">
+                    <div class="img-square-content">
+                        <div class="d-flex justify-content-center align-items-center h-100">
+                            <img class="p-lg-2 h-75 w-75 img-fluid" src="images/ic_timer_black_48dp.png" alt="timer">
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
             <div class="pt-4 height-80 d-flex justify-content-center">
                 <h4 class="text-light text-center">Avant le chrono</h4>
             </div>
@@ -128,7 +135,7 @@
     <div class="container-fluid mb-3">
         <div class="p-0 m-0 pb-3 d-flex justify-content-between">
             <h4 class="pl-2 pr-4">Offres proches de vous</h4>
-            <button type="button"  class="mr-2 btn btn-sm btn-danger" onClick="javascript:getLocationLeaflet();">
+            <button type="button" class="mr-2 btn btn-sm btn-danger" onClick="javascript:getLocationLeaflet();">
                 Donnez votre position
             </button>
         </div>

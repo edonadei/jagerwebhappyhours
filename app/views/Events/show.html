@@ -38,8 +38,10 @@
             </div>
             {% if user %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <a href="/{{events._id}}/registerevent" class="btn btn-danger btn-lg w-100" id="button_target">
-                    Marquage de la cible
+                <a href="/{{events._id}}/registerevent" class="w-100" style="text-decoration: none;">
+                    <button class="btn btn-danger btn-lg w-100" id="button_target">
+                        Marquage de la cible
+                    </button>
                 </a>
             </div>
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
@@ -48,8 +50,9 @@
             </div>
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <button type="button"  class="btn btn-dark btn-lg height-100 w-100" id="button_target">
-                    Pour profiter de l'offre<br> Veuillez vous authentifier
+                <button type="button" class="btn btn-dark btn-lg height-100 w-100" id="button_target">
+                    Pour profiter de l'offre
+                    <br> Veuillez vous authentifier
                 </button>
             </div>
             {% endif %}
