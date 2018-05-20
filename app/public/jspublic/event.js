@@ -1,12 +1,14 @@
 
-window.addEventListener('load',init);
+window.addEventListener('load', init);
+window.addEventListener('load', init2);
 
-var deadline,description,annonce;
+var deadline, description, annonce;
 
 function init() {
-    if (!document.getElementById('clockdiv2')){
+    if (!document.getElementById('clockdiv2')) {
         return;
-      }
+    }
+
 
       // On récupère l'objet évènement en Json
       eventscontent = document.getElementById('stringify').innerHTML;
@@ -23,6 +25,17 @@ function init() {
     window.onresize = function () {
         addsize(description, annonce);
     }
+
+}
+function init2() {
+    
+    if (!document.getElementById('all_filter')) {
+        return;
+        
+    }
+    /*Delete Filter*/
+    nothing_filter(false);
+    nothing_filter(false);
 
 }
 
@@ -100,44 +113,44 @@ function splitDate(str, separator) {
 
 function objectDate(tab) {
     var day = tab[0];
-    var month = tab[1]-1;
+    var month = tab[1] - 1;
     var year = tab[2];
     var hours = tab[3];
     var minutes = tab[4];
-    
-    return new Date(year, month, day, hours, minutes, 0, 0);  
+
+    return new Date(year, month, day, hours, minutes, 0, 0);
 }
 
-function dateCondition(tStart, tEnd){
+function dateCondition(tStart, tEnd) {
     var dToday = new Date();
     var tToday = dToday.getTime();
 
-    if(tToday>tStart & tToday<tEnd){
+    if (tToday > tStart & tToday < tEnd) {
         var deadline = new Date(Date.parse(new Date()) + tEnd - tToday);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = false; 
+        document.getElementById("button_target").disabled = false;
         document.getElementById("button_target2").disabled = false;
         document.getElementById("alert_timer").innerHTML = "Elle va bientôt s'enfuir: ";
         document.getElementById("alert_timer2").innerHTML = "Elle va bientôt s'enfuir: ";
-        
+
 
     }
-    else if(tToday<tStart){
-        var deadline = new Date(Date.parse(new Date())+1000);
+    else if (tToday < tStart) {
+        var deadline = new Date(Date.parse(new Date()) + 1000);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = true; 
+        document.getElementById("button_target").disabled = true;
         document.getElementById("button_target2").disabled = true;
         document.getElementById("alert_timer").innerHTML = "Elle est encore cachée: ";
         document.getElementById("alert_timer2").innerHTML = "Elle est encore cachée: ";
 
     }
-    else{
-        var deadline = new Date(Date.parse(new Date())+1000);
+    else {
+        var deadline = new Date(Date.parse(new Date()) + 1000);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = true; 
+        document.getElementById("button_target").disabled = true;
         document.getElementById("button_target2").disabled = true;
         document.getElementById("alert_timer").innerHTML = "Elle s'est enfuie: ";
         document.getElementById("alert_timer2").innerHTML = "Elle s'est enfuie: ";
@@ -145,12 +158,12 @@ function dateCondition(tStart, tEnd){
 
 }
 
-function RemainingTime(start,end){
+function RemainingTime(start, end) {
     var dStart = objectDate(splitDate(start, ['-', 'T', ':']));
     var dEnd = objectDate(splitDate(end, ['-', 'T', ':']));
     var tStart = dStart.getTime();
     var tEnd = dEnd.getTime();
-    
+
     dateCondition(tStart, tEnd);
 }
 
@@ -269,108 +282,96 @@ function sectionInscription(value) {
 
 /**Les Filtres du feed */
 
-function nothing_filter(all_filter,check){ //Filtre : block sélectionner
-    var element = document.getElementById(all_filter);
-    if(check){ //True apparait
+function nothing_filter(check) {
+    var element = document.getElementById('all_filter');
+    if (check) {
         displayBlock(element);
     }
-    else{ //Sinon dispparait 
+    else {
         displayNone(element);
     }
-    
+
 }
 
-//Décocher toutes les checkbox sélectionné
-function unckeck_all_checkbox(select_filter){
-    var select_filtre = document.querySelectorAll('#' + select_filter + ' input');
-    for(var i = 0; i < select_filtre.length; i++){
-            select_filtre[i].checked = false;
+function unckeck_all_checkbox() {
+    var select_filtre = document.querySelectorAll('#select_filter input');
+    for (var i = 0; i < select_filtre.length; i++) {
+        select_filtre[i].checked = false;
     }
 }
 
-//Supprimer tous les filtres
-/*
-    list_filter = les filtres actifs
-    select_filter = la liste des filtre proposé
-    all_filter = ma sélection, div qui contient les filtres
+function delete_all_filter() {
+    var element = document.querySelectorAll('#list_filter div');
 
-*/
-function delete_all_filter(list_filter, select_filter, all_filter) {
-    var element = document.querySelectorAll('#' + list_filter + ' div'); //List des filtes actifs
-    
-    for(var i = 0; i < element.length; i++){
+    for (var i = 0; i < element.length; i++) {
         element[i].parentNode.removeChild(element[i]);
     }
-    
-    nothing_filter(all_filter, false);
-    unckeck_all_checkbox(select_filter);
-    
+
+    nothing_filter(false);
+    unckeck_all_checkbox();
+
 }
 
-//Supprimer un filtre
-function delete_filter(filtre) {
-    var parent = filtre.parentNode;
+function delete_filter(name) {
+    var parent = name.parentNode;
 
     parent.parentNode.removeChild(parent);
 }
 
-//Déchoche une checkbox
-function unckeck_checkbox(filtre, select_filter){
-    var select_filtre = document.querySelectorAll('#' + select_filter + ' input');
-    for(var i = 0; i < select_filtre.length; i++){
-        if(select_filtre[i].value == filtre.id){
+function unckeck_checkbox(filtre) {
+    var select_filtre = document.querySelectorAll('#select_filter input');
+    for (var i = 0; i < select_filtre.length; i++) {
+        if (select_filtre[i].value == filtre.id) {
             select_filtre[i].checked = false;
         }
     }
 }
 
-//On regarde s'il y a des filtres actifs
-function check_if_filter(all_filter){
-    if (document.querySelector('#' + all_filter + ' .close') == null) {
-        nothing_filter(all_filter,false);
+function check_if_filter() {
+    if (document.querySelector('#all_filter .close') == null) {
+        nothing_filter(false);
     }
 }
-
-//Fonction globale qui permet de supprimer un filtre 
-function delete_filter_check(filtre, select_filter, all_filtre) {
+function delete_filter_check(filtre, all_filtre) {
     var parent = filtre.parentNode.parentNode;
     var length = parent.childNodes.length;
-    unckeck_checkbox(filtre, select_filter);
+    unckeck_checkbox(filtre);
     delete_filter(filtre);
-    check_if_filter(all_filtre);
+    check_if_filter();
 }
 
-//Création du filtre en HTML
-function creat_filter(element, select_filter, all_filter){
+function creat_filter(element) {
     var mainDiv = document.createElement('div');
-        var button = document.createElement('button');
-        var span = document.createElement('span');
-        var spanText = document.createTextNode(element.nextSibling.nextSibling.innerHTML);
-        var buttonText = document.createTextNode('\u00D7');
-        
-        mainDiv.setAttribute('class','mb-1 pl-3 pr-3 p-0');
-        button.setAttribute('id',element.value);
-        button.setAttribute('onclick',"delete_filter_check(this,'"+ select_filter +"','"+ all_filter+"')");
-        button.type ="button";
-        button.setAttribute('class','close');
+    var button = document.createElement('button');
+    var span = document.createElement('span');
+    var spanText = document.createTextNode(element.nextSibling.nextSibling.innerHTML);
+    var buttonText = document.createTextNode('\u00D7');
 
-        button.appendChild(buttonText);
-        span.appendChild(spanText);
+    mainDiv.setAttribute('class', 'mb-1 p-0');
+    button.setAttribute('id', element.value);
+    button.setAttribute('onclick', "delete_filter_check(this,'all_filter')");
+    button.type = "button";
+    button.setAttribute('class', 'close');
 
-        mainDiv.appendChild(button);
-        mainDiv.appendChild(span);
+    button.appendChild(buttonText);
+    span.appendChild(spanText);
 
-        document.getElementById(all_filter).appendChild(mainDiv);
+    mainDiv.appendChild(button);
+    mainDiv.appendChild(span);
+
+    document.getElementById("list_filter").appendChild(mainDiv);
 }
 
-//Ajout d'un filtre
-function add_filter(element, select_filter, all_filter) {
+function add_filter(element) {
     if (element.checked) {
-        nothing_filter(all_filter ,true);
-        creat_filter(element, select_filter, all_filter);  
+        nothing_filter(true);
+        creat_filter(element);
+
     }
     else {
         var filtre_uncheck = document.getElementById(element.value);
-        delete_filter_check(filtre_uncheck, select_filter, all_filter);  
+        delete_filter_check(filtre_uncheck, 'all_filter');
     }
 }
+
+
