@@ -131,8 +131,8 @@ function dateCondition(tStart, tEnd) {
         initializeClock('clockdiv2', deadline);
         document.getElementById("button_target").disabled = false;
         document.getElementById("button_target2").disabled = false;
-        document.getElementById("alert_timer").innerHTML = "Elle va bientôt s'enfuir: ";
-        document.getElementById("alert_timer2").innerHTML = "Elle va bientôt s'enfuir: ";
+        document.getElementById("alert_timer").innerHTML = "Elle va bientôt s'enfuir ! ";
+        document.getElementById("alert_timer2").innerHTML = "Elle va bientôt s'enfuir ! ";
 
 
     }
@@ -142,8 +142,8 @@ function dateCondition(tStart, tEnd) {
         initializeClock('clockdiv2', deadline);
         document.getElementById("button_target").disabled = true;
         document.getElementById("button_target2").disabled = true;
-        document.getElementById("alert_timer").innerHTML = "Elle est encore cachée: ";
-        document.getElementById("alert_timer2").innerHTML = "Elle est encore cachée: ";
+        document.getElementById("alert_timer").innerHTML = "Bientôt disponible ! ";
+        document.getElementById("alert_timer2").innerHTML = "Bientôt disponible ! ";
 
     }
     else {
@@ -152,8 +152,8 @@ function dateCondition(tStart, tEnd) {
         initializeClock('clockdiv2', deadline);
         document.getElementById("button_target").disabled = true;
         document.getElementById("button_target2").disabled = true;
-        document.getElementById("alert_timer").innerHTML = "Elle s'est enfuie: ";
-        document.getElementById("alert_timer2").innerHTML = "Elle s'est enfuie: ";
+        document.getElementById("alert_timer").innerHTML = "Vous l'avez raté ! ";
+        document.getElementById("alert_timer2").innerHTML = "Vous l'avez raté ! ";
     }
 
 }
