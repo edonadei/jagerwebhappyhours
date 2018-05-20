@@ -6,7 +6,7 @@ var distance;
 var magasin;
 
 function init() {
-    if (!document.getElementById('longitude')){
+    if (!document.getElementById('show')){
         return;
       }
     var latitude = document.getElementById('latitude').innerHTML;

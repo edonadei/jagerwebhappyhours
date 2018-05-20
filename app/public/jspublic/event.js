@@ -10,8 +10,13 @@ function init() {
     }
 
 
-    /* Chrono */
-    RemainingTime("20-05-2019T14:16", "20-05-2020T20:10");
+      // On récupère l'objet évènement en Json
+      eventscontent = document.getElementById('stringify').innerHTML;
+      // On le retransforme en object javascript
+      events = JSON.parse(eventscontent);
+
+      /* Chrono */
+      RemainingTime(events.datedebut, events.datefin);
 
     /* Size annonce */
     description = document.getElementById('description');
