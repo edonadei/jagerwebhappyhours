@@ -23,21 +23,21 @@
 
 
 .discover-bg-particulier{
-    background-image: url("../images/discover-bg.jpg");
+    background-image: url("../images/pour_particuliers.jpg");
     background-size: cover;
     background-position: center;
     min-height: 150px;
 }
 
 .discover-bg-pro{
-    background-image: url("../images/discover-bg.jpg");
+    background-image: url("../images/pour_professionnel.jpeg");
     background-size: cover;
     background-position: center;
     min-height: 150px;
 }
 
 .discover-bg-concept{
-    background-image: url("../images/discover-bg.jpg");
+    background-image: url("../images/concept_jager.jpeg");
     background-size: cover;
     background-position: center;
     min-height: 50vh;
@@ -45,7 +45,7 @@
 
 
 .discover-bg-fonctionnement{
-    background-image: url("../images/discover-bg.jpg");
+    background-image: url("../images/Explication_4etapes.jpeg");
     background-size: cover;
     background-position: center;
     min-height: 50vh;
