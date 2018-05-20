@@ -1,22 +1,27 @@
 window.addEventListener('load',init);
 
-var map;
-var position;
-var distance;
-var magasin;
+var map, position, distance, magasin, eventscontent, events, datetime;
+var currentdate = new Date(); 
 
 function init() {
     
-    if (!document.getElementsByClassName('index')){
+    if (!document.getElementById('stringify')){
         return;
       }
-      location = e.LatLng;
-      console.log(location);
-      sortEventsByLocations(location,events);
-      //sortEventsByTime(currenttime,events);
+      // On récupère l'objet évènement en Json
+      eventscontent = document.getElementById('stringify').innerHTML;
+      // On le retransforme en object javascript
+      events = JSON.parse(eventscontent)
+      // On récupère la date actuelle
+      datetime = currentdate.getDate() + "/"
+                + (currentdate.getMonth()+1)  + "/" 
+                + currentdate.getFullYear() + " @ "  
+                + currentdate.getHours() + ":"  
+                + currentdate.getMinutes() + ":" 
+                + currentdate.getSeconds();
 }
 
-function sortEventsByLocations(location,events) 
+function sortEventsByLocations2(location,events) 
 {
   var eventsbylocations, magasin;
   for (var i = 0; i < events.length; i++) {
@@ -43,6 +48,30 @@ function sortEventsByLocations(location,events)
       }
     } 
     alert(eventsbylocations);
+}
+
+function onLocationFound(e,events){
+var location = e.latlng;
+      position = L.marker(location,{title: 'Votre position'}).addTo(map);
+      location = e.LatLng;
+      sortEventsByLocations(location,events);
+}
+
+function sortEventsByLocations(location,eventscontentobject) 
+{
+  var eventsbylocations, magasin;
+  for (var i = 0; i < events.length; i++) {
+    magasin = new L.LatLng(parseFloat((events[i].latitude)),parseFloat((events[i].longitude)));
+    distance = location.distanceTo(magasin)/1000;
+    events[i].dist = distance;
+    eventsbylocations.push(events[i]);
+  }
+
+  eventsbylocations.sort(function(a, b) {
+    return a - b;
+  });
+
+ alert(eventsbylocations);
 }
 
 function sortEventsByTime(currenttime,events) 

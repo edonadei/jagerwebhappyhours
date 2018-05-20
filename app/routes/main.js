@@ -10,21 +10,49 @@ var FacebookStrategy = require ('passport-facebook').Strategy;
 
 router.get('/', (req, res) => {
     Event.find({}).then(events => {
-        res.render('Accueil/index.html', {events: events});
-        // DEBUG
-        //console.log(events);
+        res.render('Accueil/index.html', {events: events, eventsjson: JSON.stringify(events)});
     });
 });
 
-router.get('/located', (req,res) => {
-        res.render('Accueil/index.html', {eventsbylocation: eventsbylocation, eventsbytime:eventsbytime});
-})
+// Présentation de l'activité
+router.get('/discover', (req, res) => {
+        res.render('Presentation/discover.html');
+});
 
+// Solution inélégante pour les catégories
+router.get('/feedservices', (req,res) => {
+    Event.find().elemMatch('types', {"name": "Services"}).then(events => {
+    res.render('Events/feed.html', {events:events});
+    console.log(events);
+    });
+});
+
+router.get('/feedalimentation', (req,res) => {
+    Event.find().elemMatch('types', {"name": "Alimentation"}).then(events => {
+    res.render('Events/feed.html', {events:events});
+    console.log(events);
+});
+
+router.get('/feedactivites', (req,res) => {
+    Event.find().elemMatch('types', {"name": "Activités"}).then(events => {
+    res.render('Events/feed.html', {events:events});
+    console.log(events);
+    });
+});
+
+router.get('/feedhightech', (req,res) => {
+    Event.find().elemMatch('types', {"name": "Matériel"}).then(events => {
+    res.render('Events/feed.html', {events:events});
+    console.log(events);
+    });
+});
+
+//Création de jager hour
 router.get('/new', (req,res) => {
     var events = new Event();
     res.render('Events/edit.html', {events: events, endpoint: '/'});
+    });
 });
-
 router.get('/edit/:id', (req,res) => {
     Type.find({}).then(types => {
         Event.findById(req.params.id).then(events => {
@@ -85,7 +113,7 @@ passport.use(new LocalStrategy({
     function(email, password, done) {
      User.getUserByEmail(email, function(err, user){
          if(err) throw err;
-         if(!email){
+         if(!user){
              return done(null, false, {message: 'Utilisateur inconnu'});
          }
   

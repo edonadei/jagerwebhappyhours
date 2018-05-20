@@ -15,8 +15,8 @@ var eventSchema = new mongoose.Schema({
     state: String,
     zip_code: String,
     country: String,
-    latitude: String,
-    longitude: String,
+    latitude: Number,
+    longitude: Number,
 
     // Dates
     datedebut:String,

@@ -1,8 +1,9 @@
-{% extends "layout.html" %}{% block content %} 
-
+{% extends "layout.html" %}
+{% block content %}
 <!-- Index form -->
 <!-- Utile pour init JS -->
-<div class="index"></div>
+<div id="indexprincipal"></div>
+<div id="stringify">{{eventsjson}}</div>
 <div class="container-fluid background-index pt-5 pb-5 p-0 m-0 mb-5">
     <div class="col-12 row d-flex align-items-center h-100 p-0 m-0">
         <div class="col-6 col-lg-3 p-0">
@@ -72,31 +73,31 @@
         </div>
         <div class="row m-0 p-0">
             <div class="col-6 col-md-4 col-lg-4 col-xl-3 d-flex pl-2 pr-2 pb-4">
-                <a href="feed.html" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
+                <a href="/feedservices" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
                     <div class="col-lg-5 p-0">
                         <div class="img-responsive rounded">
                             <img class="img-fluid" src="images/beauty.jpg" alt="bg">
                         </div>
                     </div>
                     <div class="col-lg-7 pt-3 pb-3 p-lg-0 d-flex align-items-center justify-content-center">
-                        <h6 class="m-0">Beauté</h6>
+                        <h6 class="m-0">Services</h6>
                     </div>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-4 col-xl-3 d-flex pl-2 pr-2 pb-4">
-                <a href="feed.html" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
+                <a href="/feedalimentation" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
                     <div class="col-lg-5 p-0">
                         <div class="img-responsive rounded">
                             <img class="img-fluid" src="images/restaurants.jpg" alt="bg">
                         </div>
                     </div>
                     <div class="col-lg-7 pt-3 pb-3 p-lg-0 d-flex align-items-center justify-content-center">
-                        <h6 class="m-0">Restaurants</h6>
+                        <h6 class="m-0">Alimentation</h6>
                     </div>
                 </a>
             </div>
             <div class="col-6 col-md-4 col-lg-4 col-xl-3 d-flex pl-2 pr-2 pb-4">
-                <a href="feed.html" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
+                <a href="/feedactivites" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
                     <div class="col-lg-5 p-0">
                         <div class="img-responsive rounded">
                             <img class="img-fluid" src="images/wakeboard.jpg" alt="bg">
@@ -108,14 +109,14 @@
                 </a>
             </div>
             <div class="col-6 col-md-4 col-xl-3 d-flex pl-2 pr-2 pb-4">
-                <a href="feed.html" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
+                <a href="/feedhightech" style="text-decoration:none" class="d-flex flex-column flex-lg-row text-dark border rounded">
                     <div class="col-lg-5 p-0">
                         <div class="img-responsive rounded">
                             <img class="img-fluid" src="images/plombier.jpg" alt="bg">
                         </div>
                     </div>
                     <div class="col-lg-7 pt-3 pb-3 p-lg-0 d-flex align-items-center justify-content-center">
-                        <h6 class="m-0">Technique</h6>
+                        <h6 class="m-0">High-Tech</h6>
                     </div>
                 </a>
             </div>
@@ -127,7 +128,7 @@
     <div class="container-fluid mb-3">
         <div class="p-0 m-0 pb-3 d-flex justify-content-between">
             <h4 class="pl-2 pr-4">Offres proches de vous</h4>
-            <button type="button"  class="mr-2 btn btn-sm btn-danger">
+            <button type="button"  class="mr-2 btn btn-sm btn-danger" onClick="javascript:getLocationLeaflet();">
                 Donnez votre position
             </button>
         </div>
@@ -137,7 +138,7 @@
             <div class="col-6 col-lg-4 col-xl-3 p-0 pl-2 pr-2 pb-4">
                 <a href="{{e.id}}" style="text-decoration:none" class="text-dark">
                     <div class="img-responsive rounded">
-                        <img class="img-fluid" src="images/bg.jpg" alt="bg">
+                        <img class="img-fluid" src="/uploads/{{e.picture}}" alt="{{e.name}}">
                     </div>
                     <span>Commercant - {{e.city}}</span>
                     <h5>{{e.name}}</h5>
@@ -164,7 +165,7 @@
         <div class="discover-bg height-300 ml-2 mr-2">
             <div class="col-12 col-sm-9 col-md-7 col-lg-6 col-xl-5 h-100 pl-2 pr-2 pl-md-3 pr-md-3 pl-lg-4 pr-lg-4 pl-xl-5 pr-xl-5 d-flex flex-column justify-content-center">
                 <span class="mb-3 d-block text-light text-justify font-weight-bold fonts-20">Des promotions proches de chez vous, dans un temps restreint. Dépechez vous!</span>
-                <a href="#" class="mt-3 btn-block btn btn-light font-weight-bold">Découvrez le concept Jager</a>
+                <a href="/discover" class="mt-3 btn-block btn btn-light font-weight-bold">Découvrez le concept Jager</a>
             </div>
         </div>
     </div>
@@ -180,7 +181,7 @@
             <div class="col-6 col-lg-4 col-xl-3 p-0 pl-2 pr-2 pb-4">
                 <a href="{{e.id}}" style="text-decoration:none" class="text-dark">
                     <div class="img-responsive rounded">
-                        <img class="img-fluid" src="images/bg.jpg" alt="bg">
+                        <img class="img-fluid" src="/uploads/{{e.picture}}" alt="{{e.name}}">
                     </div>
                     <span>Commercant - {{e.city}}</span>
                     <h5>{{e.name}}</h5>
@@ -210,7 +211,7 @@
                 <h4 class="text-justify">Découvrez comment Jager permet de valoriser votre entreprise</h4>
                 <span>Des promotions dans votre intérêt et dans celui du client !</span>
                 <div>
-                    <a href="#" class="mt-3 pl-4 pr-4 btn btn-dark">En savoir plus</a>
+                    <a href="/discover" class="mt-3 pl-4 pr-4 btn btn-dark">En savoir plus</a>
                 </div>
             </div>
         </div>
