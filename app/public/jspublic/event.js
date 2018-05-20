@@ -112,9 +112,9 @@ function splitDate(str, separator) {
 }
 
 function objectDate(tab) {
-    var day = tab[0];
+    var year = tab[0];
     var month = tab[1] - 1;
-    var year = tab[2];
+    var day = tab[2];
     var hours = tab[3];
     var minutes = tab[4];
 
