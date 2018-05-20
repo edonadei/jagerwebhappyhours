@@ -15,7 +15,9 @@ var mongodb = require('mongodb');
 var FacebookStrategy = require ('passport-facebook');
 var crypto = require("crypto");
 var mime = require("mime");
+var favicon = require('serve-favicon');
 
+// Gestion des uploads utilisateurs
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, './public/uploads/')
@@ -33,11 +35,14 @@ var upload = multer({ storage: storage });
 // Fichier config prod/dev
 var config = require('./config/config');
 
+// Connexion BDD
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://'+config.IP_MONGO+'/jagerddb');
 
-require('./models/User'); // Utilisateur ou boutique, peut être besoin de mettre en place l'héritage
-require('./models/Event'); //j'aodre les endives #creation d'event 
+// Modèle d'utilisateur 
+require('./models/User'); 
+//Modèle d'évènement
+require('./models/Event'); 
 
 // Initialiser l'app
 var app = express();
@@ -45,6 +50,9 @@ var app = express();
 // Body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(upload.single('file'));
+
+// Ajout de la favicon
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 // Ressources statiques
 app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));

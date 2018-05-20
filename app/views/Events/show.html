@@ -3,7 +3,7 @@
 <!-- Gallery SLick-->
 <section class="slick_gallery size_slider p-0">
     <div>
-        <img src="/public/uploads/{{events.picture}}" alt="{{events.name}}">
+        <img src="/uploads/{{events.picture}}" class="img_slider" alt="{{events.name}}">
     </div>
 
     <div>
@@ -24,7 +24,7 @@
                 <span class="display-4">{{events.promonumber}} %</span>
             </div>
             <div class="col-12 p-0 pb-4 border border-top-0 border-right-0 border-left-0">
-                <h4 class="mt-3">Elle va bientôt s'enfuir: </h4>
+                <h4 class="mt-3" id="alert_timer"></h4>
                 <div class="container-fluid d-flex align-items-center" id="clockdiv">
                     <div class="row display-4">
 
@@ -38,7 +38,7 @@
             </div>
             {% if user %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <a href="/{{events._id}}/registerevent" class="btn btn-danger btn-lg w-100">
+                <a href="/{{events._id}}/registerevent" class="btn btn-danger btn-lg w-100" id="button_target">
                     Marquage de la cible
                 </a>
             </div>
@@ -48,7 +48,7 @@
             </div>
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <button type="button"  class="btn btn-dark btn-lg height-100 w-100">
+                <button type="button"  class="btn btn-dark btn-lg height-100 w-100" id="button_target">
                     Pour profiter de l'offre<br> Veuillez vous authentifier
                 </button>
             </div>
@@ -63,7 +63,7 @@
                     <span class="text_size_18">{{events.promonumber}} %</span>
                 </div>
                 <div>
-                    <h4 class="text_size_18 m-0">Elle va bientôt s'enfuir: </h4>
+                    <h4 class="text_size_18 m-0" id="alert_timer2"></h4>
                     <div class="container-fluid d-flex align-items-center" id="clockdiv2">
                         <div class="row text_size_18">
                             <span class="hours"></span>
@@ -77,7 +77,7 @@
 
             </div>
             <div class="col-5 d-flex align-items-center h-100 p-0">
-                <button type="button" class="btn btn-danger w-100">
+                <button type="button" class="btn btn-danger w-100" id="button_target2">
                     Marquage
                     <br>de la cible
                 </button>

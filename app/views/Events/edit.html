@@ -33,9 +33,9 @@
             <table id="address">
             <tr>
                 <td class="label">Street address</td>
-                <td class="slimField"><input class="field" name="street_number" id="street_number"
+                <td class="slimField"><input class="field" name="street_number" id="street_number" value="{{events.street_number}}"
                     ></input></td>
-                <td class="wideField" colspan="2"><input class="field" id="route" name="route"
+                <td class="wideField" colspan="2"><input class="field" id="route" name="route" value="{{events.route}}"
                     ></input></td>
             </tr>
             <tr>
@@ -44,7 +44,7 @@
                     You may need to adjust it for the locations relevant to your app. See
                     https://developers.google.com/maps/documentation/javascript/examples/places-autocomplete-addressform
                 -->
-                <td class="wideField" colspan="3"><input class="field" id="locality" name="locality"
+                <td class="wideField" colspan="3"><input class="field" id="locality" name="locality" value="{{events.city}}"
                     ></input></td>
             </tr>
             <tr>
@@ -52,23 +52,23 @@
                 <td class="slimField"><input class="field"
                     id="administrative_area_level_1" name="administrative_area_level_1"></input></td>
                 <td class="label">Zip code</td>
-                <td class="wideField"><input class="field" id="postal_code" name="postal_code"
+                <td class="wideField"><input class="field" id="postal_code" name="postal_code" value="{{events.state}}"
                     ></input></td>
             </tr>
             <tr>
                 <td class="label">Country</td>
                 <td class="wideField" colspan="3"><input class="field"
-                    id="country" name="country" ></input></td>
+                    id="country" name="country" value="{{events.country}}"></input></td>
             </tr>
             <tr>
                 <td class="label">Latitude</td>
                 <td class="wideField" colspan="3"><input class="field"
-                    name="latitude" id="latitude" ></input></td>
+                    name="latitude" id="latitude" value="{{events.latitude}}"></input></td>
             </tr>
             <tr>
                 <td class="label">Longitude</td>
                 <td class="wideField" colspan="3"><input class="field"
-                    name="longitude" id="longitude" ></input></td>
+                    name="longitude" id="longitude" value="{{events.longitude}}"></input></td>
             </tr>
             </table>
 

@@ -9,9 +9,7 @@ function init() {
       }
 
       /* Chrono */
-    deadline = new Date(Date.parse(new Date()) + 22 * 60 * 60 * 1000);
-    initializeClock('clockdiv', deadline);
-    initializeClock('clockdiv2', deadline);
+      RemainingTime("20-05-2018T11:16", "20-05-2018T20:10");
 
     /* Size annonce */
     description = document.getElementById('description');
@@ -81,6 +79,74 @@ function initializeClock(id, endtime) {
 
     updateClock();
     var timeinterval = setInterval(updateClock, 1000);
+}
+
+function splitDate(str, separator) {
+    var temp = separator[0];
+
+    for (var i = 1; i < separator.length; i++) {
+        str = str.split(separator[i]).join(temp);
+    }
+
+    str = str.split(temp);
+
+    return str;
+}
+
+function objectDate(tab) {
+    var day = tab[0];
+    var month = tab[1]-1;
+    var year = tab[2];
+    var hours = tab[3];
+    var minutes = tab[4];
+    
+    return new Date(year, month, day, hours, minutes, 0, 0);  
+}
+
+function dateCondition(tStart, tEnd){
+    var dToday = new Date();
+    var tToday = dToday.getTime();
+
+    if(tToday>tStart & tToday<tEnd){
+        var deadline = new Date(Date.parse(new Date()) + tEnd - tToday);
+        initializeClock('clockdiv', deadline);
+        initializeClock('clockdiv2', deadline);
+        document.getElementById("button_target").disabled = false; 
+        document.getElementById("button_target2").disabled = false;
+        document.getElementById("alert_timer").innerHTML = "Elle va bientôt s'enfuir: ";
+        document.getElementById("alert_timer2").innerHTML = "Elle va bientôt s'enfuir: ";
+        
+
+    }
+    else if(tToday<tStart){
+        var deadline = new Date(Date.parse(new Date())+1000);
+        initializeClock('clockdiv', deadline);
+        initializeClock('clockdiv2', deadline);
+        document.getElementById("button_target").disabled = true; 
+        document.getElementById("button_target2").disabled = true;
+        document.getElementById("alert_timer").innerHTML = "Elle est encore cachée: ";
+        document.getElementById("alert_timer2").innerHTML = "Elle est encore cachée: ";
+
+    }
+    else{
+        var deadline = new Date(Date.parse(new Date())+1000);
+        initializeClock('clockdiv', deadline);
+        initializeClock('clockdiv2', deadline);
+        document.getElementById("button_target").disabled = true; 
+        document.getElementById("button_target2").disabled = true;
+        document.getElementById("alert_timer").innerHTML = "Elle s'est enfuie: ";
+        document.getElementById("alert_timer2").innerHTML = "Elle s'est enfuie: ";
+    }
+
+}
+
+function RemainingTime(start,end){
+    var dStart = objectDate(splitDate(start, ['-', 'T', ':']));
+    var dEnd = objectDate(splitDate(end, ['-', 'T', ':']));
+    var tStart = dStart.getTime();
+    var tEnd = dEnd.getTime();
+    
+    dateCondition(tStart, tEnd);
 }
 
 /*Size*/
