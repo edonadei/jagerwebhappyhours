@@ -191,7 +191,7 @@ router.get('/logout', function(req, res){
 
 router.get('/:id', (req, res) => {
     Event.findById(req.params.id).then(events => {
-            res.render('Events/show.html', {events: events});
+            res.render('Events/show.html', {events: events, eventsjson: JSON.stringify(events)});
         },
         err => res.status(500).send(err));
 });

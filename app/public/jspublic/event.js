@@ -8,8 +8,13 @@ function init() {
         return;
       }
 
+      // On récupère l'objet évènement en Json
+      eventscontent = document.getElementById('stringify').innerHTML;
+      // On le retransforme en object javascript
+      events = JSON.parse(eventscontent);
+
       /* Chrono */
-      RemainingTime("20-05-2018T11:16", "20-05-2018T20:10");
+      RemainingTime(events.datedebut, events.datefin);
 
     /* Size annonce */
     description = document.getElementById('description');
