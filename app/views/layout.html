@@ -27,6 +27,9 @@
     <!-- Slick CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css" rel="stylesheet" />
+
+    <!-- Form -->
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -79,7 +82,8 @@
                 </div>
                 <!-- Affichage des erreurs -->
                 {% for err in errors %}
-                <div class="alert alert-danger alert-dismissible fade show"><button type="button" class="close" data-dismiss="alert">&times;</button> {{err.msg}}</div>
+                <div class="alert alert-danger alert-dismissible fade show">
+                    <button type="button" class="close" data-dismiss="alert">&times;</button> {{err.msg}}</div>
                 {% endfor %}
 
                 <!-- Modal body -->
@@ -180,18 +184,14 @@
     {% endif %} {% if error|length %}
     <div class="sticky-top alert alert-danger alert-dismissible fade show m-0">
         <button type="button" class="close" data-dismiss="alert">&times;</button> {{error}}</div>
-    {% endif %} 
-    
-    {% if user %}
+    {% endif %} {% if user %}
 
     <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Bonjour {{user.name}},</strong> vous avez
         <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
     </div>
-    {% endif %}
-    
-    {% block  content %}{% endblock %} 
+    {% endif %} {% block content %}{% endblock %}
 
 
     <!--Footer-->
@@ -283,6 +283,37 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.9.6/js/gijgo.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap',
+            format: 'dd mmm',
+            modal: true,
+            iconsLibrary: 'fontawesome'
+        });
+        $('#timepicker').timepicker({
+            uiLibrary: 'bootstrap',
+            mode: '24hr',
+            modal: true,
+            iconsLibrary: 'fontawesome',
+
+        });
+        $('#datepicker-responsive').datepicker({
+            uiLibrary: 'bootstrap',
+            format: 'dd mmm',
+            modal: false,
+            iconsLibrary: 'fontawesome'
+        });
+        $('#timepicker-responsive').timepicker({
+            uiLibrary: 'bootstrap',
+            mode: '24hr',
+            modal: false,
+            iconsLibrary: 'fontawesome',
+            footer: false,
+            header: false,
+        });
+    </script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
