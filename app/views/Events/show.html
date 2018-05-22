@@ -38,7 +38,7 @@
                     </div>
                 </div>
             </div>
-            {% if user %}
+            {% if user._id == "5af60b0fb9058d1cfc8f228a" or user._id == "5b046b299b98d600051d16e2" %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
                 <a href="/{{events._id}}/registerevent" class="w-100" style="text-decoration: none;">
                     <button class="btn btn-danger btn-lg w-100" id="button_target">
@@ -50,6 +50,15 @@
                 <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
                 <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
             </div>
+            {% elif user %}
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+                <a href="/{{events._id}}/registerevent" class="w-100" style="text-decoration: none;">
+                    <button class="btn btn-danger btn-lg w-100" id="button_target">
+                        Marquage de la cible
+                    </button>
+                </a>
+            </div>
+
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
                 <button type="button" data-toggle="modal" data-target="#connexion" class="btn btn-dark btn-lg height-100 w-100" id="button_target">
