@@ -9,7 +9,7 @@ var FacebookStrategy = require ('passport-facebook').Strategy;
 
 
 router.get('/', (req, res) => {
-    Event.find({}).then(events => {
+    Event.find({}).limit(4).then(events => {
         res.render('Accueil/index.html', {events: events, eventsjson: JSON.stringify(events)});
     });
 });
