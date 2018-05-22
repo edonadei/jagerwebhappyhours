@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://jagerhours.fr/</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/feedservices</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/feedalimentation</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/feedactivites</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/feedhightech</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/5af60b53b9058d1cfc8f228c</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/5af60c01b9058d1cfc8f2290</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/5afc82b23eb5ed18f0d3483f</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/5b005ecfeeed0d2c9c8232ef</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://jagerhours.fr/discover</loc>
+  <lastmod>2018-05-22T18:10:37+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+
+</urlset>
