@@ -9,15 +9,27 @@ var FacebookStrategy = require ('passport-facebook').Strategy;
 
 
 router.get('/', (req, res) => {
-    Event.find({}).then(events => {
+    Event.find({}).limit(4).then(events => {
         res.render('Accueil/index.html', {events: events, eventsjson: JSON.stringify(events)});
     });
 });
+
+router.get('/register', (req,res) => {
+            res.render('Inscription/inscription.html');
+    });
 
 // Présentation de l'activité
 router.get('/discover', (req, res) => {
         res.render('Presentation/discover.html');
 });
+
+router.get('/feed', (req,res) => {
+    Event.find({}).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
+    });
+
+    
 
 // Solution inélégante pour les catégories
 router.get('/feedservices', (req,res) => {

@@ -1,4 +1,7 @@
+   {% extends "layout.html" %} {% block content %}
+   
     <!-- Container Form -->
+    <div id="inscription_double"></div>
     <div class="container col-12 col-md-9 col-lg-6 mt-5 mb-5">
         <!-- Default page -->
         <div id="section_default" class="container-fluid">
@@ -22,18 +25,18 @@
                 </div>
                 <!-- Body form-->
                 <div class="modal-body">
-                    <form action="#" method="POST">
+                    <form method="post" action="/register">
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
+                            <input type="text" class="form-control pl-5 nom_icon" id="nameuser" name="name" placeholder="Identifiant">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                            <input type="email" class="form-control pl-5 mail_icon" id="emailuser" name="email" placeholder="Email">
                         </div>
                         <div class="form-group">
-                            <input type="email" class="form-control pl-5 mail_icon" id="email" placeholder="Email">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="passworduser" name="password" placeholder="Mot de passe">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control pl-5 mdp_icon" id="pwd" placeholder="Mot de passe">
+                            <input type="password" class="form-control pl-5 mdp_icon" id="password2user" name="password2" placeholder="Vérification du mot de passe">
                         </div>
                         <button type="submit" class="btn btn-dark btn-lg btn-block">Inscription</button>
                     </form>
@@ -42,7 +45,7 @@
                 <!-- form footer -->
                 <div class="modal-footer d-flex justify-content-center">
                     <span>Vous êtes un professionnel?
-                        <a href="inscription.html?type=pro" class="text-info">Inscription</a>
+                        <a href="/register" class="text-info">Inscription</a>
                     </span>
                 </div>
             </div>
@@ -64,23 +67,23 @@
 
                     </div>
                     <div class="modal-body">
-                        <form action="#" method="POST">
+                        <form method="post" action="/register">
                             <!-- Première étape -->
                             <div class="container-fluid p-0" id="step_0">
                                 <div class="form-group">
                                     <input type="text" class="form-control pl-5 nom_icon" id="nom" placeholder="Nom">
                                 </div>
                                 <div class="form-group">
-                                    <input type="text" class="form-control pl-5 nom_icon" id="prenom" placeholder="Prenom">
+                                    <input type="text" class="form-control pl-5 nom_icon" id="namepro" name="name" placeholder="Prenom">
                                 </div>
                                 <div class="form-group">
-                                    <input type="email" class="pl-5 form-control mail_icon" placeholder="Email">
+                                    <input type="email" class="form-control pl-5 mail_icon" id="emailpro" name="email" placeholder="Email">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="pl-5 form-control mdp_icon" placeholder="Mot de passe">
+                                    <input type="password" class="form-control pl-5 mdp_icon" id="passwordpro" name="password" placeholder="Mot de passe">
                                 </div>
                                 <div class="form-group">
-                                    <input type="password" class="pl-5 form-control mdp_icon" placeholder="Confirmation">
+                                    <input type="password" class="form-control pl-5 mdp_icon" id="password2pro" name="password2" placeholder="Vérification du mot de passe">
                                 </div>
                                 <div class="p-0 container-fluid d-flex align-items-center justify-content-end">
                                     <button type="button" onclick="allfunctionstep(1,3)" class="btn btn-dark btn ">Suivant</button>
@@ -135,20 +138,5 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        allfunctionstep(0, 3);
-        sectionInscription();
-    </script>
-    <nav>
-         <u>
-            <li><a href="/user/deconnection">deconnection</a></li>  
-            <li><a href="/user/connection">connection</a></li>
-            <li><a href="/">Homepage</a></li>
-         </u>
-    </nav>
-    <main>
-        <a class="google-btn" href="/user/google">Google+</a>
-    </main>
-    
-</body>
-</html>
+
+{% endblock %}
