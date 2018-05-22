@@ -5,7 +5,7 @@
 <div id="show"></div>
 <section class="slick_gallery size_slider p-0">
     <div>
-        <img src="/uploads/{{events.picture}}" class="img_slider" alt="{{events.name}}">
+        <img src="/uploads/{{events.picture}}" class="img_slider" alt="{{events.name}}" title="{{events.name}}">
     </div>
 
     <div>
@@ -52,7 +52,7 @@
             </div>
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <button type="button" class="btn btn-dark btn-lg height-100 w-100" id="button_target">
+                <button type="button" data-toggle="modal" data-target="#connexion" class="btn btn-dark btn-lg height-100 w-100" id="button_target">
                     Pour profiter de l'offre
                     <br> Veuillez vous authentifier
                 </button>
@@ -104,19 +104,31 @@
                 <div class="mr-3">
                     <span>Type: </span>
                     <span>
-                        <img src="images/ic_shopping_basket.png" alt="shopping_basket">
+                        <img src="images/ic_shopping_basket.png" alt="shopping_basket" title="shopping_basket">
+                    </span>
+                    <span>
+                        <img src="images/ic_casino.png" alt="activité" title="activité">
+                    </span>
+                    <span>
+                        <img src="images/ic_store.png" alt="service" title="service">
+                    </span>
+                    <span>
+                        <img src="images/ic_kitchen.png" alt="alimentation" title="alimentation">
+                    </span>
+                    <span>
+                        <img src="images/ic_desktop_mac.png" alt="hightech" title="hightech">
                     </span>
                 </div>
                 <div class="mr-3">
                     <span>Accessibilité: </span>
                     <span>
-                        <img src="images/ic_directions_bus.png" alt="bus">
+                        <img src="images/ic_directions_bus.png" alt="bus" title="bus">
                     </span>
                     <span>
-                        <img src="images/ic_directions_subway.png" alt="subway">
+                        <img src="images/ic_directions_subway.png" alt="subway" title="subway">
                     </span>
                     <span>
-                        <img src="images/ic_local_parking.png" alt="parking">
+                        <img src="images/ic_local_parking.png" alt="parking" title="parking">
                     </span>
                 </div>
             </div>
@@ -136,7 +148,7 @@
         <div class="container col-12 mb-3">
             <h4 class="mb-4">Localisation</h4>
             <div class="col-12 p-0">
-                <img src="images/ic_place_black_24dp.png" alt="place">
+                <img src="images/ic_place_black_24dp.png" alt="place" title="place">
                 <span>{{events.street_number}} {{events.route}}, {{events.zip_code}} {{events.city}}</span>
             </div>
             <div class="col-12 p-0">
