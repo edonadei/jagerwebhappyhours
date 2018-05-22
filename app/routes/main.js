@@ -24,35 +24,36 @@ router.get('/feedservices', (req,res) => {
     Event.find().elemMatch('types', {"name": "Services"}).then(events => {
     res.render('Events/feed.html', {events:events});
     console.log(events);
-    });
+    })
 });
 
 router.get('/feedalimentation', (req,res) => {
     Event.find().elemMatch('types', {"name": "Alimentation"}).then(events => {
     res.render('Events/feed.html', {events:events});
     console.log(events);
+    })
 });
 
 router.get('/feedactivites', (req,res) => {
     Event.find().elemMatch('types', {"name": "Activités"}).then(events => {
     res.render('Events/feed.html', {events:events});
     console.log(events);
-    });
+    })
 });
 
 router.get('/feedhightech', (req,res) => {
     Event.find().elemMatch('types', {"name": "Matériel"}).then(events => {
     res.render('Events/feed.html', {events:events});
     console.log(events);
-    });
+    })
 });
 
 //Création de jager hour
 router.get('/new', (req,res) => {
     var events = new Event();
     res.render('Events/edit.html', {events: events, endpoint: '/'});
-    });
 });
+
 router.get('/edit/:id', (req,res) => {
     Type.find({}).then(types => {
         Event.findById(req.params.id).then(events => {
