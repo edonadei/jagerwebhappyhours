@@ -191,32 +191,34 @@
             <!-- Container Announce -->
             <div class="container-fluid p-0">
                 <!-- Announce Box -->
-                <a href="#" class="container-fluid pl-3 pr-3 announce_feed d-flex align-items-center height-175 text_decoration_none">
+                {% for e in events %}
+                <a href="{{e.id}}" class="container-fluid pl-3 pr-3 announce_feed d-flex align-items-center height-175 text_decoration_none">
                     <div class="col-12 p-0 d-flex">
                         <div class="col-3 col-lg-4 p-0 height-150 overflow_hidden d-flex justify-content-center align-items-center">
                             <div class="img-responsive">
-                                <img src="images/bg.jpg" class="img-fluid" alt="bg">
+                                <img src="/uploads/{{e.picture}}" class="img-fluid" alt="{{e.name}}">
                             </div>
                         </div>
                         <div class="col-9 col-lg-8 p-0 height-150 d-block d-lg-flex flex-lg-row">
                             <div class="col-12 col-lg-9 p-0 pl-3 pr-3 d-flex flex-column justify-content-lg-between">
                                 <div class="p-0">
-                                    <h5 class="text-dark">Franck Provost</h5>
+                                    <h5 class="text-dark">{{e.name}}</h5>
                                 </div>
                                 <div class="p-0">
-                                    <span class="text-secondary d-block">17-19 Boulevard Paul Vaillant Couturier, 94800 Villejuif, France</span>
+                                    <span class="text-secondary d-block">{{events.street_number}} {{events.route}}, {{events.zip_code}} {{events.city}}</span>
                                 </div>
                                 <div class="p-0">
-                                    <span class="text-secondary">Prix moyen: 20,90€</span>
+                                    <span class="text-secondary">{{events.number_availaible}} places restantes</span>
                                 </div>
                             </div>
                             <div class="col-12 col-lg-3 p-0 pl-3 pr-3 pl-lg-0 pr-lg-0  d-lg-flex justify-content-lg-center align-items-lg-center">
-                                <span class="text-danger d-none d-lg-block display-4">-40%</span>
-                                <span class="text-danger d-block d-lg-none fonts_20">-40%</span>
+                                <span class="text-danger d-none d-lg-block display-4">{{e.promonumber}}%</span>
+                                <span class="text-danger d-block d-lg-none fonts_20">{{e.promonumber}}%</span>
                             </div>
                         </div>
                     </div>
                 </a>
+                {% endfor %}
                 <!-- /Announce Box -->
             </div>
             <!-- Pagination -->

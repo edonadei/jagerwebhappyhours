@@ -21,30 +21,38 @@ router.get('/discover', (req, res) => {
 
 // Solution inélégante pour les catégories
 router.get('/feedservices', (req,res) => {
-    Event.find().elemMatch('types', {"name": "Services"}).then(events => {
-    res.render('Events/feed.html', {events:events});
-    console.log(events);
+    Type.find({name: "Services"}).then(types => {
+        var id_we_want = types[0]._id; 
+        Event.find({ types:id_we_want }).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
     })
 });
 
 router.get('/feedalimentation', (req,res) => {
-    Event.find().elemMatch('types', {"name": "Alimentation"}).then(events => {
-    res.render('Events/feed.html', {events:events});
-    console.log(events);
+    Type.find({name: "Alimentation"}).then(types => {
+        var id_we_want = types[0]._id; 
+        Event.find({ types:id_we_want }).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
     })
 });
 
 router.get('/feedactivites', (req,res) => {
-    Event.find().elemMatch('types', {"name": "Activités"}).then(events => {
-    res.render('Events/feed.html', {events:events});
-    console.log(events);
+    Type.find({name: "Activités"}).then(types => {
+        var id_we_want = types[0]._id; 
+        Event.find({ types:id_we_want }).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
     })
 });
 
 router.get('/feedhightech', (req,res) => {
-    Event.find().elemMatch('types', {"name": "Matériel"}).then(events => {
-    res.render('Events/feed.html', {events:events});
-    console.log(events);
+    Type.find({name: "Matériel"}).then(types => {
+        var id_we_want = types[0]._id; 
+        Event.find({ types:id_we_want }).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
     })
 });
 
