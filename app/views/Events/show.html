@@ -8,12 +8,13 @@
         <img src="/uploads/{{events.picture}}" class="img_slider" alt="{{events.name}}" title="{{events.name}}">
     </div>
 
+    
     <div>
-        <img src="images/bg3.jpg" class="img_slider" alt="">
+        <img src="images/bg3.jpeg" class="img_slider" alt="">
     </div>
 
     <div>
-        <img src="images/bg2.JPG" class="img_slider" alt="">
+        <img src="images/bg2.jpeg" class="img_slider" alt="">
     </div>
 </section>
 <!-- Annonce -->
@@ -38,7 +39,7 @@
                     </div>
                 </div>
             </div>
-            {% if user._id == "5af60b0fb9058d1cfc8f228a" or user._id == "5b046b299b98d600051d16e2" %}
+            {% if user._id == "5af60b0fb9058d1cfc8f228a" or user._id == "5b046b299b98d600051d16e2" or user._id == "5b01dac0bbdcf70005493627" or user._id == "5b00618c475d8100053351a0" %} 
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
                 <a href="/{{events._id}}/registerevent" class="w-100" style="text-decoration: none;">
                     <button class="btn btn-danger btn-lg w-100" id="button_target">
@@ -112,21 +113,36 @@
             <div class="row">
                 <div class="mr-3">
                     <span>Type: </span>
+                    {% if events.types[0] == "5af88c4fd9337052acd29f49" or events.types[1] == "5af88c4fd9337052acd29f49" or events.types[2] == "5af88c4fd9337052acd29f49" or events.types[3] == "5af88c4fd9337052acd29f49" or events.types[4] == "5af88c4fd9337052acd29f49" %}
                     <span>
                         <img src="images/ic_shopping_basket.png" alt="shopping_basket" title="shopping_basket">
                     </span>
+                    {% endif %}
+                    {% if events.types[0] == "5af87d11d9337052acd29f36" or events.types[1] == "5af87d11d9337052acd29f36" or events.types[2] == "5af87d11d9337052acd29f36" or events.types[3] == "5af87d11d9337052acd29f36" or events.types[4] == "5af87cbbd9337052acd29f36" %}
                     <span>
                         <img src="images/ic_casino.png" alt="activité" title="activité">
                     </span>
+                    {% endif %}
+
+                    {% if events.types[0] == "5af87c7bd9337052acd29f31" or events.types[1] == "5af87c7bd9337052acd29f31" or events.types[2] == "5af87c7bd9337052acd29f31" or events.types[3] == "5af87c7bd9337052acd29f31" or events.types[4] == "5af87c7bd9337052acd29f31" %}
                     <span>
                         <img src="images/ic_store.png" alt="service" title="service">
                     </span>
+                    {% endif %}
+
+                    {% if events.types[0] == "5af87cbbd9337052acd29f35" or events.types[1] == "5af87cbbd9337052acd29f35" or events.types[2] == "5af87cbbd9337052acd29f35" or events.types[3] == "5af87cbbd9337052acd29f35" or events.types[4] == "5af87cbbd9337052acd29f35" %}
                     <span>
                         <img src="images/ic_kitchen.png" alt="alimentation" title="alimentation">
                     </span>
+                    {% endif %}
+
+                    {% if events.types[0] == "5af87cbbd9337052acd29f37" or events.types[1] == "5af87cbbd9337052acd29f37" or events.types[2] == "5af87cbbd9337052acd29f37" or events.types[3] == "5af87cbbd9337052acd29f37" or events.types[4] == "5af87cbbd9337052acd29f37" %}
                     <span>
                         <img src="images/ic_desktop_mac.png" alt="hightech" title="hightech">
                     </span>
+                    {% endif %}
+                    
+                    
                 </div>
                 <div class="mr-3">
                     <span>Accessibilité: </span>
