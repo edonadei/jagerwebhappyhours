@@ -1,6 +1,7 @@
 
 window.addEventListener('load', init);
 window.addEventListener('load', init2);
+window.addEventListener('load', init3);
 
 var deadline, description, annonce;
 
@@ -38,6 +39,19 @@ function init2() {
     nothing_filter(false);
 
 }
+
+function init3() {
+    
+    if (!document.getElementById("inscription_double")) {
+        return;
+        
+    }
+
+    allfunctionstep(0, 3);
+    sectionInscription();
+
+}
+
 
 /* SLICK option*/
 $(document).on('ready', function () {
