@@ -49,12 +49,12 @@ router.get('/feedhightech', (req,res) => {
 });
 
 //Création de jager hour
-router.get('/new', (req,res) => {
+router.get('/new', ensureAuthenticated, (req,res) => {
     var events = new Event();
     res.render('Events/edit.html', {events: events, endpoint: '/'});
 });
 
-router.get('/edit/:id', (req,res) => {
+router.get('/edit/:id', ensureAuthenticated, (req,res) => {
     Type.find({}).then(types => {
         Event.findById(req.params.id).then(events => {
             res.render('Events/edit.html', {events:events, types:types, endpoint: '/' + events._id.toString()});
@@ -198,7 +198,7 @@ router.get('/:id', (req, res) => {
 });
 
 // Incrémentation du compteur d'annonce et ajout d'annonce à l'utilisateur
-router.get('/:id/registerevent', (req,res) =>{
+router.get('/:id/registerevent', ensureAuthenticated, (req,res) =>{
         Event.update({ _id: req.params.id}, { $inc: { number_avalaible: -1 }}, () => {
             Event.findById(req.params.id).then((event) => {
                 // Autre manière d'accéder à l'user
@@ -210,7 +210,7 @@ router.get('/:id/registerevent', (req,res) =>{
     })
 })
 
-router.get('/delete/:id', (req, res) => {
+router.get('/delete/:id', ensureAuthenticated, (req, res) => {
     Event.findOneAndRemove({_id: req.params.id}).then(() => {
         res.redirect('/');
     })
