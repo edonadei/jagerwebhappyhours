@@ -19,6 +19,12 @@ router.get('/discover', (req, res) => {
         res.render('Presentation/discover.html');
 });
 
+router.get('/feed', (req,res) => {
+    Event.find({}).then(events => {
+            res.render('Events/feed.html', {events:events});
+        })
+    });
+
 // Solution inélégante pour les catégories
 router.get('/feedservices', (req,res) => {
     Type.find({name: "Services"}).then(types => {
