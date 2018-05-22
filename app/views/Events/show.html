@@ -1,5 +1,33 @@
 {% extends "layout.html" %} {% block content %}
+<!-- Modal QR Code -->
+<div class="modal fade" id="qrcode">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content p-2">
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2 class="modal-title text-secondary text-center">Cible marquée !</h6>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
 
+            <!-- Modal body -->
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <img src="images/qrcode.png" class="qrcode" alt="qrcode" title="qrcode">
+                </div>
+
+            </div>
+            <!-- Modal footer -->
+            <div class="modal-footer d-flex flex-column align-items-center">
+                <div>
+                    <span>Utilisez ce QRCode à la boutique de cette
+                        <strong>Jäger hours</strong>
+                        pour profiter de votre réduction !
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- Gallery SLick-->
 <div id="stringify">{{eventsjson}}</div>
 <div id="show"></div>
@@ -50,6 +78,7 @@
                 <a href="/edit/{{events._id}}" class="btn btn-default">Editer</a>
                 <a href="/delete/{{events._id}}" class="btn btn-danger">Supprimer</a>
             </div>
+
             {% elif user %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
                 <a href="/{{events._id}}/registerevent" class="w-100" style="text-decoration: none;">
@@ -66,6 +95,15 @@
                     <br> Veuillez vous authentifier
                 </button>
             </div>
+            <!-- Si cible déjà marqué on affiche CRCode -->
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+                <a href="#" class="w-100" style="text-decoration: none;">
+                    <button class="btn btn-success btn-lg w-100" data-toggle="modal" data-target="#qrcode" id="button_target">
+                        Récupère ton offre !
+                    </button>
+                </a>
+            </div>
+            <!-- Fin si -->
             {% endif %}
         </div>
     </div>
@@ -91,7 +129,7 @@
 
             </div>
             <div class="col-5 d-flex align-items-center h-100 p-0">
-                <button type="button" class="btn btn-danger w-100" id="button_target2">
+                <button type="button" class="btn btn-danger w-100" data-toggle="modal" data-target="#qrcode" id="button_target2">
                     Marquage
                     <br>de la cible
                 </button>
