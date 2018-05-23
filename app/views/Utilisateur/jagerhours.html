@@ -1,0 +1,59 @@
+{% extends "layout.html" %} {% block content %}
+<!-- Feed Announce -->
+<div class="container-fluid d-flex justify-content-center align-items-center flex-column pt-5 pb-5">
+    <div class="col-12">
+        <h1 class="pl-3 pb-4">Vos Jager hours :</h1>
+        <!-- Container Announce -->
+        <div class="container-fluid p-0">
+            <!-- Announce Box -->
+            <a href="#" class="container-fluid pl-3 pr-3 announce_feed d-flex align-items-center min-height-175 text_decoration_none">
+                <div class="col-12 p-0 d-flex flex-column flex-md-row">
+                    <div class="col-12 col-md-3 p-0 height-150 overflow_hidden d-flex justify-content-center align-items-center">
+                        <div class="img-responsive">
+                            <img src="images/bg.jpg" class="img-fluid" alt="bg">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-9 p-0 height-150 d-block d-lg-flex flex-lg-row">
+                        <div class="col-12 col-lg-9 p-0 pl-md-3 pr-md-3 d-flex flex-column justify-content-lg-between">
+                            <div class="p-0">
+                                <h5 class="text-dark">Franck Provost</h5>
+                            </div>
+                            <div class="p-0">
+                                <span class="text-secondary d-block">17-19 Boulevard Paul Vaillant Couturier, 94800 Villejuif, France</span>
+                            </div>
+                            <div class="p-0">
+                                <span class="text-secondary">Prix moyen: 20,90€</span>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-3 p-0 pl-md-3 pr-md-3 pl-lg-0 pr-lg-0  d-lg-flex justify-content-lg-center align-items-lg-center">
+                            <span class="text-danger d-none d-lg-block display-4">-40%</span>
+                            <span class="text-danger d-block d-lg-none fonts_20">-40%</span>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            <!-- /Announce Box -->
+        </div>
+        <!-- Pagination -->
+        <div class="container-fluid d-flex justify-content-center pt-5 pb-3 p-0">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link text-dark" href="#">Previous</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link text-dark" href="#">1</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link text-dark" href="#">2</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link text-dark" href="#">3</a>
+                </li>
+                <li class="page-item">
+                    <a class="page-link text-dark" href="#">Next</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
