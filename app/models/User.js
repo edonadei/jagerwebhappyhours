@@ -50,6 +50,12 @@ module.exports.getUserByEmail = function(email, callback){
 	User.findOne(query, callback);
 }
 
+module.exports.getUserByEmailandPopulate = function(email, callback){
+	var query = {email: email};
+	User.findOne(query).populate('events').then(user,callback);
+}
+
+
 module.exports.getUserById = function(id, callback){
 	User.findById(id, callback);
 }

@@ -89,6 +89,14 @@
                 </a>
             </div>
 
+            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
+                    <a href="#" class="w-100" style="text-decoration: none;">
+                        <button class="btn btn-success btn-lg w-100" data-toggle="modal" data-target="#qrcode" id="button_target">
+                            Récupère ton offre !
+                        </button>
+                    </a>
+                </div>
+
             {% else %}
             <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center" id="no-connecte">
                 <button type="button" data-toggle="modal" data-target="#connexion" class="btn btn-dark btn-lg height-100 w-100" id="button_target">
@@ -96,16 +104,8 @@
                     <br> Veuillez vous authentifier
                 </button>
             </div>
-            <!-- Si cible déjà marqué on affiche CRCode -->
-            <div class="col-12 pt-3 p-0 d-flex justify-content-center align-items-center">
-                <a href="#" class="w-100" style="text-decoration: none;">
-                    <button class="btn btn-success btn-lg w-100" data-toggle="modal" data-target="#qrcode" id="button_target">
-                        Récupère ton offre !
-                    </button>
-                </a>
-            </div>
-            <!-- Fin si -->
             {% endif %}
+            
         </div>
     </div>
     <!-- Fixed Bottom -->
