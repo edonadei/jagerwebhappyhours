@@ -51,6 +51,9 @@
                 <li class="nav-item ">
                     <a class="nav-link" href="/new">Ajouter une annonce</a>
                 </li>
+                <li class="nav-item ">
+                    <a class="nav-link" href="/profile">Profil                                                                                                          </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link" href="/logout">Déconnexion</a>
                 </li>
@@ -190,7 +193,7 @@
     <div class="alert sticky-top endl-connexion alert-success alert-dismissible fade show">
         <button type="button" class="close" data-dismiss="alert">&times;</button>
         <strong>Bonjour {{user.name}},</strong> vous avez
-        <a href="#" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
+        <a href="/userprofile/{{user._id}}" class="alert-link">{{user.events.length}} "jager hours" en cours :)</a>
     </div>
     {% endif %} {% block content %}{% endblock %}
 
@@ -355,7 +358,7 @@
     <script src="/jspublic/map.js"></script>
     <script src="/jspublic/leaflet.js"></script>
     <script src="/jspublic/event.js"></script>
-    <script src="/jspublic/sortEvents.js"></script>
+    <!--<script src="/jspublic/sortEvents.js"></script> -->
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC_GxaFUV5gRKeja2D4BFFyBNduLm_7DC0&libraries=places" async
         defer></script>

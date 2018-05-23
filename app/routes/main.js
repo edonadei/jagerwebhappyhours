@@ -137,12 +137,11 @@ passport.use(new LocalStrategy({
     passwordField: 'password'
 },
     function(email, password, done) {
-     User.getUserByEmail(email, function(err, user){
-         if(err) throw err;
+     User.getUserByEmailandPopulate(email, function(user){
          if(!user){
              return done(null, false, {message: 'Utilisateur inconnu'});
          }
-  
+            
          User.comparePassword(password, user.password, function(err, isMatch){
              if(err) throw err;
              if(isMatch){
@@ -163,7 +162,7 @@ passport.use(new LocalStrategy({
     },
     function(accessToken, refreshToken, profile, done) {
         process.nextTick(function(){
-            User.findOne({'facebook.id': profile.id}, function(err, user){
+            User.findOne({'facebook.id': profile.id}.populate('events'), function(err, user){
                 if(err)
                     return done(err);
                 if(user)
@@ -243,7 +242,7 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) => {
 
 router.get('/userprofile/:id', ensureAuthenticated, (req, res) => {
     User.findById({_id: req.params.id}).populate('events').then((user => {
-        res.render('Events/userprofile.html', {user: user});
+        res.render('Utilisateur/userevents.html', {user: user});
     }))
 });
 
