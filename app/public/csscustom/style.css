@@ -122,7 +122,9 @@
 .height-175{
     height: 175px;
 }
-
+.min-height-175{
+    min-height: 175px;
+}
 .height-200{
     height: 200px;
 }

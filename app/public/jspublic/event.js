@@ -100,9 +100,21 @@ function initializeClock(id, endtime) {
         var t = getTimeRemaining(endtime);
 
 
-        hoursSpan.innerHTML = t.hours;
-        minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
-        secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+        if(t.hours==0){
+            hoursSpan.innerHTML = "00";
+        }else{
+            hoursSpan.innerHTML = t.hours;
+        }
+        if(t.minutes==0){
+            minutesSpan.innerHTML = "00";
+        }else{
+            minutesSpan.innerHTML = ('0' + t.minutes).slice(-2);
+        }
+        if(t.seconds==0){
+            secondsSpan.innerHTML = "00";
+        }else{
+            secondsSpan.innerHTML = ('0' + t.seconds).slice(-2);
+        }
 
         if (t.total <= 0) {
             clearInterval(timeinterval);
@@ -138,15 +150,19 @@ function objectDate(tab) {
 function dateCondition(tStart, tEnd) {
     var dToday = new Date();
     var tToday = dToday.getTime();
+    var button =  document.getElementById("button_target");
+    var button2 = document.getElementById("button_target2");
+    var text_timer = document.getElementById("alert_timer");
+    var text_timer2 = document.getElementById("alert_timer2");
 
     if (tToday > tStart & tToday < tEnd) {
         var deadline = new Date(Date.parse(new Date()) + tEnd - tToday);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = false;
-        document.getElementById("button_target2").disabled = false;
-        document.getElementById("alert_timer").innerHTML = "Elle va bientôt s'enfuir ! ";
-        document.getElementById("alert_timer2").innerHTML = "Elle va bientôt s'enfuir ! ";
+        button.disabled = false;
+        button2.disabled = false;
+        text_timer.innerHTML = "Elle va bientôt s'enfuir ! ";
+        text_timer2.innerHTML = "Elle va bientôt s'enfuir ! ";
 
 
     }
@@ -154,20 +170,26 @@ function dateCondition(tStart, tEnd) {
         var deadline = new Date(Date.parse(new Date()) + 1000);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = true;
-        document.getElementById("button_target2").disabled = true;
-        document.getElementById("alert_timer").innerHTML = "Bientôt disponible ! ";
-        document.getElementById("alert_timer2").innerHTML = "Bientôt disponible ! ";
+        text_timer.innerHTML = "Bientôt disponible ! ";
+        text_timer2.innerHTML = "Bientôt disponible ! ";
+        button.innerHTML = "Trouve d'autres Jagerhours";
+        button2.innerHTML = "Trouve d'autres Jagerhours";
+        button.removeAttribute("data-toggle");
+        button.removeAttribute("data-target");
+        button.setAttribute("onclick","window.location.href='/feed'");
 
     }
     else {
         var deadline = new Date(Date.parse(new Date()) + 1000);
         initializeClock('clockdiv', deadline);
         initializeClock('clockdiv2', deadline);
-        document.getElementById("button_target").disabled = true;
-        document.getElementById("button_target2").disabled = true;
-        document.getElementById("alert_timer").innerHTML = "Vous l'avez raté ! ";
-        document.getElementById("alert_timer2").innerHTML = "Vous l'avez raté ! ";
+        text_timer.innerHTML = "Vous l'avez raté ! ";
+        text_timer2.innerHTML = "Vous l'avez raté ! ";
+        button.innerHTML = "Trouve d'autres Jagerhours";
+        button2.innerHTML = "Trouve d'autres Jagerhours";
+        button.removeAttribute("data-toggle");
+        button.removeAttribute("data-target");
+        button.setAttribute("onclick","window.location.href='/feed'");
     }
 
 }
