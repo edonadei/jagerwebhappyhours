@@ -23,6 +23,11 @@ router.get('/discover', (req, res) => {
         res.render('Presentation/discover.html');
 });
 
+//Jagerhours
+router.get('/yourjagerhours', (req, res) => {
+    res.render('Utilisateur/jagerhours.html');
+});
+
 router.get('/feed', (req,res) => {
     Event.find({}).then(events => {
             res.render('Events/feed.html', {events:events});
