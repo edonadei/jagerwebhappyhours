@@ -9,7 +9,7 @@
     align-items: center;
 }
 .background-index{
-    background-image: url("../images/bg_index.jpg");
+    background-image: url("../images/bg_index.png");
     background-size: cover;
     background-position: center; 
     height: 90vh;
