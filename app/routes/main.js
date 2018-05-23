@@ -125,7 +125,7 @@ router.post('/register', function(req, res){
 }  
 });
 
-// local login
+// Login en local
 
 passport.use(new LocalStrategy({
     usernameField: 'email',
@@ -149,7 +149,7 @@ passport.use(new LocalStrategy({
      });
     }));
   
-// Login with Facebook
+// Login avec Facebook
     
     passport.use(new FacebookStrategy({
         clientID :'2001276410122261',
@@ -235,6 +235,26 @@ router.get('/delete/:id', ensureAuthenticated, (req, res) => {
         res.redirect('/');
     })
 });
+
+router.get('/userprofile/:id', ensureAuthenticated, (req, res) => {
+    User.findById({_id: req.params.id}).populate('events').then((user => {
+        res.render('Events/userprofile.html', {user: user});
+    }))
+});
+
+router.post('/userprofile/:id?', ensureAuthenticated, (req,res) => {
+    User.findById(req.params.id).then(user => {
+        user.name = req.body.name;
+        user.email = req.body.mail;
+        user.password = req.body.password;
+        return user.save();
+
+    }).then(() => {
+        req.flash('success_msg',"Votre profil a bien été modifié !");
+        res.redirect('/userprofile/'+req.params.id);
+    },err => console.log(err));
+});
+
 
 router.post('/:id?', (req,res) => {
     new Promise((resolve,reject) => {
