@@ -23,6 +23,13 @@ router.get('/discover', (req, res) => {
         res.render('Presentation/discover.html');
 });
 
+// Profil utilisateur
+router.get('/editprofile/:id', ensureAuthenticated, (req, res) => {
+    User.findById({_id: req.params.id}).populate('events').then((user => {
+        res.render('Utilisateur/profil.html', {user: user});
+    }))
+});
+
 //Jagerhours
 router.get('/yourjagerhours', (req, res) => {
     res.render('Utilisateur/jagerhours.html');
