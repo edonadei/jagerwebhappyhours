@@ -1,13 +1,8 @@
 # Synopsis - Jäger
 
-## Notice d'installation
+## URL de rendu
 
-- Installer Node.Js pour votre OS 
-- Installer MongoDB pour votre OS
-- Cloner/Télécharger le repo
-- Lancer Launch mongoDB.bat
-- Lancer en invite de commandes app.js
-- Dans votre navigateur, accédez à l'application à l'url locale: http://localhost:8080/ 
+https://jagerhours.fr
 
 ## Analyser
 
